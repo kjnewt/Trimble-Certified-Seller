@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trimble Certified Seller</title>
+<meta name="description" content="Trimble Certified Seller: one AECO seller journey connecting KPI performance, competency certifications, and career mobility.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!--
+  TRIMBLE CERTIFIED SELLER (TCS) PAGE
+  How to update: edit the TCS_DATA object in the <script> block near the bottom.
+  Layout and logic read everything from that object, so new badges, stages,
+  links and statuses never require HTML changes.
+  Brand: Trimble Navy #003054, Blue #0063A3, Gold #FBAD26, Open Sans. No em dashes in copy.
+-->
+<style>
+:root{
+  --navy:#003054; --blue:#0063A3; --blue-2:#217CBB; --blue-tint:#E0ECF7; --gold:#FBAD26; --gold-tint:#FFF4DE;
+  --ink:#1F2430; --ink-2:#4A5060; --ink-3:#6A6E79; --line:#D9DCE3; --bg:#F6F7F9; --card:#FFFFFF;
+  --green:#1E8A44; --green-tint:#E3F3E8; --purple:#5B3FA8; --purple-tint:#EEEAF8; --red:#C81922;
+  --d-pi:#0063A3; --d-css:#1E8A44; --d-tools:#B26B00; --d-proc:#5B3FA8;
+  --radius:12px; --shadow:0 1px 2px rgba(16,24,40,.06),0 2px 8px rgba(16,24,40,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;font-family:'Open Sans',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Draft ribbon */
+.ribbon{background:var(--gold-tint);border-bottom:1px solid #F3D28C;font-size:13px;color:#6B4A00}
+.ribbon .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;padding-top:6px;padding-bottom:6px;flex-wrap:wrap}
+
+/* Nav */
+nav.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:20px;height:56px;overflow-x:auto}
+nav.top .brand{font-weight:800;color:var(--navy);white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px}
+nav.top .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--gold)}
+nav.top ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav.top ul a{display:block;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--ink-2);font-size:14px;font-weight:600;white-space:nowrap}
+nav.top ul a:hover{background:var(--blue-tint);color:var(--navy)}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#00467A 100%);color:#fff;padding:56px 0 40px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:56px solid rgba(251,173,38,.12)}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.hero h1{font-size:clamp(34px,5vw,52px);line-height:1.1;margin:10px 0 12px;font-weight:800}
+.hero p.lead{font-size:clamp(17px,2vw,20px);max-width:720px;color:#DCE7F2;margin:0 0 28px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
+.pillar{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:18px}
+.pillar .k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.pillar h3{margin:6px 0 6px;font-size:18px}
+.pillar p{margin:0;color:#DCE7F2;font-size:14px}
+
+/* Role bar */
+.rolebar{background:#fff;border-bottom:1px solid var(--line);padding:16px 0}
+.rolebar .wrap{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.rolebar .label{font-weight:700;color:var(--navy);font-size:14px;margin-right:4px}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink-2);padding:7px 14px;border-radius:999px;font:600 14px 'Open Sans',Arial,sans-serif;cursor:pointer}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+.rolebar .hint{font-size:13px;color:var(--ink-3);margin-left:auto}
+
+/* Sections */
+section{padding:56px 0}
+section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:760px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(26px,3vw,34px);color:var(--navy);margin:6px 0 8px;line-height:1.2}
+.sec-head p{margin:0;color:var(--ink-2)}
+.sec-head .eyebrow{color:var(--blue)}
+
+/* KPI to Competency to Content */
+.flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:12px;align-items:stretch}
+.flow .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border-top:4px solid var(--blue)}
+.flow .step:nth-child(3){border-top-color:var(--green)}
+.flow .step:nth-child(5){border-top-color:var(--gold)}
+.flow .step h3{margin:0 0 6px;color:var(--navy);font-size:18px}
+.flow .step p{margin:0;font-size:14px;color:var(--ink-2)}
+.flow .arrow{display:flex;align-items:center;color:var(--ink-3);font-size:24px;font-weight:700}
+.callout{margin-top:18px;background:var(--gold-tint);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;font-size:15px}
+
+/* Career path */
+.path{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.stage{position:relative;text-align:left;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 18px 16px;cursor:pointer;box-shadow:var(--shadow);font-family:inherit;color:inherit;border-top:5px solid var(--purple)}
+.stage:hover{border-color:var(--purple)}
+.stage[aria-selected="true"]{outline:2px solid var(--purple);background:var(--purple-tint)}
+.stage .n{display:inline-flex;width:28px;height:28px;border-radius:50%;background:var(--purple);color:#fff;font-weight:700;align-items:center;justify-content:center;font-size:14px}
+.stage h3{margin:10px 0 2px;font-size:19px;color:var(--navy)}
+.stage .when{font-size:13px;color:var(--purple);font-weight:600}
+.stage .cred{margin-top:10px;font-size:13px;color:var(--ink-2)}
+.stage .cred b{color:var(--ink)}
+.meter{height:8px;border-radius:999px;background:#ECEEF2;margin-top:12px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--green);width:0;transition:width .4s}
+.meter-label{font-size:12px;color:var(--ink-3);margin-top:4px}
+.gate-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:8px}
+.gate-strip span{font-size:12px;color:var(--ink-3);text-align:right;padding-right:4px}
+.stage-detail{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+.stage-detail h3{margin:0 0 4px;color:var(--navy)}
+.sd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:14px}
+.sd-grid h4{margin:0 0 6px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.sd-grid ul{margin:0;padding-left:18px;font-size:14px}
+.sd-grid li{margin-bottom:4px}
+.stakes{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--blue-tint);color:var(--navy);margin-left:8px;vertical-align:middle}
+
+/* Matrix */
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:16px}
+.toolbar .label{font-weight:700;font-size:14px;color:var(--navy);margin-right:4px}
+.kpi-note{font-size:14px;color:var(--ink-2);margin:-4px 0 16px;min-height:22px}
+.matrix{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.matrix th,.matrix td{padding:12px;vertical-align:top;border-bottom:1px solid var(--line);text-align:left}
+.matrix thead th{background:var(--navy);color:#fff;font-size:14px}
+.matrix thead th small{display:block;font-weight:400;color:#BFD3E6;font-size:12px}
+.matrix tbody th{width:200px;font-size:14px;color:var(--navy);border-left:5px solid var(--dc)}
+.matrix tbody th small{display:block;font-weight:400;color:var(--ink-3);font-size:12px;margin-top:4px}
+.matrix tr:last-child th,.matrix tr:last-child td{border-bottom:0}
+.badge{display:flex;align-items:center;gap:6px;width:100%;text-align:left;margin:0 0 6px;padding:7px 9px;border-radius:8px;border:1px solid var(--line);border-left:4px solid var(--dc);background:#fff;font:600 13px/1.3 'Open Sans',Arial,sans-serif;color:var(--ink);cursor:pointer;transition:opacity .2s, transform .2s}
+.badge:hover{border-color:var(--dc);transform:translateY(-1px)}
+.badge .st{margin-left:auto;width:8px;height:8px;border-radius:50%;flex:none}
+.badge.earned{background:var(--green-tint)}
+.badge.earned:before{content:"\2713";color:var(--green);font-weight:800}
+.badge.dim{opacity:.28}
+.badge.hit{box-shadow:0 0 0 2px var(--gold)}
+.st-live{background:var(--green)} .st-build{background:var(--gold)} .st-planned{background:#B7BCC6}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.empty{font-size:13px;color:var(--ink-3);font-style:italic}
+
+/* Catalog */
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin-bottom:16px}
+.filters input,.filters select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:14px 'Open Sans',Arial,sans-serif;background:#fff;color:var(--ink)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.bcard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);border-top:4px solid var(--dc);display:flex;flex-direction:column;gap:8px}
+.bcard h3{margin:0;font-size:16px;color:var(--navy)}
+.bcard .meta{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#EEF0F4;color:var(--ink-2)}
+.tag.status-live{background:var(--green-tint);color:var(--green)}
+.tag.status-build{background:var(--gold-tint);color:#7A5200}
+.tag.status-planned{background:#EEF0F4;color:var(--ink-3)}
+.bcard p{margin:0;font-size:14px;color:var(--ink-2)}
+.bcard .row{display:flex;gap:8px;margin-top:auto;padding-top:6px;flex-wrap:wrap}
+.btn{border:1px solid var(--blue);background:#fff;color:var(--blue);padding:7px 12px;border-radius:8px;font:600 13px 'Open Sans',Arial,sans-serif;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{background:var(--blue-tint)}
+.btn.primary{background:var(--blue);color:#fff}
+.btn.primary:hover{background:var(--navy);border-color:var(--navy)}
+.btn.done{background:var(--green);border-color:var(--green);color:#fff}
+.btn[aria-disabled="true"]{border-color:var(--line);color:var(--ink-3);cursor:not-allowed;background:#fff}
+.count{font-size:14px;color:var(--ink-3);margin-bottom:10px}
+
+/* Modalities */
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.mod{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.mod .icon{width:40px;height:40px;border-radius:10px;background:var(--blue-tint);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px}
+.mod h3{margin:10px 0 4px;font-size:16px;color:var(--navy)}
+.mod p{margin:0;font-size:14px;color:var(--ink-2)}
+.mod .ev{margin-top:8px;font-size:12.5px;color:var(--ink-3)}
+.mix{display:flex;height:40px;border-radius:10px;overflow:hidden;margin:0 0 22px;font-size:13px;font-weight:700;color:#fff}
+.mix div{display:flex;align-items:center;padding:0 14px}
+
+/* Impact plan */
+.impact{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;counter-reset:s}
+.impact div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;position:relative}
+.impact div:before{counter-increment:s;content:counter(s);position:absolute;top:-12px;left:14px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.impact h3{margin:6px 0 4px;font-size:15px;color:var(--navy)}
+.impact p{margin:0;font-size:14px;color:var(--ink-2)}
+
+/* Roadmap */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.phase{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);border-top:5px solid var(--pc)}
+.phase.now{outline:2px solid var(--gold)}
+.phase .q{font-size:12.5px;font-weight:700;color:var(--pc);letter-spacing:.04em}
+.phase h3{margin:4px 0 10px;font-size:17px;color:var(--navy)}
+.phase ul{margin:0;padding-left:18px;font-size:14px;color:var(--ink-2)}
+.phase li{margin-bottom:5px}
+.phase .nowtag{display:inline-block;font-size:11px;font-weight:800;background:var(--gold);color:var(--navy);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:middle}
+
+/* Standards + FAQ */
+.std{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.std div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.std h3{margin:0 0 4px;font-size:15px;color:var(--navy)}
+.std p{margin:0;font-size:13.5px;color:var(--ink-2)}
+details{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+summary{cursor:pointer;padding:14px 16px;font-weight:700;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-weight:800;color:var(--blue)}
+details[open] summary:after{content:"\2212"}
+details p{margin:0;padding:0 16px 16px;color:var(--ink-2);font-size:15px}
+
+/* Drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,20,40,.45);display:none;z-index:40}
+.scrim.open{display:block}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:#fff;z-index:41;transform:translateX(105%);transition:transform .25s;box-shadow:-8px 0 24px rgba(0,0,0,.15);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{padding:20px 22px 14px;border-bottom:1px solid var(--line);border-top:6px solid var(--dc,var(--blue))}
+.drawer header h2{margin:6px 0 0;color:var(--navy);font-size:22px;line-height:1.25}
+.drawer .body{padding:18px 22px;overflow:auto;flex:1}
+.drawer dl{margin:0}
+.drawer dt{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-top:14px}
+.drawer dd{margin:4px 0 0;font-size:15px}
+.drawer footer{padding:14px 22px;border-top:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap}
+.x{position:absolute;top:14px;right:14px;border:0;background:#EEF0F4;width:34px;height:34px;border-radius:50%;font-size:18px;cursor:pointer;color:var(--ink)}
+
+footer.site{background:var(--navy);color:#BFD3E6;padding:28px 0;font-size:13px}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:900px){
+  .pillars,.path,.gate-strip,.impact,.road,.std{grid-template-columns:1fr 1fr}
+  .flow{grid-template-columns:1fr}.flow .arrow{justify-content:center;transform:rotate(90deg)}
+  .sd-grid{grid-template-columns:1fr}
+  .filters{grid-template-columns:1fr 1fr}
+  .gate-strip{display:none}
+  .matrix-wrap{overflow-x:auto}
+  .matrix{min-width:760px}
+}
+@media (max-width:560px){
+  .pillars,.path,.impact,.road,.std,.filters{grid-template-columns:1fr}
+  .rolebar .hint{margin-left:0}
+  section{padding:40px 0}
+}
+@media print{
+  nav.top,.rolebar,.ribbon,.toolbar,.filters,.drawer,.scrim{display:none!important}
+  .hero{background:#fff;color:var(--navy)} .hero p.lead,.pillar p{color:var(--ink-2)}
+  section{padding:20px 0;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="ribbon" role="note"><div class="wrap">
+  <span><strong>Working draft</strong> <span id="ver"></span>. Content is subject to Steering Committee approval.</span>
+  <span id="updated"></span>
+</div></div>
+
+<nav class="top" aria-label="Page sections"><div class="wrap">
+  <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Trimble Certified Seller</a>
+  <ul>
+    <li><a href="#how">How it works</a></li>
+    <li><a href="#path">Career path</a></li>
+    <li><a href="#competencies">Competencies</a></li>
+    <li><a href="#catalog">Badge catalog</a></li>
+    <li><a href="#learn">How you'll learn</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">AECO Sales Enablement</div>
+  <h1>Trimble Certified Seller</h1>
+  <p class="lead">One seller journey that connects your KPI performance, your competency certifications, and your next career move. Know exactly what good looks like, prove it, and grow.</p>
+  <div class="pillars">
+    <div class="pillar"><div class="k">Performance-based verification</div><h3>Your results count</h3><p>KPI achievement on your Seller Scorecard validates competency. Below-target KPIs trigger focused support, not a whole course.</p></div>
+    <div class="pillar"><div class="k">Competency-based certifications</div><h3>Badges with meaning</h3><p>Each career transition prescribes the badges you need, from "Successful Completion of Onboarding" to "Certified Ready for Management."</p></div>
+    <div class="pillar"><div class="k">Intentional career paths</div><h3>A clear next step</h3><p>Gates and requirements link onboarding all the way to management readiness, so growth is visible and fair.</p></div>
+  </div>
+</div></header>
+
+<div class="rolebar"><div class="wrap">
+  <span class="label" id="role-label">I am a:</span>
+  <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  <span class="hint">The whole page tailors to your role.</span>
+</div></div>
+
+<main>
+<section id="how"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">How it works</div><h2>KPI, then competency, then content</h2>
+  <p>We start from the results that matter on your Scorecard, name the behaviors that move them, and only then build or point you to learning.</p></div>
+  <div class="flow">
+    <div class="step"><h3>1. KPI</h3><p>Booked ACV, Attainment, Win Rate, Average Deal Size and the rest of your Seller Scorecard define success.</p></div>
+    <div class="arrow" aria-hidden="true">&rarr;</div>
+    <div class="step"><h3>2. Competency</h3><p>Four domains describe what top sellers do: Product and Industry, Consultative Selling, Tools and Workflows, Sales Process.</p></div>
+    <div class="arrow" aria-hidden="true">&rarr;</div>
+    <div class="step"><h3>3. Content</h3><p>Badges bundle the practice, the evidence and the learning for each competency, mostly in the flow of your real deals.</p></div>
+  </div>
+  <div class="callout"><strong>The principle:</strong> KPI achievement on your Scorecard is the validation of competency. A badge says you can; your results show you do.</div>
+</div></section>
+
+<section id="path" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Intentional career paths</div><h2>Four stages, four credentials</h2>
+  <p>Select a stage to see its entry criteria, its gate and the badges it takes for your role. Progress bars reflect the badges you have checked off on this device.</p></div>
+  <div class="path" id="stages" role="tablist" aria-label="Career stages"></div>
+  <div class="gate-strip" aria-hidden="true"><span>Gate &#9670;</span><span>Gate &#9670;</span><span>Gate &#9670;</span><span></span></div>
+  <div class="stage-detail" id="stage-detail" role="tabpanel" aria-live="polite"></div>
+</div></section>
+
+<section id="competencies"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Competency architecture</div><h2>Four domains, mapped to every stage</h2>
+  <p>Each cell holds the badges for that domain and stage. Use the KPI lens to see which badges move the number you care about. Select any badge for details.</p></div>
+  <div class="toolbar" id="kpis"><span class="label">KPI lens:</span></div>
+  <p class="kpi-note" id="kpi-note" aria-live="polite"></p>
+  <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
+  <div class="legend"><span><i class="st-live"></i>Content live today</span><span><i class="st-build"></i>In build</span><span><i class="st-planned"></i>Planned</span><span>&#10003; Earned (your checklist)</span></div>
+</div></section>
+
+<section id="catalog" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Badge catalog</div><h2>Find a badge</h2>
+  <p>Search every badge in the program. Mark the ones you have earned to track your own progress; your checklist stays in this browser only.</p></div>
+  <div class="filters">
+    <label class="sr-only" for="q">Search badges</label><input id="q" type="search" placeholder="Search badges, e.g. discovery, personas, Gong">
+    <label class="sr-only" for="f-domain">Domain</label><select id="f-domain"></select>
+    <label class="sr-only" for="f-stage">Stage</label><select id="f-stage"></select>
+    <label class="sr-only" for="f-status">Status</label><select id="f-status"></select>
+  </div>
+  <div class="count" id="count" aria-live="polite"></div>
+  <div class="cards" id="cards"></div>
+</div></section>
+
+<section id="learn"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">How you'll learn</div><h2>Less seat time, more real practice</h2>
+  <p>Most of TCS happens in your real work: on live deals, in Gong and with your manager. Here is the mix, and the formats you will meet along the way.</p></div>
+  <div class="mix" role="img" aria-label="Learning mix: 20 percent learn, 30 percent practice, 50 percent prove in the field">
+    <div style="flex:20;background:var(--blue)">20% Learn</div><div style="flex:30;background:var(--green)">30% Practice</div><div style="flex:50;background:var(--navy)">50% Prove in the field</div>
+  </div>
+  <div class="mods" id="mods"></div>
+
+  <div class="sec-head" style="margin-top:44px"><div class="eyebrow">Impact Plans</div><h2>When a KPI dips, support gets specific</h2>
+  <p>Below-target performance leads to competency-based remediation: the exact badges mapped to that KPI, with your manager in the loop.</p></div>
+  <div class="impact">
+    <div><h3>Signal</h3><p>A Scorecard KPI stays below target for the agreed period.</p></div>
+    <div><h3>Diagnose</h3><p>The KPI map names the competencies most linked to that result.</p></div>
+    <div><h3>Assign</h3><p>Only those badges are assigned, plus one manager-observed call.</p></div>
+    <div><h3>Exit</h3><p>You exit the plan when the KPI recovers, not when a course is complete.</p></div>
+  </div>
+</div></section>
+
+<section id="roadmap" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Implementation roadmap</div><h2>From framework to global scale</h2>
+  <p>Draft and in progress. Dates follow the current program plan and will move as the Steering Committee sets priorities.</p></div>
+  <div class="road" id="road"></div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Built on recognized standards</div><h2>Fair, defensible, and worth earning</h2>
+  <p>TCS is designed against the same principles used by professional certification bodies, scaled to the stakes of each credential.</p></div>
+  <div class="std">
+    <div><h3>ISO/IEC 17024</h3><p>Job task analysis defines each role; assessors are impartial; every rule is documented.</p></div>
+    <div><h3>NCCA principles</h3><p>Published eligibility, retake and appeals policies; regular item analysis.</p></div>
+    <div><h3>Action Mapping</h3><p>Every badge starts with a business result and an observable action, then realistic practice.</p></div>
+    <div><h3>Kirkpatrick + Gagne</h3><p>Each experience is built on the nine events of instruction and measured through behavior and results.</p></div>
+  </div>
+  <div id="faqs"></div>
+</div></section>
+</main>
+
+<footer class="site"><div class="wrap">
+  <span>&copy; 2026 Trimble Inc. All rights reserved. Internal use only.</span>
+  <span>AECO Sales Enablement &middot; Learning Architecture and Development</span>
+</div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="d-title" aria-hidden="true">
+  <button class="x" id="d-close" aria-label="Close badge details">&times;</button>
+  <header id="d-head"><div class="eyebrow" id="d-eyebrow" style="color:var(--ink-3)"></div><h2 id="d-title"></h2></header>
+  <div class="body"><dl id="d-body"></dl></div>
+  <footer id="d-foot"></footer>
+</aside>
+
+<script>
+/* =====================================================================
+   TCS_DATA: the only block you need to edit to update this page.
+   roles:  "all" in a badge's roles list means every role.
+   status: "live" (content exists today), "build" (in development), "planned".
+   link:   paste the Docebo learning plan or course URL when it exists.
+   ===================================================================== */
+var TCS_DATA = {
+  meta: { version: "v0.1", updated: "2026-10-23", currentPhase: 1 },
+
+  roles: [
+    { id: "sdr", label: "SDR / BDR" },
+    { id: "ae", label: "Account Executive" },
+    { id: "se", label: "Solutions Engineer" },
+    { id: "product", label: "Product Seller" },
+    { id: "mgr", label: "Sales Manager" }
+  ],
+
+  domains: [
+    { id: "pi", name: "Product and Industry Knowledge", desc: "Trimble solutions, Trimble as a platform, functionality and value propositions", color: "var(--d-pi)" },
+    { id: "css", name: "Consultative Selling Skills", desc: "Qualification and discovery rigor, opportunity management, deal execution and close", color: "var(--d-css)" },
+    { id: "tools", name: "Sales Tools and Workflows", desc: "GTM tools, Gong intelligence, Docebo paths, digital sales rooms, required methods", color: "var(--d-tools)" },
+    { id: "proc", name: "Sales Process", desc: "All sales cycle phases: entry and exit gates, templates, Salesforce sub-processes", color: "var(--d-proc)" }
+  ],
+
+  stages: [
+    { id: 1, name: "Onboarding", when: "0 to 4 weeks", focus: "Foundational", credential: "TCS Foundations", stakes: "Lower stakes",
+      entry: ["New hire or role change recorded in Workday", "Manager and onboarding buddy assigned"],
+      gate: ["All Foundations badges for your role", "Trimble Story talk track recorded", "Manager sign-off on your first live customer call"] },
+    { id: 2, name: "Ramp", when: "5 weeks to 2 years", focus: "Acceleration", credential: "TCS Professional", stakes: "Promotion-relevant",
+      entry: ["TCS Foundations earned"],
+      gate: ["Proctored knowledge exam with a standard-set cut score", "Recorded Gong performance task scored on a rubric by a second rater", "Ramp KPI floor met on your Scorecard"],
+      gateByRole: { sdr: ["SDR-to-AE Readiness Capstone: cumulative knowledge assessment", "Behavior assessments: discovery Gong call and DX sandbox", "Asking for the Sale presentation with a pre-call plan, scored by sales leaders and mentors", "Passing earns the AE readiness designation"] } },
+    { id: 3, name: "Core Productivity", when: "In-role advancement", focus: "Mastery", credential: "TCS Expert", stakes: "Renews yearly",
+      entry: ["TCS Professional earned", "Two quarters at or above KPI target"],
+      gate: ["Deal portfolio review: two closed-won deals and one closed-lost analysis", "Peer teach-back in a Deal Clinic", "Sustained KPI attainment"] },
+    { id: 4, name: "Manager Readiness", when: "Leadership track", focus: "Nomination", credential: "TCS Leader", stakes: "Promotion-relevant",
+      entry: ["TCS Expert earned, or manager nomination", "Current managers enroll directly"],
+      gate: ["Building Tomorrow's Leaders (20 weeks) complete", "Observed coaching sessions scored on the BTL coaching rubric", "Team KPI improvement"] }
+  ],
+
+  kpis: [
+    { id: "acv", label: "Booked ACV" },
+    { id: "attain", label: "Attainment" },
+    { id: "winrate", label: "Win Rate" },
+    { id: "deal", label: "Avg Deal Size" },
+    { id: "count", label: "Total Deal Count" },
+    { id: "lost", label: "Lost ACV" }
+  ],
+
+  badges: [
+    /* Stage 1: Onboarding */
+    { id: "glance", name: "Trimble at a Glance", d: "pi", s: 1, roles: ["all"], status: "planned", kpis: ["acv"], source: "Trimble Story", modality: "Drive-time audio, AI Flight Simulator", evidence: "Two-minute recorded talk track", desc: "Tell who Trimble is, what we do and the problems we solve, in two minutes or less." },
+    { id: "connect", name: "Connect Platform Basics", d: "pi", s: 1, roles: ["all"], status: "planned", kpis: ["deal"], source: "Product and Industry Certification", modality: "Micro-lesson, knowledge check", evidence: "Knowledge check", desc: "Explain how Connect data and intelligence runs through Trimble offerings, field to office." },
+    { id: "jobsite", name: "Jobsite Immersion", d: "pi", s: 1, roles: ["sdr", "ae", "se", "product"], status: "planned", kpis: ["winrate"], source: "New", modality: "Ride-along or site visit, video series", evidence: "Persona field journal", desc: "See the jobsite through a Superintendent's eyes and capture the friction you would sell to." },
+    { id: "meeting", name: "Meeting Excellence", d: "css", s: 1, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "count"], source: "SDR-to-AE Month 1: Foundations", modality: "Self-paced, workshop", evidence: "Meeting framework applied on a live call", desc: "Run a structured first meeting with a clear agenda, purpose and next step." },
+    { id: "bant", name: "BANT Qualification", d: "css", s: 1, roles: ["sdr", "ae", "se"], status: "live", kpis: ["winrate"], source: "SDR onboarding; SDR-to-AE Month 2", modality: "Self-paced, AI roleplay", evidence: "Qualified opportunity in Salesforce", desc: "Qualify on budget, authority, need and timeline, and document it to the global standard." },
+    { id: "stack", name: "Seller Tech Stack Setup", d: "tools", s: 1, roles: ["all"], status: "live", kpis: ["count"], source: "SDR onboarding site: Tools pillar", modality: "Guided checklist", evidence: "Tool access and first activity logged", desc: "Get productive in Salesforce, Gong, Seismic and Trimble Learn in your first week." },
+    { id: "way", name: "The Trimble Way", d: "proc", s: 1, roles: ["all"], status: "planned", kpis: ["attain", "count"], source: "Trimble Blueprint", modality: "Micro-lesson, manager huddle", evidence: "Knowledge check", desc: "Know our sales stages, entry and exit criteria and Rules of Engagement." },
+
+    /* Stage 2: Ramp */
+    { id: "stratdisc", name: "Strategic Discovery", d: "css", s: 2, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "deal"], source: "SDR-to-AE Month 3", modality: "Game Film, AI roleplay", evidence: "Scored discovery call in Gong", desc: "Move past surface needs to the business problems behind them." },
+    { id: "cbi", name: "Advanced Discovery: CBIs and CSFs", d: "css", s: 2, roles: ["sdr", "ae", "se"], status: "live", kpis: ["deal", "winrate"], source: "SDR-to-AE Month 4", modality: "Business Case Studio, Field Mission", evidence: "CSF worksheet and business case scored by Sparky", desc: "Quantify critical business issues and build the bridge to critical success factors." },
+    { id: "earc", name: "Objection Handling (EARC)", d: "css", s: 2, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "lost"], source: "SDR-to-AE Month 5; Turning Resistance Into Revenue", modality: "The Resistance Lab simulation, AI roleplay", evidence: "Scored simulation and live call clip", desc: "Empathize, Ask to Elaborate, Reframe and Confirm, under pressure." },
+    { id: "ask", name: "Asking for the Sale", d: "css", s: 2, roles: ["sdr", "ae"], status: "build", kpis: ["winrate", "attain"], source: "SDR-to-AE Readiness Capstone", modality: "Live roleplay, pre-call plan", evidence: "Recorded presentation scored on the eight-competency rubric", desc: "Bring persona insight, business case and EARC together into a confident close." },
+    { id: "presence", name: "Present with Impact", d: "css", s: 2, roles: ["all"], status: "live", kpis: ["winrate"], source: "Present with Impact course", modality: "Self-paced, partner practice", evidence: "Recorded presentation", desc: "Structure and deliver a professional presentation, in customer meetings and interviews." },
+    { id: "personas", name: "Construction Personas", d: "pi", s: 2, roles: ["sdr", "ae", "se", "product"], status: "live", kpis: ["winrate"], source: "Read the Room: Construction Persona Certification", modality: "Persona cards, live-call simulator", evidence: "Certification assessment", desc: "Read the room across six industries and tailor your message by role." },
+    { id: "story", name: "Trimble Story Certified", d: "pi", s: 2, roles: ["sdr", "ae", "se", "product"], status: "build", kpis: ["acv", "deal"], source: "SKO 2026; Global Pitch Certification", modality: "Pitch Arena, Gong Enable submission", evidence: "Certified pitch video", desc: "Tell the end-to-end platform story, including AI and risk, by geo and industry." },
+    { id: "golden", name: "Golden Workflows", d: "pi", s: 2, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Product and Industry Certification, rebuilt", modality: "Golden Workflow Escape Room, micro-lessons", evidence: "Workflow mapping exercise", desc: "Sell connected workflows such as Constructible BIM to Field and Civil Job Costing, not single tools." },
+    { id: "engage", name: "Gong and Seismic in Flow", d: "tools", s: 2, roles: ["sdr", "ae"], status: "live", kpis: ["count"], source: "SDR-to-AE Month 6: Tools and Execution", modality: "Field Mission", evidence: "Active use in Gong Engage and Seismic", desc: "Run sequences, share content and capture insight in the tools, every week." },
+    { id: "dx", name: "DX Sandbox Demo", d: "tools", s: 2, roles: ["sdr", "ae", "se"], status: "build", kpis: ["winrate"], source: "SDR-to-AE Readiness Capstone", modality: "Virtual lab", evidence: "Sandbox assessment report", desc: "Show the product confidently in a guided sandbox environment." },
+    { id: "dealexec", name: "AE Deal Execution", d: "proc", s: 2, roles: ["sdr", "ae"], status: "build", kpis: ["winrate", "attain"], source: "SDR-to-AE Month 7", modality: "Self-paced, Deal Clinic", evidence: "Opportunity plan review", desc: "Manage an opportunity from qualified to closed with the right stakeholders and steps." },
+    { id: "map", name: "Mutual Action Plan and Forecast Hygiene", d: "proc", s: 2, roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "Trimble Blueprint", modality: "Template practice, manager review", evidence: "MAP on a live opportunity", desc: "Co-build the path to close with the customer and keep the forecast honest." },
+
+    /* Stage 3: Core Productivity */
+    { id: "package", name: "Multi-Product Packaging", d: "pi", s: 3, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Trimble Story; Golden Workflows", modality: "Field Mission, Deal Clinic", evidence: "Multi-product proposal", desc: "Turn workflows into multi-product opportunities mapped to regional bundles." },
+    { id: "roi", name: "Executive Value and ROI", d: "pi", s: 3, roles: ["ae", "product"], status: "planned", kpis: ["deal"], source: "Trimble Story roadmap", modality: "Business Case Studio", evidence: "Executive business case", desc: "Connect packages to financial outcomes an executive will sign." },
+    { id: "negotiate", name: "Deal Strategy and Negotiation", d: "css", s: 3, roles: ["ae"], status: "planned", kpis: ["winrate", "lost"], source: "New", modality: "Branching simulation, Deal Clinic", evidence: "Scored simulation", desc: "Protect value and win on terms in complex, multi-threaded deals." },
+    { id: "pipeline", name: "Accelerating Pipeline", d: "css", s: 3, roles: ["sdr", "ae"], status: "build", kpis: ["count", "acv"], source: "SKO activation session", modality: "Live activation, Power Hours", evidence: "Pipeline created after the session", desc: "Generate and accelerate pipeline with proven plays." },
+    { id: "ai", name: "AI-Assisted Selling", d: "tools", s: 3, roles: ["all"], status: "planned", kpis: ["count"], source: "AI Foundations micro-learning", modality: "Micro-lessons, Field Mission", evidence: "Documented AI-assisted workflow", desc: "Use Gong AI and approved assistants to prepare, follow up and coach yourself." },
+    { id: "territory", name: "Territory and Account Planning", d: "proc", s: 3, roles: ["ae", "product"], status: "planned", kpis: ["attain", "acv"], source: "New", modality: "Template, manager review", evidence: "Approved territory plan", desc: "Prioritize accounts and plan coverage that hits your number." },
+    { id: "teach", name: "Expert Teach-Back", d: "css", s: 3, roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "New", modality: "Deal Clinic", evidence: "Peer-rated teach-back", desc: "Teach a winning deal to peers. If you can teach it, you own it." },
+
+    /* Stage 4: Manager Readiness */
+    { id: "btlpeople", name: "BTL: People", d: "css", s: 4, roles: ["mgr"], status: "live", kpis: ["attain"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions, Coaching Cards", evidence: "Observed coaching session", desc: "Coach people to their strengths with a consistent framework." },
+    { id: "btlpipe", name: "BTL: Pipeline", d: "proc", s: 4, roles: ["mgr"], status: "live", kpis: ["acv", "count"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions, pipeline reviews", evidence: "Pipeline review artifact", desc: "Run pipeline reviews that improve deals, not just report on them." },
+    { id: "btlprod", name: "BTL: Productivity", d: "tools", s: 4, roles: ["mgr"], status: "build", kpis: ["attain"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions", evidence: "Team productivity plan", desc: "Use data and rhythm to raise team productivity." },
+    { id: "btlcap", name: "BTL Capstone: Certified Coach", d: "css", s: 4, roles: ["mgr"], status: "build", kpis: ["attain", "winrate"], source: "Building Tomorrow's Leaders", modality: "Capstone, panel review", evidence: "Capstone scored by a leadership panel", desc: "Demonstrate the BTL coaching framework end to end." },
+    { id: "storycoach", name: "Coaching the Trimble Story", d: "pi", s: 4, roles: ["mgr"], status: "planned", kpis: ["acv", "deal"], source: "Trimble Story", modality: "Coaching Cards, Game Film", evidence: "Coaching log", desc: "Reinforce the Trimble Story in one-to-ones and team meetings." },
+    { id: "gongcoach", name: "Coaching with Gong Scorecards", d: "tools", s: 4, roles: ["mgr"], status: "planned", kpis: ["winrate"], source: "New", modality: "Game Film, Field Mission", evidence: "Scorecard trends for your team", desc: "Use Gong scorecards to coach behaviors that move KPIs." },
+    { id: "forecast", name: "Forecasting and Team Planning", d: "proc", s: 4, roles: ["mgr"], status: "planned", kpis: ["attain"], source: "New", modality: "Workshop, manager peer group", evidence: "Forecast accuracy over a quarter", desc: "Forecast with confidence and plan capacity across your team." }
+  ],
+
+  modalities: [
+    { icon: "GF", name: "Game Film", desc: "Short weekly reviews of real Gong calls: pause, call the play, compare it to the pro.", evidence: "Annotated clip and reflection" },
+    { icon: "FM", name: "Field Missions", desc: "Badge tasks done on your live deals, then scored by Sparky and your manager.", evidence: "Real-work artifact" },
+    { icon: "AI", name: "AI Flight Simulator", desc: "Practice with Gong Enable and Sparky roleplays against construction personas until you are ready.", evidence: "Practice score trend" },
+    { icon: "BS", name: "Branching simulations", desc: "Consequence-based scenarios like The Resistance Lab, where every choice changes the deal.", evidence: "Scored decisions" },
+    { icon: "JI", name: "Jobsite Immersion", desc: "Ride-alongs and site visits, plus a Day in the Life video series, so you sell to the real jobsite.", evidence: "Persona field journal" },
+    { icon: "DA", name: "Drive-time audio", desc: "Five-minute episodes on personas and workflows for the time you spend on the road.", evidence: "Two-question check" },
+    { icon: "ER", name: "Golden Workflow Escape Room", desc: "Team challenge: solve a contractor's problem by chaining Trimble solutions in the right order.", evidence: "Team score" },
+    { icon: "PA", name: "Pitch Arena", desc: "Bracket-style pitch competitions, finals scored by sales leaders.", evidence: "Trimble Story certification" },
+    { icon: "DC", name: "Deal Clinics", desc: "Live sessions where an Expert walks a live deal and the group coaches it.", evidence: "Peer feedback, teach-back credit" },
+    { icon: "CC", name: "Coaching Cards", desc: "Ten-minute huddle guides for managers: three questions and one Gong clip per badge.", evidence: "Manager observation" },
+    { icon: "SR", name: "Spaced retrieval", desc: "Two quick questions a week for six weeks after each badge, so it sticks.", evidence: "Retention over time" }
+  ],
+
+  roadmap: [
+    { q: "Q4 2026 | Phase 1", name: "Framework and Design", color: "var(--blue)", items: ["Global Sales Leader Steering Committee assembled", "Program brief approved by SET Leadership", "Competencies mapped to KPIs", "Content library and Gong data mapped, gaps identified", "Onboarding and Ramp TCS framework designed", "Manager Readiness path mapping begins"] },
+    { q: "Q1 2027 | Phase 2", name: "MVP Launch", color: "var(--blue-2)", items: ["January: socialization, demonstration, readiness testing", "February: MVP Onboarding and Ramp live for SDRs and AEs", "February: SE, O&PS and Product seller paths begin", "March: Core Productivity paths mapped, gaps addressed"] },
+    { q: "Q2 2027 | Phase 3", name: "Core Expansion", color: "var(--purple)", items: ["Core Productivity competencies and pathways for SDRs and AEs", "In-role advancement and mastery milestones", "KPI, competency and content models in Base44"] },
+    { q: "Q3 2027 | Phase 4", name: "Scale and Refine", color: "#C98700", items: ["Content development, scaling and platform refinement", "Global adoption and continuous seller evaluation", "Long-term tracking against quota attainment and win rate"] }
+  ],
+
+  faq: [
+    { q: "Does TCS replace the programs I am already in?", a: "No one loses progress. Existing programs such as SDR-to-AE Readiness, Construction Personas and Building Tomorrow's Leaders become badges inside TCS, and completed work counts toward your credential." },
+    { q: "How long does it take to earn TCS Professional?", a: "Ramp runs from week five up to two years depending on role. Most of the work happens on your live deals, so the time is mostly time you would spend selling anyway." },
+    { q: "What happens if I do not pass a gate?", a: "You get specific feedback against the rubric, targeted practice for the competencies that need work, and a retake window. Retake and appeal rules will be published before the MVP launch." },
+    { q: "Who scores my performance tasks?", a: "Promotion-relevant gates use a second rater or a calibrated panel, so the person who coaches you is not the only person who judges you." },
+    { q: "Do credentials expire?", a: "TCS Foundations does not. TCS Professional and Expert renew through a short refresh and a KPI check. Product badges update when the product changes." },
+    { q: "Is my checklist on this page shared with anyone?", a: "No. The checkmarks you set on this page are stored only in your browser on this device. Official records live in Trimble Learn." },
+    { q: "I have an idea or found a gap. Where do I send it?", a: "Submit it through the Sales Enablement Intake Form so it reaches the team that owns TCS." }
+  ]
+};
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var D = TCS_DATA;
+  var state = { role: "ae", stage: 1, kpi: null, earned: {} };
+  var STORE = "tcs-earned-v1", ROLE_STORE = "tcs-role-v1";
+
+  function load(k, f) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : f; } catch (e) { return f; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  state.earned = load(STORE, {});
+  state.role = load(ROLE_STORE, "ae");
+  if (!D.roles.some(function (r) { return r.id === state.role; })) state.role = D.roles[0].id;
+  if (state.role === "mgr") state.stage = 4;
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function dom(id) { return D.domains.filter(function (d) { return d.id === id; })[0]; }
+  function stage(id) { return D.stages.filter(function (s) { return s.id === id; })[0]; }
+  function kpiLabel(id) { var k = D.kpis.filter(function (x) { return x.id === id; })[0]; return k ? k.label : id; }
+  function forRole(b) { return b.roles.indexOf("all") > -1 || b.roles.indexOf(state.role) > -1; }
+  function statusLabel(s) { return { live: "Content live", build: "In build", planned: "Planned" }[s] || s; }
+  function roleBadges(stageId) { return D.badges.filter(function (b) { return forRole(b) && (stageId == null || b.s === stageId); }); }
+
+  $("ver").textContent = D.meta.version;
+  $("updated").textContent = "Last updated " + D.meta.updated;
+
+  /* Roles */
+  function renderRoles() {
+    $("roles").innerHTML = D.roles.map(function (r) {
+      return '<button class="chip" data-role="' + r.id + '" aria-pressed="' + (r.id === state.role) + '">' + esc(r.label) + "</button>";
+    }).join("");
+  }
+  $("roles").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-role]"); if (!b) return;
+    state.role = b.getAttribute("data-role"); save(ROLE_STORE, state.role);
+    if (state.role === "mgr") state.stage = 4; else if (state.stage === 4) state.stage = 1;
+    renderAll();
+  });
+
+  /* Stages */
+  function renderStages() {
+    $("stages").innerHTML = D.stages.map(function (s) {
+      var list = roleBadges(s.id), done = list.filter(function (b) { return state.earned[b.id]; }).length;
+      var pct = list.length ? Math.round(done / list.length * 100) : 0;
+      return '<button class="stage" role="tab" data-stage="' + s.id + '" aria-selected="' + (s.id === state.stage) + '" aria-controls="stage-detail">' +
+        '<span class="n">' + s.id + "</span><h3>" + esc(s.name) + '</h3><div class="when">' + esc(s.when) + " &middot; " + esc(s.focus) + "</div>" +
+        '<div class="cred">Earns <b>' + esc(s.credential) + "</b></div>" +
+        '<div class="meter" aria-hidden="true"><i style="width:' + pct + '%"></i></div>' +
+        '<div class="meter-label">' + (list.length ? done + " of " + list.length + " badges checked" : "No badges for this role yet") + "</div></button>";
+    }).join("");
+    renderStageDetail();
+  }
+  $("stages").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-stage]"); if (!b) return;
+    state.stage = +b.getAttribute("data-stage"); renderStages();
+  });
+  function renderStageDetail() {
+    var s = stage(state.stage), list = roleBadges(s.id);
+    var gate = (s.gateByRole && s.gateByRole[state.role]) || s.gate;
+    var li = function (a) { return a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join(""); };
+    var badges = list.length ? list.map(function (b) { return "<li>" + esc(b.name) + (state.earned[b.id] ? " &#10003;" : "") + "</li>"; }).join("") : '<li class="empty">Badges for this role are being defined.</li>';
+    $("stage-detail").innerHTML = "<h3>Stage " + s.id + ": " + esc(s.name) + ' <span class="stakes">' + esc(s.stakes) + "</span></h3>" +
+      '<div style="color:var(--ink-2);font-size:15px">Credential: <strong>' + esc(s.credential) + "</strong> &middot; " + esc(s.when) + "</div>" +
+      '<div class="sd-grid"><div><h4>Entry</h4><ul>' + li(s.entry) + "</ul></div><div><h4>Gate to earn it</h4><ul>" + li(gate) + "</ul></div><div><h4>Your badges</h4><ul>" + badges + "</ul></div></div>";
+  }
+
+  /* KPI lens + matrix */
+  function renderKpis() {
+    var html = '<span class="label">KPI lens:</span><button class="chip" data-kpi="" aria-pressed="' + (!state.kpi) + '">All</button>';
+    html += D.kpis.map(function (k) { return '<button class="chip" data-kpi="' + k.id + '" aria-pressed="' + (state.kpi === k.id) + '">' + esc(k.label) + "</button>"; }).join("");
+    $("kpis").innerHTML = html;
+    if (state.kpi) {
+      var n = roleBadges(null).filter(function (b) { return b.kpis.indexOf(state.kpi) > -1; }).length;
+      $("kpi-note").textContent = n + " badges for your role are mapped to " + kpiLabel(state.kpi) + ". They are highlighted below.";
+    } else { $("kpi-note").textContent = "Pick a KPI to highlight the badges that move it."; }
+  }
+  $("kpis").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-kpi]"); if (!b) return;
+    state.kpi = b.getAttribute("data-kpi") || null; renderKpis(); renderMatrix();
+  });
+  function badgeBtn(b) {
+    var d = dom(b.d), cls = "badge" + (state.earned[b.id] ? " earned" : "");
+    if (state.kpi) cls += b.kpis.indexOf(state.kpi) > -1 ? " hit" : " dim";
+    return '<button class="' + cls + '" style="--dc:' + d.color + '" data-badge="' + b.id + '" aria-label="' + esc(b.name + ", " + statusLabel(b.status)) + '">' +
+      esc(b.name) + '<span class="st st-' + b.status + '" aria-hidden="true"></span></button>';
+  }
+  function renderMatrix() {
+    var head = "<thead><tr><th scope=\"col\">Domain</th>" + D.stages.map(function (s) {
+      return '<th scope="col">' + esc(s.name) + "<small>" + esc(s.credential) + "</small></th>";
+    }).join("") + "</tr></thead>";
+    var body = "<tbody>" + D.domains.map(function (d) {
+      return '<tr><th scope="row" style="--dc:' + d.color + '">' + esc(d.name) + "<small>" + esc(d.desc) + "</small></th>" +
+        D.stages.map(function (s) {
+          var list = D.badges.filter(function (b) { return b.d === d.id && b.s === s.id && forRole(b); });
+          return "<td>" + (list.length ? list.map(badgeBtn).join("") : '<span class="empty">None for this role</span>') + "</td>";
+        }).join("") + "</tr>";
+    }).join("") + "</tbody>";
+    $("matrix").innerHTML = '<caption class="sr-only">Badges by competency domain and career stage</caption>' + head + body;
+  }
+  $("matrix").addEventListener("click", function (e) { var b = e.target.closest("[data-badge]"); if (b) openDrawer(b.getAttribute("data-badge"), b); });
+
+  /* Catalog */
+  function fillSelect(id, label, opts) {
+    $(id).innerHTML = '<option value="">' + esc(label) + "</option>" + opts.map(function (o) { return '<option value="' + o[0] + '">' + esc(o[1]) + "</option>"; }).join("");
+  }
+  fillSelect("f-domain", "All domains", D.domains.map(function (d) { return [d.id, d.name]; }));
+  fillSelect("f-stage", "All stages", D.stages.map(function (s) { return [String(s.id), s.id + ". " + s.name]; }));
+  fillSelect("f-status", "Any status", [["live", "Content live"], ["build", "In build"], ["planned", "Planned"]]);
+  ["q", "f-domain", "f-stage", "f-status"].forEach(function (id) { $(id).addEventListener("input", renderCards); });
+
+  function renderCards() {
+    var q = $("q").value.trim().toLowerCase(), fd = $("f-domain").value, fs = $("f-stage").value, ft = $("f-status").value;
+    var list = roleBadges(null).filter(function (b) {
+      if (fd && b.d !== fd) return false;
+      if (fs && String(b.s) !== fs) return false;
+      if (ft && b.status !== ft) return false;
+      if (q) { var hay = (b.name + " " + b.desc + " " + b.source + " " + b.modality + " " + b.evidence).toLowerCase(); if (hay.indexOf(q) < 0) return false; }
+      return true;
+    });
+    var earned = list.filter(function (b) { return state.earned[b.id]; }).length;
+    $("count").textContent = list.length + " badges shown for " + D.roles.filter(function (r) { return r.id === state.role; })[0].label + " (" + earned + " checked as earned)";
+    $("cards").innerHTML = list.map(function (b) {
+      var d = dom(b.d), s = stage(b.s), on = !!state.earned[b.id];
+      return '<article class="bcard" style="--dc:' + d.color + '"><div class="meta"><span class="tag status-' + b.status + '">' + statusLabel(b.status) + '</span><span class="tag">' + esc(s.name) + '</span></div>' +
+        "<h3>" + esc(b.name) + "</h3><p>" + esc(b.desc) + '</p><p style="font-size:12.5px;color:var(--ink-3)">' + esc(d.name) + " &middot; Evidence: " + esc(b.evidence) + "</p>" +
+        '<div class="row"><button class="btn" data-badge="' + b.id + '">Details</button><button class="btn' + (on ? " done" : "") + '" data-earn="' + b.id + '" aria-pressed="' + on + '">' + (on ? "&#10003; Earned" : "Mark earned") + "</button></div></article>";
+    }).join("") || '<p class="empty">No badges match. Try clearing a filter.</p>';
+  }
+  $("cards").addEventListener("click", function (e) {
+    var d = e.target.closest("[data-badge]"), t = e.target.closest("[data-earn]");
+    if (d) openDrawer(d.getAttribute("data-badge"), d);
+    if (t) toggleEarned(t.getAttribute("data-earn"));
+  });
+  function toggleEarned(id) {
+    if (state.earned[id]) delete state.earned[id]; else state.earned[id] = true;
+    save(STORE, state.earned); renderStages(); renderMatrix(); renderCards();
+    if (openId === id) openDrawer(id);
+  }
+
+  /* Drawer */
+  var openId = null, lastFocus = null;
+  function openDrawer(id, from) {
+    var b = D.badges.filter(function (x) { return x.id === id; })[0]; if (!b) return;
+    var d = dom(b.d), s = stage(b.s), on = !!state.earned[id];
+    if (from) lastFocus = from; openId = id;
+    $("d-head").style.setProperty("--dc", d.color);
+    $("d-eyebrow").textContent = d.name;
+    $("d-title").textContent = b.name;
+    var row = function (k, v) { return "<dt>" + k + "</dt><dd>" + v + "</dd>"; };
+    $("d-body").innerHTML = row("What you will be able to do", esc(b.desc)) +
+      row("Stage", esc(s.id + ". " + s.name + " (" + s.credential + ")")) +
+      row("Status", '<span class="tag status-' + b.status + '">' + statusLabel(b.status) + "</span>") +
+      row("How you prove it", esc(b.evidence)) +
+      row("How you learn it", esc(b.modality)) +
+      row("KPIs it supports", esc(b.kpis.map(kpiLabel).join(", "))) +
+      row("Built from", esc(b.source));
+    var link = b.link ? '<a class="btn primary" href="' + esc(b.link) + '" target="_blank" rel="noopener">Open in Trimble Learn</a>' : '<span class="btn" aria-disabled="true">Trimble Learn link coming</span>';
+    $("d-foot").innerHTML = link + '<button class="btn' + (on ? " done" : "") + '" data-earn="' + id + '" aria-pressed="' + on + '">' + (on ? "&#10003; Earned" : "Mark earned") + "</button>";
+    $("drawer").classList.add("open"); $("scrim").classList.add("open"); $("drawer").setAttribute("aria-hidden", "false");
+    $("d-close").focus();
+  }
+  function closeDrawer() {
+    $("drawer").classList.remove("open"); $("scrim").classList.remove("open"); $("drawer").setAttribute("aria-hidden", "true");
+    openId = null; if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+  }
+  $("d-close").addEventListener("click", closeDrawer);
+  $("scrim").addEventListener("click", closeDrawer);
+  $("d-foot").addEventListener("click", function (e) { var t = e.target.closest("[data-earn]"); if (t) toggleEarned(t.getAttribute("data-earn")); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeDrawer(); });
+
+  /* Static lists */
+  $("mods").innerHTML = D.modalities.map(function (m) {
+    return '<div class="mod"><div class="icon" aria-hidden="true">' + esc(m.icon) + "</div><h3>" + esc(m.name) + "</h3><p>" + esc(m.desc) + '</p><div class="ev">Evidence: ' + esc(m.evidence) + "</div></div>";
+  }).join("");
+  $("road").innerHTML = D.roadmap.map(function (p, i) {
+    var now = i + 1 === D.meta.currentPhase;
+    return '<div class="phase' + (now ? " now" : "") + '" style="--pc:' + p.color + '"><div class="q">' + esc(p.q) + (now ? '<span class="nowtag">NOW</span>' : "") + "</div><h3>" + esc(p.name) + "</h3><ul>" +
+      p.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+  }).join("");
+  $("faqs").innerHTML = D.faq.map(function (f) { return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>"; }).join("");
+
+  function renderAll() { renderRoles(); renderStages(); renderKpis(); renderMatrix(); renderCards(); }
+  renderAll();
+
+  /* Iframe support: tell a parent page (such as Docebo) how tall this page is. */
+  function postHeight() { try { window.parent.postMessage({ type: "tcs-height", height: document.documentElement.scrollHeight }, "*"); } catch (e) {} }
+  if (window.ResizeObserver) new ResizeObserver(postHeight).observe(document.body); else window.addEventListener("load", postHeight);
+})();
+</script>
+</body>
+</html>
