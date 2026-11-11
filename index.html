@@ -51,11 +51,19 @@ nav.top ul a:hover,nav.top ul a:focus-visible{background:var(--blue);color:#fff}
 .hero:after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:56px solid rgba(251,173,38,.12)}
 .eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
 .hero h1{font-size:clamp(34px,5vw,52px);line-height:1.1;margin:10px 0 12px;font-weight:800}
-.hero p.lead{font-size:clamp(17px,2vw,20px);max-width:720px;color:#DCE7F2;margin:0 0 28px}
+.hero p.lead{font-size:clamp(17px,2vw,20px);max-width:760px;color:#DCE7F2;margin:0 0 12px}
+.hero p.brag{font-size:clamp(17px,2vw,20px);font-weight:800;color:var(--gold);margin:0 0 24px}
+.rolepick{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:0 0 28px;position:relative;z-index:1}
+.rolepick .label{font-weight:700;font-size:15px;color:#fff}
+.hero .chip{border-color:rgba(255,255,255,.55);background:transparent;color:#fff;font-size:15px;padding:8px 16px}
+.hero .chip:hover{border-color:var(--gold);color:var(--gold)}
+.hero .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
-.pillar{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:18px}
+.pillar{display:block;text-decoration:none;color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:18px;transition:background .15s,border-color .15s}
+a.pillar:hover,a.pillar:focus-visible{background:rgba(255,255,255,.14);border-color:var(--gold)}
+.pillar .go{display:inline-block;margin-top:10px;font-size:14px;font-weight:700;color:var(--gold)}
 .pillar .k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
-.pillar h3{margin:6px 0 6px;font-size:18px}
+.pillar h3{margin:0 0 6px;font-size:18px}
 .pillar p{margin:0;color:#DCE7F2;font-size:14px}
 
 /* Role bar */
@@ -240,7 +248,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 }
 @media print{
   nav.top,.rolebar,.ribbon,.toolbar,.filters,.drawer,.scrim{display:none!important}
-  .hero{background:#fff;color:var(--navy)} .hero p.lead,.pillar p{color:var(--ink-2)}
+  .hero{background:#fff;color:var(--navy)} .hero p.lead,.pillar p{color:var(--ink-2)} .pillar,.hero p.brag{color:var(--navy)} .rolepick,.pillar .go{display:none}
   section{padding:20px 0;break-inside:avoid}
 }
 </style>
@@ -255,8 +263,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 <nav class="top" aria-label="Page sections"><div class="wrap">
   <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Trimble Certified Seller</a>
   <ul>
-    <li><a href="#how">How it works</a></li>
     <li><a href="#path">Career path</a></li>
+    <li><a href="#how">How it works</a></li>
     <li><a href="#competencies">Skills map</a></li>
     <li id="faq-nav"><a href="#faq">FAQ</a></li>
   </ul>
@@ -265,21 +273,29 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 <header class="hero" id="top"><div class="wrap">
   <div class="eyebrow">AECO Sales Enablement</div>
   <h1>Trimble Certified Seller</h1>
-  <p class="lead">Your roadmap from onboarding to sales excellence. Build the skills our top sellers use, put them to work on real deals, and earn the credential that shows you are ready for what comes next.</p>
+  <p class="lead">Your roadmap starts in Onboarding and ramps to Trimble Certified Seller. Build the skills our top sellers use, prove them on real deals, and earn the credential that says you are ready for what comes next.</p>
+  <p class="brag">Earned on real deals. Proven on your Scorecard.</p>
+  <div class="rolepick">
+    <span class="label" id="role-label">I am a:</span>
+    <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  </div>
   <div class="pillars">
-    <div class="pillar"><div class="k">Competency-based certifications</div><h3>Badges with meaning</h3><p>Each career transition prescribes the badges you need, from "Successful Completion of Onboarding" to "Certified Ready for Management."</p></div>
-    <div class="pillar"><div class="k">Performance-based verification</div><h3>Your results count</h3><p>KPI achievement on your Seller Scorecard validates competency. If you are below target, focused support is triggered.</p></div>
-    <div class="pillar"><div class="k">Career paths</div><h3>Next step</h3><p>From Onboarding to Trimble Certified Seller, your roadmap to sales excellence begins here.</p></div>
+    <a class="pillar" href="#path"><h3>Know where you stand</h3><p>Pick your role. See your stage, your badges and the gate in front of you.</p><span class="go">See your career path &rarr;</span></a>
+    <a class="pillar" href="#competencies"><h3>Build what top sellers build</h3><p>Every skill on the map is one our best sellers use to win.</p><span class="go">Open the skills map &rarr;</span></a>
+    <a class="pillar" href="#how"><h3>Earn what comes next</h3><p>Foundational Seller Badge first. Trimble Certified Seller next. Then keep climbing.</p><span class="go">See how it works &rarr;</span></a>
   </div>
 </div></header>
 
-<div class="rolebar"><div class="wrap">
-  <span class="label" id="role-label">I am a:</span>
-  <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-</div></div>
-
 <main>
-<section id="how"><div class="wrap">
+<section id="path"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Career paths</div><h2>Four stages. One path forward.</h2>
+  <p>Select a stage to see who it is for, what it takes to pass the gate, and the badges you will earn in your role.</p></div>
+  <div class="path" id="stages" role="tablist" aria-label="Career stages"></div>
+  <div class="gate-strip" aria-hidden="true"><span>Gate &#9670;</span><span>Gate &#9670;</span><span>Gate &#9670;</span><span></span></div>
+  <div class="stage-detail" id="stage-detail" role="tabpanel" aria-live="polite"></div>
+</div></section>
+
+<section id="how" class="alt"><div class="wrap">
   <div class="sec-head"><div class="eyebrow">How it works</div><h2>Your roadmap to Trimble Certified Seller</h2>
   <p>Build the skills. Complete the curriculum. Let your results show it. Three steps take you from your first day to certified.</p></div>
   <div class="flow">
@@ -290,14 +306,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
     <div class="step"><h3>3. KPI</h3><p>Your Seller Scorecard shows the payoff: Booked ACV, Attainment, Win Rate, Average Deal Size and more.</p><span id="ps-link"></span></div>
   </div>
   <div class="callout"><strong>The principle:</strong> Seller behaviors drive results, and the KPI measures competency success.</div>
-</div></section>
-
-<section id="path" class="alt"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Career paths</div><h2>Four stages. One path forward.</h2>
-  <p>Select a stage to see who it is for, what it takes to pass the gate, and the badges you will earn in your role.</p></div>
-  <div class="path" id="stages" role="tablist" aria-label="Career stages"></div>
-  <div class="gate-strip" aria-hidden="true"><span>Gate &#9670;</span><span>Gate &#9670;</span><span>Gate &#9670;</span><span></span></div>
-  <div class="stage-detail" id="stage-detail" role="tabpanel" aria-live="polite"></div>
 </div></section>
 
 <section id="competencies"><div class="wrap">
@@ -339,7 +347,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
    pillar: competency pillar 1 to 6 (see pillars).  ps: performance standards the badge builds (see standards).
    ===================================================================== */
 var TCS_DATA = {
-  meta: { version: "v0.10", updated: "2026-11-10", currentPhase: 1,
+  meta: { version: "v0.11", updated: "2026-11-11", currentPhase: 1,
           /* FAQ is hidden until it is developed. Set showFaq to true to bring back the section and its nav button. */
           showFaq: false,
           /* Link to the standalone Seller Performance Support page. Set to "" to hide the link in How it works. */
