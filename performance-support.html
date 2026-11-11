@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seller Performance Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003054; --blue:#0063A3; --blue-2:#217CBB; --blue-tint:#E0ECF7; --gold:#FBAD26; --gold-tint:#FFF4DE;
+  --ink:#1F2430; --ink-2:#4A5060; --ink-3:#6A6E79; --line:#D9DCE3; --bg:#F6F7F9; --card:#FFFFFF;
+  --green:#1E8A44; --green-tint:#E3F3E8; --purple:#5B3FA8; --purple-tint:#EEEAF8;
+  --radius:12px; --shadow:0 1px 2px rgba(16,24,40,.06),0 2px 8px rgba(16,24,40,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:'Open Sans',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;font-size:16px}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ribbon{background:var(--gold-tint);border-bottom:1px solid #F3D28C;font-size:13px;color:#6B4A00}
+.ribbon .wrap{display:flex;gap:12px;justify-content:space-between;padding-top:6px;padding-bottom:6px;flex-wrap:wrap}
+nav.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;gap:20px;height:56px;overflow-x:auto}
+nav.top .brand{font-weight:800;color:var(--navy);white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px}
+nav.top .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--gold)}
+nav.top ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+nav.top ul{gap:8px}
+nav.top ul a{display:block;padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--blue);background:#fff;border:1px solid var(--blue);font-size:14px;font-weight:700;white-space:nowrap}
+nav.top ul a:hover,nav.top ul a:focus-visible{background:var(--blue);color:#fff}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#00467A 100%);color:#fff;padding:52px 0 40px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;border:56px solid rgba(251,173,38,.12)}
+.eyebrow{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.hero h1{font-size:clamp(32px,5vw,48px);line-height:1.1;margin:10px 0 12px;font-weight:800}
+.hero p.lead{font-size:clamp(17px,2vw,20px);max-width:740px;color:#DCE7F2;margin:0 0 24px}
+.promise{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
+.promise div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:16px}
+.promise h3{margin:0 0 4px;font-size:17px}
+.promise p{margin:0;color:#DCE7F2;font-size:14px}
+.rolebar{background:#fff;border-bottom:1px solid var(--line);padding:14px 0}
+.rolebar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rolebar .label{font-weight:700;color:var(--navy);font-size:14px}
+.rolebar .hint{font-size:13px;color:var(--ink-3);margin-left:auto}
+.chip{border:1px solid var(--line);background:#fff;color:var(--ink-2);padding:7px 14px;border-radius:999px;font:600 14px 'Open Sans',Arial,sans-serif;cursor:pointer}
+.chip:hover{border-color:var(--blue);color:var(--blue)}
+.chip[aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+section{padding:52px 0}
+section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{max-width:780px;margin-bottom:26px}
+.sec-head h2{font-size:clamp(25px,3vw,32px);color:var(--navy);margin:6px 0 8px;line-height:1.2}
+.sec-head p{margin:0;color:var(--ink-2)}
+.sec-head .eyebrow{color:var(--blue)}
+.triad{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tcard{background:#fff;border:1px solid var(--line);border-top:5px solid var(--tc);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.tcard .k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--tc)}
+.tcard h3{margin:4px 0 6px;color:var(--navy);font-size:19px}
+.tcard p{margin:0 0 10px;font-size:14.5px;color:var(--ink-2)}
+.tcard ul{margin:0;padding-left:18px;font-size:14px}
+.callout{margin-top:18px;background:var(--gold-tint);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;font-size:15px}
+.loop{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:s}
+.loop div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 16px 16px;position:relative;box-shadow:var(--shadow)}
+.loop div:before{counter-increment:s;content:counter(s);position:absolute;top:-12px;left:14px;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center}
+.loop h3{margin:6px 0 4px;font-size:16px;color:var(--navy)}
+.loop p{margin:0;font-size:14px;color:var(--ink-2)}
+.loop .who{margin-top:8px;font-size:12.5px;color:var(--ink-3)}
+.pack{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.pk{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.pk h3{margin:0 0 6px;font-size:16.5px;color:var(--navy)}
+.pk p{margin:0 0 8px;font-size:14.5px;color:var(--ink-2)}
+.pk ul,.pk ol{margin:0;padding-left:20px;font-size:14.5px}
+.pk li{margin-bottom:5px}
+.pk.wide{grid-column:1/-1}
+.sample{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--purple-tint);color:var(--purple);border-radius:999px;padding:2px 10px;margin-bottom:8px}
+table.t{width:100%;border-collapse:separate;border-spacing:0;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);font-size:14px}
+table.t th,table.t td{padding:11px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+table.t thead th{background:var(--navy);color:#fff;font-size:13.5px}
+table.t tbody th{color:var(--navy);width:190px}
+table.t tr:last-child th,table.t tr:last-child td{border-bottom:0}
+.twrap{overflow-x:auto}
+.miles{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);border-top:5px solid var(--mc)}
+.mile .d{font-size:30px;font-weight:800;color:var(--mc);line-height:1}
+.mile h3{margin:6px 0 4px;color:var(--navy);font-size:17px}
+.mile p{margin:0 0 8px;font-size:14px;color:var(--ink-2)}
+.mile ul{margin:0;padding-left:18px;font-size:14px}
+.filters{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.filters input,.filters select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:14px 'Open Sans',Arial,sans-serif;background:#fff;color:var(--ink)}
+.count{font-size:13.5px;color:var(--ink-3);margin-bottom:12px}
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.kcard{background:#fff;border:1px solid var(--line);border-left:5px solid var(--tc);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.kcard .meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.tag{font-size:11.5px;font-weight:700;border-radius:999px;padding:2px 9px;background:#ECEEF2;color:var(--ink-2)}
+.tag.ty{background:var(--tc);color:#fff}
+.kcard h3{margin:0 0 6px;font-size:15.5px;color:var(--navy)}
+.kcard dl{margin:0;font-size:13.5px}
+.kcard dt{font-weight:700;color:var(--ink-3);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-top:8px}
+.kcard dd{margin:2px 0 0;color:var(--ink-2)}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.toolbar .label{font-weight:700;font-size:14px;color:var(--navy);margin-right:4px}
+.lens-note{font-size:14.5px;color:var(--ink-2);margin:4px 0 16px;min-height:22px}
+.lgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start}
+.lcol{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.lcol h3{margin:0;padding:12px 14px;background:var(--navy);color:#fff;font-size:14.5px}
+.lcol h3 small{display:block;font-weight:400;color:#BFD3E6;font-size:12px}
+.lcol .in{padding:12px}
+.lb{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:8px;padding:9px 10px;margin-bottom:8px}
+.lb b{display:block;font-size:13.5px;color:var(--ink)}
+.lb span{display:block;font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.lb i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.st-live{background:var(--green)}.st-build{background:var(--gold)}.st-planned{background:#B7BCC6}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-2);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+table.t.ps tbody th{width:280px}
+table.t.ps tbody th b{display:block;font-size:11px;letter-spacing:.06em;color:var(--blue)}
+table.t.ps tbody th small{display:block;font-weight:400;color:var(--ink-3);font-size:12.5px;margin-top:4px}
+.guard{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.guard div{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+.guard h3{margin:0 0 4px;font-size:16px;color:var(--navy)}
+.guard p{margin:0;font-size:14.5px;color:var(--ink-2)}
+.btn{border:1px solid var(--blue);background:#fff;color:var(--blue);padding:8px 14px;border-radius:8px;font:600 14px 'Open Sans',Arial,sans-serif;text-decoration:none;display:inline-block}
+.btn:hover{background:var(--blue-tint)}
+.empty{font-size:14px;color:var(--ink-3);font-style:italic}
+footer.site{background:var(--navy);color:#BFD3E6;font-size:13px;padding:22px 0}
+footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (max-width:900px){.promise,.triad,.loop,.pack,.miles,.kgrid,.guard,.filters,.lgrid{grid-template-columns:1fr}.rolebar .hint{margin-left:0}}
+</style>
+</head>
+<body>
+
+<div class="ribbon" role="note"><div class="wrap">
+  <span><strong>Working draft</strong> <span id="ver"></span>. Thresholds, examples and learning assets are illustrative until sales leadership and the Steering Committee approve them.</span>
+  <span id="updated"></span>
+</div></div>
+
+<nav class="top" aria-label="Page sections"><div class="wrap">
+  <a class="brand" href="#top"><span class="dot" aria-hidden="true"></span>Seller Performance Support</a>
+  <ul>
+    <li><a href="#metrics">The three signals</a></li>
+    <li><a href="#loop">How it works</a></li>
+    <li><a href="#pack">Your pack</a></li>
+    <li><a href="#milestones">30, 60, 90</a></li>
+    <li><a href="#lens">KPI lens</a></li>
+    <li><a href="#kpis">KPI explorer</a></li>
+    <li><a href="#calls">Call habits</a></li>
+    <li><a href="#standards">Standards</a></li>
+    <li><a href="#guardrails">Guardrails</a></li>
+    <li id="back-li"></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="eyebrow">AECO Sales Enablement &middot; Core Productivity</div>
+  <h1>Seller Performance Support</h1>
+  <p class="lead">When one of your numbers dips, you get a short, specific plan built around the habits that move it. No blanket course, no guesswork, and your manager is in it with you.</p>
+  <div class="promise">
+    <div><h3>Specific</h3><p>Support targets the one skill behind the dip, using your own calls and deals.</p></div>
+    <div><h3>In your control</h3><p>Every pack leads with weekly habits you fully control, not a result you can only hope for.</p></div>
+    <div><h3>Developmental</h3><p>An Impact Pack is not a performance warning. It is focused help to get your momentum back.</p></div>
+  </div>
+</div></header>
+
+<div class="rolebar"><div class="wrap">
+  <span class="label" id="role-label">Show me the view for a:</span>
+  <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  <span class="hint">The pack section changes with your choice.</span>
+</div></div>
+
+<main>
+
+<section id="metrics"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">The three signals</div><h2>Results tell us something changed. Habits are how you change it.</h2>
+  <p>Performance support reads three kinds of measures together. Each one answers a different question.</p></div>
+  <div class="triad">
+    <div class="tcard" style="--tc:var(--navy)"><div class="k">Results</div><h3>Did the number move?</h3><p>Your commercial outcomes at the end of a period. A dip here is the first signal that support could help.</p><ul><li>Win rate</li><li>Booked ACV</li><li>Lost ACV</li><li>Quota attainment</li></ul></div>
+    <div class="tcard" style="--tc:var(--blue)"><div class="k">In-flight quality</div><h3>Where is it breaking down?</h3><p>How well active deals and calls are being run. This is where the specific skill shows up.</p><ul><li>Gong discovery score</li><li>MEDDPICC completeness</li><li>Multi-threading depth</li><li>Days per stage</li></ul></div>
+    <div class="tcard" style="--tc:var(--green)"><div class="k">Activities</div><h3>What can I do this week?</h3><p>Daily and weekly effort that is fully in your control. These become the habit checklist in your pack.</p><ul><li>Talk-to-listen balance</li><li>Open questions per call</li><li>Pre-call plans and Upfront Contracts</li><li>Opportunity updates within 48 hours</li></ul></div>
+  </div>
+  <div class="callout"><strong>Why all three:</strong> one number on its own can mislead. Losing a single large deal can drop a win rate without any skill gap behind it. An Impact Pack is only built when a results dip lines up with a quality gap on active deals and a habit you can see on calls.</div>
+</div></section>
+
+<section id="loop" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">How it works</div><h2>From signal to recovery in seven steps</h2>
+  <p>The same loop runs every time, so you always know what happens next and who does what.</p></div>
+  <div class="loop">
+    <div><h3>Signal</h3><p>A weekly Scorecard check compares your results and in-flight quality with the baseline for your role.</p><div class="who">Domo and Salesforce</div></div>
+    <div><h3>Diagnose</h3><p>Your recent calls and opportunity fields are reviewed to find the skill behind the dip.</p><div class="who">Seller Compass, using Gong and Salesforce</div></div>
+    <div><h3>Fit to your stage</h3><p>The plan is matched to where you are: your journey stage, your sales process and your open opportunities.</p><div class="who">Seller Compass</div></div>
+    <div><h3>Two packs</h3><p>You receive a Seller Impact Pack. Your manager receives a matching Coaching Pack. Both arrive by email.</p><div class="who">You and your manager</div></div>
+    <div><h3>Align</h3><p>You and your manager meet for 30 minutes, within 48 hours, and agree on the top two habits to start with.</p><div class="who">You and your manager</div></div>
+    <div><h3>Weekly habits</h3><p>You work the habits on live calls and deals, with a short weekly call review together.</p><div class="who">You, with coaching</div></div>
+    <div><h3>30, 60, 90</h3><p>Three check-ins confirm the habits, then the quality, then the result. When the result recovers, the pack closes.</p><div class="who">Manager sign-off</div></div>
+    <div><h3>Feedback</h3><p>What worked for you feeds back into the learning assets and certification, so the next pack is better.</p><div class="who">Sales Enablement</div></div>
+  </div>
+</div></section>
+
+<section id="pack"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow" id="pack-eyebrow"></div><h2 id="pack-title"></h2><p id="pack-intro"></p></div>
+  <div class="pack" id="pack-body"></div>
+
+  <div class="sec-head" style="margin-top:44px"><div class="eyebrow">Worked example</div><h2>Discovery and Qualification Rigor</h2>
+  <p>This is the first Impact Pack prototype. The numbers are sample data to show how a pack reads.</p></div>
+  <div class="pack" id="example"></div>
+
+  <div class="sec-head" style="margin-top:44px"><div class="eyebrow">Second prototype</div><h2>Deal Execution and Pipeline Velocity</h2>
+  <p>The same loop, pointed at a different skill.</p></div>
+  <div class="twrap"><table class="t">
+    <thead><tr><th scope="col">Signal</th><th scope="col">Sample reading</th><th scope="col">What the pack prescribes</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Result</th><td>Win rate falls and more deals push to the next quarter.</td><td rowspan="3">Seller pack: a multi-threading playbook and a Mutual Action Plan script. Add three or more contacts by Stage 2 and attach a MAP within 48 hours.<br><br>Manager pack: a pipeline inspection guide and a check that the decision-making unit is mapped.</td></tr>
+      <tr><th scope="row">In-flight quality</th><td>Stage 2 deals sit for 48 days against a 21 day baseline.</td></tr>
+      <tr><th scope="row">Activities</th><td>An average of 1.2 contacts per deal, and a Mutual Action Plan on 18% of qualified deals.</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="milestones" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">30, 60, 90</div><h2>Effort first, then quality, then results</h2>
+  <p>Results take a quarter to show. The check-ins start with what you control, so you can see progress long before the number moves.</p></div>
+  <div class="miles">
+    <div class="mile" style="--mc:var(--green)"><div class="d">30</div><h3>Habit check</h3><p>Are the weekly habits happening?</p><ul><li>Weekly habits completed</li><li>Talk time at or under 45% on Gong calls</li><li>Ten or more open questions per discovery call</li><li>MEDDPICC fields updated within 48 hours</li></ul></div>
+    <div class="mile" style="--mc:var(--blue)"><div class="d">60</div><h3>Quality check</h3><p>Are calls and deals being run better?</p><ul><li>Gong discovery score at 3.8 of 5 or higher</li><li>MEDDPICC complete on 85% or more of qualified deals</li><li>Three or more contacts engaged per deal</li><li>Upfront Contract set on every call</li></ul></div>
+    <div class="mile" style="--mc:var(--navy)"><div class="d">90</div><h3>Result recovery</h3><p>Did the number come back?</p><ul><li>Win rate back toward the role benchmark</li><li>Stage 2 deals moving again</li><li>Attainment back on track</li><li>Impact Pack closed</li></ul></div>
+  </div>
+  <div class="callout"><strong>Learn, Verify, Ready:</strong> your manager confirms progress in three stages. Learn: you complete the short learning. Verify: you show the skill in a 15 minute role play. Ready: you show it on three live customer calls in a row.</div>
+</div></section>
+
+<section id="lens"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">KPI lens</div><h2>Pick the number you want to move</h2>
+  <p>Choose your role and a Scorecard KPI. You will see the Trimble Certified Seller badges that build the skills behind that number, by stage, so you know where to put your time.</p></div>
+  <div class="toolbar" id="lens-roles"><span class="label">I am a:</span></div>
+  <div class="toolbar" id="lens-kpis"><span class="label">KPI lens:</span></div>
+  <p class="lens-note" id="lens-note" aria-live="polite"></p>
+  <div class="lgrid" id="lens-grid"></div>
+  <div class="legend"><span><i class="st-live"></i>Content live today</span><span><i class="st-build"></i>In build</span><span><i class="st-planned"></i>Planned</span></div>
+</div></section>
+
+<section id="kpis" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">KPI explorer</div><h2>27 Scorecard KPIs, each tied to a skill</h2>
+  <p>Every KPI maps to a competency pillar, a point where support starts, and a first habit to try. Search or filter to find yours.</p></div>
+  <div class="filters">
+    <label class="sr-only" for="q">Search KPIs</label><input id="q" type="search" placeholder="Search KPIs, e.g. win rate, MEDDPICC, forecast">
+    <label class="sr-only" for="f-type">Type</label><select id="f-type"></select>
+    <label class="sr-only" for="f-pillar">Pillar</label><select id="f-pillar"></select>
+  </div>
+  <div class="count" id="count" aria-live="polite"></div>
+  <div class="kgrid" id="kgrid"></div>
+</div></section>
+
+<section id="calls"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Call habits</div><h2>Eight things your Gong calls can tell you</h2>
+  <p>When a discovery score or win rate dips, these call patterns help pinpoint why. Each one comes with something to try and a way your manager can help.</p></div>
+  <div class="twrap"><table class="t" id="gong"></table></div>
+</div></section>
+
+<section id="standards" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Performance standards</div><h2>Eight behaviors run through every tier</h2>
+  <p>These are the seller behaviors that performance support coaches toward. Each tier keeps the same behavior and raises the bar: practice it, do it live, then coach it.</p></div>
+  <div class="twrap"><table class="t ps" id="ps-table"></table></div>
+</div></section>
+
+<section id="guardrails"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">Guardrails</div><h2>Built to be fair and safe to use</h2>
+  <p>Performance support only works if sellers trust it. These rules protect that trust.</p></div>
+  <div class="guard">
+    <div><h3>Confidential</h3><p>An Impact Pack and its coaching notes stay between the seller, the direct manager and the enablement team supporting them.</p></div>
+    <div><h3>No peer rankings</h3><p>Seller packs compare you with the benchmark for your role, never with named teammates or a cohort leaderboard.</p></div>
+    <div><h3>Forward-looking coaching</h3><p>Manager packs are scoped to their direct report and focus on the skill ahead, not on a history of missed quota.</p></div>
+    <div><h3>Evidence, not opinion</h3><p>A pack starts from data on calls and deals, so the conversation is about observable habits rather than a judgment of the person.</p></div>
+  </div>
+  <p id="back-cta" style="margin-top:22px"></p>
+</div></section>
+
+</main>
+
+<footer class="site"><div class="wrap">
+  <span>&copy; 2026 Trimble Inc. All rights reserved. Internal use only.</span>
+  <span>AECO Sales Enablement &middot; Learning Architecture and Development</span>
+</div></footer>
+
+<script>
+/* =====================================================================
+   PS_DATA: the only block you need to edit to update this page.
+   tcsLink: path to the Trimble Certified Seller page. Set to "" to hide the links back.
+   kpis and gong come from "TCS PerfSupp - KPIs and Competencies v6".
+   ===================================================================== */
+var PS_DATA = {
+  meta: { version: "v0.3", updated: "2026-11-10", tcsLink: "index.html" },
+
+  /* The KPI lens and standards below are copied from the TCS page data. Update them there first, then here. */
+  lens: {
+    roles: [
+      {"id": "sdr", "label": "SDR / BDR"},
+      {"id": "ae", "label": "Account Executive"},
+      {"id": "se", "label": "Solutions Engineer"},
+      {"id": "product", "label": "Product Seller"},
+      {"id": "mgr", "label": "Sales Manager"}
+    ],
+    kpis: [
+      {"id": "acv", "label": "Booked ACV"},
+      {"id": "attain", "label": "Attainment"},
+      {"id": "winrate", "label": "Win Rate"},
+      {"id": "deal", "label": "Avg Deal Size"},
+      {"id": "count", "label": "Total Deal Count"},
+      {"id": "lost", "label": "Lost ACV"}
+    ],
+    stages: [
+      {"id": 1, "name": "Onboarding", "credential": "Foundational Seller Badge"},
+      {"id": 2, "name": "Ramp", "credential": "Ramp Trimble Certified Seller"},
+      {"id": 3, "name": "Core Productivity", "credential": "TCS Expert"},
+      {"id": 4, "name": "Manager Readiness", "credential": "TCS Leader"}
+    ],
+    standards: [
+      {"id": "PS1", "name": "Plan every call", "why": "Prepared calls are the clearest predictor of quality discovery and a clean next step.", "t1": "Complete the pre-call plan template for a practice account", "t2": "Submit a pre-call plan for live calls: persona, agenda, CBIs, qualification", "t3": "Review pre-call plans in one-to-ones and coach the gaps", "evidence": "Pre-call plan scored by Sparky"},
+      {"id": "PS2", "name": "Lead persona-based discovery to a quantified business issue", "why": "Moves the conversation from pain to measurable impact the buyer owns.", "t1": "Identify the persona and likely CBIs in a scenario", "t2": "Uncover and quantify a CBI on a recorded call", "t3": "Diagnose discovery quality from Gong and coach it", "evidence": "Gong discovery call scorecard; Read the Room"},
+      {"id": "PS3", "name": "Qualify with one shared language", "why": "Sellers and leaders inspect the same deal the same way, so forecasts get more reliable.", "t1": "Explain the AECO qualification model", "t2": "Document qualification in Salesforce on every opportunity", "t3": "Inspect qualification in pipeline reviews", "evidence": "CRM fields; deal review notes"},
+      {"id": "PS4", "name": "Build the business case in the customer's numbers", "why": "Ties Trimble value to the buyer's critical success factors.", "t1": "Translate a CBI into a CSF in practice", "t2": "Build a business case for a live opportunity", "t3": "Pressure-test business cases with the Five Buckets Scorecard", "evidence": "Business Case Studio output; Five Buckets Scorecard"},
+      {"id": "PS5", "name": "Handle resistance with EARC", "why": "Keeps deals moving without discounting or arguing.", "t1": "Pass the Resistance Lab", "t2": "Use EARC on recorded calls", "t3": "Coach EARC from call evidence", "evidence": "Resistance Lab score; Gong tag"},
+      {"id": "PS6", "name": "Ask for the sale and secure a committed next step", "why": "Every interaction ends with a dated, mutual next step.", "t1": "Practice the ask in role play", "t2": "Ask for the commitment on live calls", "t3": "Hold the team to next-step standards in pipeline reviews", "evidence": "Asking for the Sale rubric; Gong next-step tracker"},
+      {"id": "PS7", "name": "Run a clean, honest pipeline", "why": "Leaders can forecast and coach only what is visible and accurate.", "t1": "Know the stage definitions and exit criteria", "t2": "Advance deals only on met exit criteria", "t3": "Forecast from exit criteria and coach stalled deals", "evidence": "CRM hygiene report"},
+      {"id": "PS8", "name": "Coach to the same scorecard", "why": "Closes the loop: what is taught is what is observed and reinforced.", "t1": "Receive coaching on the scorecard criteria", "t2": "Self-score your calls against the scorecard", "t3": "Coach weekly using the shared scorecard", "evidence": "Coaching notes attached to Gong calls"}
+    ],
+    badges: [
+      {"name": "Trimble at a Glance", "s": 1, "roles": ["all"], "status": "planned", "kpis": ["acv"], "desc": "Tell who Trimble is, what we do and the problems we solve, in two minutes or less."},
+      {"name": "Connect Platform Basics", "s": 1, "roles": ["all"], "status": "planned", "kpis": ["deal"], "desc": "Explain how Connect data and intelligence runs through Trimble offerings, field to office."},
+      {"name": "Jobsite Immersion", "s": 1, "roles": ["sdr", "ae", "se", "product"], "status": "planned", "kpis": ["winrate"], "desc": "See the jobsite through a Superintendent's eyes and capture the friction you would sell to."},
+      {"name": "Meeting Excellence", "s": 1, "roles": ["sdr", "ae"], "status": "live", "kpis": ["winrate", "count"], "desc": "Run a structured first meeting with a clear agenda, purpose and next step."},
+      {"name": "BANT Qualification", "s": 1, "roles": ["sdr", "ae", "se"], "status": "live", "kpis": ["winrate"], "desc": "Qualify on budget, authority, need and timeline, and document it to the global standard."},
+      {"name": "Seller Tech Stack Setup", "s": 1, "roles": ["all"], "status": "live", "kpis": ["count"], "desc": "Get productive in Salesforce DX, Gong, ZoomInfo, Sales Navigator, Seismic and Trimble Learn in your first weeks."},
+      {"name": "The Trimble Way", "s": 1, "roles": ["all"], "status": "planned", "kpis": ["attain", "count"], "desc": "Know our sales stages, entry and exit criteria and Rules of Engagement."},
+      {"name": "TC1 Foundations and Pitch", "s": 1, "roles": ["sdr", "ae", "se", "product"], "status": "live", "kpis": ["deal", "acv"], "desc": "Explain Trimble Construction One and deliver a short, confident TC1 pitch."},
+      {"name": "Discovery and Active Listening", "s": 1, "roles": ["sdr", "ae"], "status": "live", "kpis": ["winrate", "count"], "desc": "Ask open questions, listen for what the buyer means and confirm it before you move on."},
+      {"name": "Pre-Call Planning", "s": 1, "roles": ["sdr", "ae", "se"], "status": "build", "kpis": ["winrate"], "desc": "Plan the persona, agenda, likely CBIs and qualification questions before every call."},
+      {"name": "Upfront Contracts", "s": 1, "roles": ["sdr", "ae"], "status": "planned", "kpis": ["winrate"], "desc": "Open every call by agreeing on time, both agendas and the outcome you are working toward."},
+      {"name": "EARC Foundations: The Resistance Lab", "s": 1, "roles": ["sdr", "ae"], "status": "live", "kpis": ["winrate", "lost"], "desc": "Learn Empathize, Ask to Elaborate, Reframe and Confirm, then pass the scored Resistance Lab. Pass it once and it counts across programs."},
+      {"name": "SDR Onboarding (SITE) Certification", "s": 1, "roles": ["sdr"], "status": "live", "kpis": ["count"], "desc": "Complete the three-week SDR onboarding and pass both certification gates."},
+      {"name": "Calendar Blueprint and Time Blocking", "s": 1, "roles": ["sdr"], "status": "live", "kpis": ["count"], "desc": "Build a weekly calendar that protects prospecting time and hits your activity benchmarks."},
+      {"name": "Strategic Discovery", "s": 2, "roles": ["sdr", "ae"], "status": "live", "kpis": ["winrate", "deal"], "desc": "Move past surface needs to the business problems behind them."},
+      {"name": "Advanced Discovery: CBIs and CSFs", "s": 2, "roles": ["sdr", "ae", "se"], "status": "live", "kpis": ["deal", "winrate"], "desc": "Tell a pain point from a critical business issue, then quantify what it costs the customer."},
+      {"name": "EARC on Live Calls", "s": 2, "roles": ["sdr", "ae"], "status": "live", "kpis": ["winrate", "lost"], "desc": "Empathize, Ask to Elaborate, Reframe and Confirm on live calls, under pressure."},
+      {"name": "Asking for the Sale", "s": 2, "roles": ["sdr", "ae"], "status": "live", "kpis": ["winrate", "attain"], "desc": "Bring persona insight, business case and EARC together into a confident close."},
+      {"name": "Present with Impact", "s": 2, "roles": ["all"], "status": "live", "kpis": ["winrate"], "desc": "Structure and deliver a professional presentation, in customer meetings and interviews."},
+      {"name": "Construction Personas: Read the Room", "s": 1, "roles": ["sdr", "ae", "se", "product"], "status": "live", "kpis": ["winrate"], "desc": "Read the room across six industries and tailor your message by role."},
+      {"name": "Trimble Story Certified", "s": 2, "roles": ["sdr", "ae", "se", "product"], "status": "build", "kpis": ["acv", "deal"], "desc": "Tell the end-to-end platform story, including AI and risk, by geo and industry."},
+      {"name": "Golden Workflows", "s": 2, "roles": ["ae", "se", "product"], "status": "planned", "kpis": ["deal", "acv"], "desc": "Sell connected workflows such as Constructible BIM to Field and Civil Job Costing, not single tools."},
+      {"name": "Gong and Seismic in Flow", "s": 2, "roles": ["sdr", "ae"], "status": "live", "kpis": ["count"], "desc": "Run sequences, share content and capture insight in the tools, every week."},
+      {"name": "DX Sandbox Demo", "s": 2, "roles": ["sdr", "ae", "se"], "status": "live", "kpis": ["winrate"], "desc": "Show the product confidently in a guided sandbox environment."},
+      {"name": "AE Deal Execution", "s": 2, "roles": ["sdr", "ae"], "status": "build", "kpis": ["winrate", "attain"], "desc": "Manage an opportunity from qualified to closed with the right stakeholders and steps."},
+      {"name": "Mutual Action Plan and Forecast Hygiene", "s": 2, "roles": ["ae", "se"], "status": "planned", "kpis": ["attain"], "desc": "Co-build the path to close with the customer and keep the forecast honest."},
+      {"name": "Prospecting and CRT Hooks", "s": 2, "roles": ["sdr", "ae"], "status": "live", "kpis": ["count", "acv"], "desc": "Write hooks built on credibility, relevance and timing, and run them across phone, email and LinkedIn."},
+      {"name": "Business Case Studio", "s": 2, "roles": ["sdr", "ae", "se"], "status": "live", "kpis": ["deal", "winrate"], "desc": "Translate a CBI into critical success factors and build the business case in the customer's numbers."},
+      {"name": "BANT to MEDDPICC Progression", "s": 2, "roles": ["sdr", "ae", "se"], "status": "planned", "kpis": ["winrate", "attain"], "desc": "Carry a BANT-qualified lead into MEDDPICC so sellers and leaders inspect a deal the same way."},
+      {"name": "Multi-Product Packaging", "s": 3, "roles": ["ae", "se", "product"], "status": "planned", "kpis": ["deal", "acv"], "desc": "Turn workflows into multi-product opportunities mapped to regional bundles."},
+      {"name": "Executive Value and ROI", "s": 3, "roles": ["ae", "product"], "status": "planned", "kpis": ["deal"], "desc": "Connect packages to financial outcomes an executive will sign."},
+      {"name": "Deal Strategy and Negotiation", "s": 3, "roles": ["ae"], "status": "planned", "kpis": ["winrate", "lost"], "desc": "Protect value and win on terms in complex, multi-threaded deals."},
+      {"name": "Accelerating Pipeline", "s": 3, "roles": ["sdr", "ae"], "status": "build", "kpis": ["count", "acv"], "desc": "Generate and accelerate pipeline with proven plays, starting with active listening."},
+      {"name": "AI-Assisted Selling", "s": 3, "roles": ["all"], "status": "planned", "kpis": ["count"], "desc": "Use Gong AI and approved assistants to prepare, follow up and coach yourself."},
+      {"name": "Territory and Account Planning", "s": 3, "roles": ["ae", "product"], "status": "planned", "kpis": ["attain", "acv"], "desc": "Prioritize accounts and plan coverage that hits your number."},
+      {"name": "Expert Teach-Back", "s": 3, "roles": ["ae", "se"], "status": "planned", "kpis": ["attain"], "desc": "Teach a winning deal to peers. If you can teach it, you own it."},
+      {"name": "Multi-Threading and Stakeholder Mapping", "s": 3, "roles": ["ae"], "status": "planned", "kpis": ["winrate", "deal"], "desc": "Map the decision-making unit and bring the economic buyer in early."},
+      {"name": "BTL: People", "s": 4, "roles": ["mgr"], "status": "live", "kpis": ["attain"], "desc": "Coach people to their strengths with a consistent framework."},
+      {"name": "BTL: Pipeline", "s": 4, "roles": ["mgr"], "status": "live", "kpis": ["acv", "count"], "desc": "Run pipeline reviews that improve deals, not just report on them."},
+      {"name": "BTL: Productivity", "s": 4, "roles": ["mgr"], "status": "build", "kpis": ["attain"], "desc": "Use data and rhythm to raise team productivity."},
+      {"name": "BTL Capstone: Certified Coach", "s": 4, "roles": ["mgr"], "status": "build", "kpis": ["attain", "winrate"], "desc": "Demonstrate the BTL coaching framework end to end."},
+      {"name": "Coaching the Trimble Story", "s": 4, "roles": ["mgr"], "status": "planned", "kpis": ["acv", "deal"], "desc": "Reinforce the Trimble Story in one-to-ones and team meetings."},
+      {"name": "Coaching with Gong Scorecards", "s": 4, "roles": ["mgr"], "status": "planned", "kpis": ["winrate"], "desc": "Use Gong scorecards to coach behaviors that move KPIs."},
+      {"name": "Forecasting and Team Planning", "s": 4, "roles": ["mgr"], "status": "planned", "kpis": ["attain"], "desc": "Forecast with confidence and plan capacity across your team."},
+      {"name": "BTL Live-Fire Labs", "s": 4, "roles": ["mgr"], "status": "live", "kpis": ["attain"], "desc": "Practice real coaching and pipeline conversations with your cohort before you run them with your team."},
+      {"name": "Coaching with Impact Packs", "s": 4, "roles": ["mgr"], "status": "planned", "kpis": ["winrate", "attain"], "desc": "Run the alignment conversation, review calls against the rubric and sign off each checkpoint."}
+    ]
+  },
+
+  packs: {
+    seller: {
+      eyebrow: "Your pack", title: "What is in a Seller Impact Pack",
+      intro: "One email, no login. Everything in it is about your next few weeks, not your last few.",
+      blocks: [
+        { h: "Why this was sent", p: "A plain-language note on which signal dipped and what your calls and deals suggest is behind it." },
+        { h: "Weekly habits", p: "A short checklist of habits that are fully in your control, each with a simple measure." },
+        { h: "Short learning and job aids", p: "A few assets in Trimble Learn, each under 15 minutes, that you can apply to active deals right away." },
+        { h: "Your 30, 60 and 90 day targets", p: "Self-measurement targets so you can see your own progress between check-ins." },
+        { h: "How you close it out", p: "Clear exit gates. You close the pack by showing the skill on live calls, not by finishing a course." },
+        { h: "What you will not see", p: "Peer rankings or comparisons with other sellers. The only comparison is with the benchmark for your role." }
+      ]
+    },
+    manager: {
+      eyebrow: "Your pack", title: "What is in a Manager Coaching Pack",
+      intro: "One email, no login, scoped to your direct report. It gives you the agenda, what to listen for and how to confirm progress.",
+      blocks: [
+        { h: "Coaching context", p: "Which signal dipped for your seller, and the skill the diagnosis points to." },
+        { h: "A 30 minute alignment agenda", list: ["Set a supportive context (5 minutes)", "Review the signals and what the calls show (10 minutes)", "Agree on the top two weekly habits (10 minutes)", "Set the coaching rhythm and next steps (5 minutes)"] },
+        { h: "A call review rubric", p: "Listen to two recorded discovery calls a week and score five moments from 1 to 5.", list: ["First five minutes: is there a clear Upfront Contract?", "Middle of the call: ten or more open questions?", "Whole call: talk time at or under 45%?", "Mid-call: no stretch of talking longer than about two and a half minutes?", "Last five minutes: a clear, scheduled next step?"] },
+        { h: "Learn, Verify, Ready", list: ["Learn: confirm the short learning is complete in Trimble Learn", "Verify: run a 15 minute mock discovery call and score it on the rubric", "Ready: confirm the behaviors on three live customer calls in a row, then sign off"] },
+        { h: "A way to open the conversation", p: "Try something like: this pack came through because your discovery scores dipped recently. It is not a performance warning. It gives us clear data on where to focus our coaching so you can win more deals." },
+        { h: "What you will not see", p: "The pack focuses on the skill ahead. It does not include a history of missed quota or how your seller compares with others." }
+      ]
+    }
+  },
+
+  example: {
+    signal: [["Gong discovery score", "2.4 of 5", "4.0 of 5 or higher"], ["Win rate, last 60 days", "28%", "42% role benchmark"]],
+    findings: ["Talk time averages 58% on discovery calls. The healthy range is 35% to 45%.", "About 6 open questions per first meeting. The target is 11 to 14.", "Economic Buyer and Metrics are blank or unverified on 70% of Stage 2 and Stage 3 deals."],
+    habits: ["Keep talk time under 45%. Pause for three full seconds after the buyer finishes before you respond.", "Prepare and ask at least 10 open questions on every Stage 1 and Stage 2 call.", "Open every call with an Upfront Contract: time, their agenda, your agenda and the outcome.", "Update Economic Buyer and Metrics in Salesforce within 48 hours of each qualified discovery meeting."],
+    assets: ["Micro-course: Mastering Active Discovery and Questioning Strategy (12 minutes)", "Micro-course: MEDDPICC Rigor, Uncovering the True Economic Buyer (15 minutes)", "Job aid: Upfront Contract call framing script and rubric", "Job aid: Gong call self-audit checklist"]
+  },
+
+  kpis: [
+    {"id": "KPI-CM-01", "cat": "Call Management", "type": "activity", "name": "Calls made & Outbound Volume", "src": "Gong, Salesforce", "pillar": "Opportunity Gen and Research", "skill": "Prospecting and Creating Interest", "trigger": "Weekly outbound calls below 70% of role target", "habit": "Execute 2 dedicated 90-min prospecting blocks/week using target ICP lists."},
+    {"id": "KPI-CM-02", "cat": "Call Management", "type": "activity", "name": "Discovery meetings logged", "src": "Gong, Salesforce", "pillar": "Qualification and Discovery Rigor", "skill": "Discovery and Analysis", "trigger": "Logged discovery calls below 3 per week", "habit": "Review persona messaging guides; conduct pre-call planning for 5 target accounts."},
+    {"id": "KPI-CM-03", "cat": "Call Management", "type": "objective", "name": "Gong Discovery Rubric Score", "src": "Gong AI", "pillar": "Qualification and Discovery Rigor", "skill": "Discovery and Analysis", "trigger": "Overall call quality score below 75%", "habit": "Listen to 2 benchmark Gong discovery calls; complete active listening refresher."},
+    {"id": "KPI-CM-04", "cat": "Call Management", "type": "objective", "name": "Qualification Accuracy (SQL Conversion)", "src": "Salesforce, Gong", "pillar": "Qualification and Discovery Rigor", "skill": "BANT Conversational Execution", "trigger": "Opportunity survival rate from discovery to SQL below 40%", "habit": "Apply BANT qualification framework on next 3 discovery calls; record BANT notes in Salesforce."},
+    {"id": "KPI-OM-01", "cat": "Opportunity Management", "type": "activity", "name": "Opportunities Created ($ & Count)", "src": "Salesforce", "pillar": "Opportunity Gen and Research", "skill": "Structured Execution", "trigger": "New pipeline creation below 3x monthly target", "habit": "Run account research on top 10 territory accounts; launch targeted CRT outreach."},
+    {"id": "KPI-OM-02", "cat": "Opportunity Management", "type": "objective", "name": "% Opportunities with MEDDPICC Fully Populated", "src": "Salesforce", "pillar": "Qualification and Discovery Rigor", "skill": "MEDDPICC Framework", "trigger": "MEDDPICC completeness below 80% on SQO deals", "habit": "Audit 3 active SQO deals; populate Economic Buyer and Implied Pain fields in Salesforce."},
+    {"id": "KPI-OM-03", "cat": "Opportunity Management", "type": "objective", "name": "Stage Conversion Rates (SAO to SQO to Close)", "src": "Salesforce", "pillar": "Deal Execution and Closing", "skill": "Closing Readiness & Techniques", "trigger": "Stage conversion drop above 15% below team average", "habit": "Review stage exit criteria; co-create Mutual Action Plan (MAP) for top 2 deals."},
+    {"id": "KPI-OM-04", "cat": "Opportunity Management", "type": "objective", "name": "Deal Velocity (Days per Stage)", "src": "Salesforce", "pillar": "Deal Execution and Closing", "skill": "Team Selling & Mutual Action Plans", "trigger": "Average days in Stage 2/3 above 45 days", "habit": "Conduct deal review with manager; re-anchor buyer to cost of inaction (CBI/CSF)."},
+    {"id": "KPI-OM-05", "cat": "Opportunity Management", "type": "objective", "name": "Multi-Threading Depth (3+ Stakeholders)", "src": "Gong, Salesforce", "pillar": "Deal Execution and Closing", "skill": "Team Selling & Mutual Action Plans", "trigger": "Average engaged stakeholders per deal below 2.5", "habit": "Map Decision Making Unit (DMU); secure intro to Economic Buyer or Executive Sponsor."},
+    {"id": "KPI-OM-06", "cat": "Opportunity Management", "type": "result", "name": "Win Rate (% Closed Won)", "src": "Domo, Salesforce", "pillar": "Deal Execution and Closing", "skill": "Closing Readiness & Techniques", "trigger": "Quarterly win rate drops above 10% below target", "habit": "Review 3 lost deals; complete Objection Handling & EARC re-framing micro-module."},
+    {"id": "KPI-OM-07", "cat": "Opportunity Management", "type": "result", "name": "Lost ACV & Competitive Churn", "src": "Domo, Salesforce", "pillar": "Account and Territory Strategy", "skill": "Buyer Personas & Cross-Sell", "trigger": "Lost ACV above $50k in a single quarter", "habit": "Review competitive battlecards for primary rival; conduct value defense exercise."},
+    {"id": "KPI-AM-01", "cat": "Account Management", "type": "activity", "name": "QBRs / Account Reviews Held", "src": "Salesforce", "pillar": "Account and Territory Strategy", "skill": "Account Planning & Strategy", "trigger": "QBR completion below 80% of assigned tier accounts", "habit": "Schedule 3 QBRs for Tier 1 accounts; build 12-month account growth roadmap."},
+    {"id": "KPI-AM-02", "cat": "Account Management", "type": "activity", "name": "Cross-Sell / Expansion Conversations Logged", "src": "Salesforce, Gong", "pillar": "Account and Territory Strategy", "skill": "Buyer Personas & Cross-Sell", "trigger": "Expansion opportunities logged below 2 per month", "habit": "Review TC1 solution map; identify cross-sell module opportunities across top 5 accounts."},
+    {"id": "KPI-AM-03", "cat": "Account Management", "type": "objective", "name": "Multi-Threading Depth in Key Accounts", "src": "Salesforce, Gong", "pillar": "Account and Territory Strategy", "skill": "Account Planning & Strategy", "trigger": "Key account contact coverage below 3 executive personas", "habit": "Map executive DMU; conduct multi-channel outreach to VP/C-suite stakeholders."},
+    {"id": "KPI-AM-04", "cat": "Account Management", "type": "result", "name": "Booked ACV / Revenue", "src": "Domo, Salesforce", "pillar": "Account and Territory Strategy", "skill": "Territory Strategy", "trigger": "Quota attainment below 75% at mid-quarter check", "habit": "Execute 30/60/90 gap-to-quota plan; prioritize top 5 late-stage deals with manager."},
+    {"id": "KPI-AM-05", "cat": "Account Management", "type": "result", "name": "Average Deal Size (ACV Expansion)", "src": "Domo, Salesforce", "pillar": "Account and Territory Strategy", "skill": "Buyer Personas & Cross-Sell", "trigger": "Average deal size below 80% of regional baseline", "habit": "Incorporate multi-product Golden Workflows pitch; build ROI business case for expansion."},
+    {"id": "KPI-AM-06", "cat": "Account Management", "type": "result", "name": "Net Revenue Retention (NRR) / GRR", "src": "Domo, Salesforce", "pillar": "Account and Territory Strategy", "skill": "Account Planning & Strategy", "trigger": "Account renewal retention drops below 90%", "habit": "Conduct account health check; identify adoption friction points and engage CSM team."},
+    {"id": "KPI-TM-01", "cat": "Territory Management", "type": "activity", "name": "Territory Plans Created / Refreshed", "src": "Salesforce", "pillar": "Account and Territory Strategy", "skill": "Territory Strategy", "trigger": "Territory plan not updated for above 6 months", "habit": "Complete annual/semi-annual territory plan; segment accounts by high-yield ICP."},
+    {"id": "KPI-TM-02", "cat": "Territory Management", "type": "objective", "name": "Addressable Market Touch %", "src": "Salesforce, Domo", "pillar": "Account and Territory Strategy", "skill": "Territory Strategy", "trigger": "Un-contacted target accounts above 40% of territory", "habit": "Schedule weekly prospecting blocks; launch cold outreach sequence on Tier 2 accounts."},
+    {"id": "KPI-TM-03", "cat": "Territory Management", "type": "result", "name": "Territory Quota Attainment", "src": "Domo, Salesforce", "pillar": "Account and Territory Strategy", "skill": "Territory Strategy", "trigger": "Cumulative territory attainment below 80% of target", "habit": "Re-allocate weekly time to high-yield growth targets; conduct pipeline inspection."},
+    {"id": "KPI-FM-01", "cat": "Sales Enablement", "type": "activity", "name": "Roleplay & Practice Sessions Completed", "src": "Gong, Docebo", "pillar": "Professional Acumen Mindset and Growth", "skill": "Communication & Presentation", "trigger": "Roleplay completion = 0 in last 30 days", "habit": "Complete 1 AI roleplay simulation in Gong Enable on objection handling."},
+    {"id": "KPI-FM-02", "cat": "Sales Enablement", "type": "activity", "name": "Docebo Certifications & Learning Plans Completed", "src": "Docebo LMS", "pillar": "Professional Acumen Mindset and Growth", "skill": "Openness, Learning & Adaptability", "trigger": "Overdue mandatory training above 14 days", "habit": "Complete assigned micro-learning modules (20-min mini-courses) in Docebo."},
+    {"id": "KPI-FM-03", "cat": "Sales Enablement", "type": "objective", "name": "Gong Pitch / Rubric Certification Score", "src": "Gong AI", "pillar": "Professional Acumen Mindset and Growth", "skill": "Communication & Presentation", "trigger": "Gong pitch certification score below 80%", "habit": "Re-record pitch submission in Gong; focus on Credibility, Relevance, and Timing (CRT)."},
+    {"id": "KPI-FM-04", "cat": "Sales Enablement", "type": "objective", "name": "Ramp Exit Gate Achievement (New AEs/SDRs)", "src": "Docebo, Salesforce", "pillar": "Pipeline and Operational Discipline", "skill": "Pre-Call Planning & Time Management", "trigger": "Ramp milestone missed by above 15 days", "habit": "Meet with manager for 1:1 coaching; review Onboarding & Ramp milestone checklist."},
+    {"id": "KPI-PD-01", "cat": "Pipeline Discipline", "type": "activity", "name": "Pre-Call Plans Completed in Salesforce", "src": "Salesforce", "pillar": "Pipeline and Operational Discipline", "skill": "Pre-Call Planning & Time Management", "trigger": "Pre-call plan rate below 60% of SQO calls", "habit": "Complete pre-call planning template for all upcoming discovery and demo meetings."},
+    {"id": "KPI-PD-02", "cat": "Pipeline Discipline", "type": "objective", "name": "Pipeline Hygiene (Stale Opportunities above 30 Days)", "src": "Salesforce", "pillar": "Pipeline and Operational Discipline", "skill": "Data Hygiene & Salesforce Compliance", "trigger": "Stale opportunities above 15% of total pipeline", "habit": "Audit Salesforce pipeline; update close dates, next steps, or close out non-viable deals."},
+    {"id": "KPI-PD-03", "cat": "Pipeline Discipline", "type": "result", "name": "Forecast Accuracy (+/- % Variance)", "src": "Domo, Salesforce", "pillar": "Pipeline and Operational Discipline", "skill": "Data Analysis & Forecasting", "trigger": "Forecast variance above 15% from actuals", "habit": "Apply MEDDPICC stage gate criteria to Commit deals; validate close dates with buyers."}
+  ],
+
+  gong: [
+    {"name": "Talk-to-Listen Ratio", "bench": "35% - 45% Talk Time", "gap": "Feature dumping; pitching before uncovering customer pain points.", "seller": "Cap talk time under 45% on 3 discovery calls/week; pause 3s after prospect speaks.", "mgr": "Audit 2 Gong calls; identify feature-dumping moments; coach on open questions."},
+    {"name": "Question Count per Call", "bench": "11 - 14 Open Questions", "gap": "Shallow discovery; asking surface-level questions without probing CBIs.", "seller": "Ask at least 10 open-ended discovery questions (How, What, Tell me) per meeting.", "mgr": "Review pre-call plan question list; roleplay probing techniques in 1:1."},
+    {"name": "Patience / Interruption Rate", "bench": "Below 1 Interruption per Call", "gap": "Conversational impatience; interrupting prospects during pain disclosure.", "seller": "Wait 2-3 seconds after prospect finishes speaking before responding; log pain verbatim.", "mgr": "Roleplay objection handling with manager using 3-second pause rule."},
+    {"name": "Longest Monologue Length", "bench": "Below 2.5 Minutes Continuous", "gap": "Lecturing prospects; losing buyer engagement during presentations.", "seller": "Break up presentations every 2 minutes with checking-in questions.", "mgr": "Review Gong call snippet at 2-min mark; coach seller on conversational checks."},
+    {"name": "Multi-Threading Contacts", "bench": "3+ Active Contacts per SQO", "gap": "Single-threading; relying solely on 1 contact without Economic Buyer access.", "seller": "Add at least 1 executive/business stakeholder to every active SQO by Stage 2.", "mgr": "Map Decision Making Unit (DMU) in 1:1; draft multi-threading outreach hooks."},
+    {"name": "Competitor Mention Resolution", "bench": "Above 70% Positive Resolution", "gap": "Unprepared for competitor landmines; defensive positioning against rivals.", "seller": "Review 2 product battlecards weekly; practice value-based differentiation statements.", "mgr": "Conduct 1:1 roleplay simulating aggressive competitor pitch and pricing objection."},
+    {"name": "Pricing Discussion Timing", "bench": "Latter 30% of Call", "gap": "Premature price disclosure before establishing value or business case.", "seller": "Anchor pricing discussions to quantified cost of inaction (CBI/CSF) before quoting.", "mgr": "Inspect deal business case & ROI model prior to commercial proposal delivery."},
+    {"name": "Next Steps Confirmation", "bench": "5+ Mins Dedicated at End", "gap": "Weak call closing; failure to secure definitive Mutual Action Plan (MAP).", "seller": "Reserve final 5 minutes of every call to lock in explicit date/time for next meeting.", "mgr": "Audit Gong call ending snippets for clear mutual commitments."}
+  ]
+};
+</script>
+
+<script>
+(function () {
+  "use strict";
+  var D = PS_DATA, state = { role: "seller" };
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  var TYPES = { result: ["Result", "var(--navy)"], objective: ["In-flight quality", "var(--blue)"], activity: ["Activity", "var(--green)"] };
+
+  $("ver").textContent = D.meta.version;
+  $("updated").textContent = "Last updated " + D.meta.updated;
+  if (D.meta.tcsLink) {
+    $("back-li").innerHTML = '<a href="' + esc(D.meta.tcsLink) + '">Back to TCS</a>';
+    $("back-cta").innerHTML = '<a class="btn" href="' + esc(D.meta.tcsLink) + '">Back to Trimble Certified Seller</a>';
+  }
+
+  function renderRoles() {
+    $("roles").innerHTML = [["seller", "Seller"], ["manager", "Sales Manager"]].map(function (r) {
+      return '<button class="chip" data-role="' + r[0] + '" aria-pressed="' + (r[0] === state.role) + '">' + r[1] + "</button>";
+    }).join("");
+  }
+  $("roles").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-role]"); if (!b) return;
+    state.role = b.getAttribute("data-role"); renderRoles(); renderPack();
+  });
+
+  function ul(a, tag) { return "<" + (tag || "ul") + ">" + a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</" + (tag || "ul") + ">"; }
+  function renderPack() {
+    var p = D.packs[state.role];
+    $("pack-eyebrow").textContent = p.eyebrow; $("pack-title").textContent = p.title; $("pack-intro").textContent = p.intro;
+    $("pack-body").innerHTML = p.blocks.map(function (b) {
+      return '<div class="pk"><h3>' + esc(b.h) + "</h3>" + (b.p ? "<p>" + esc(b.p) + "</p>" : "") + (b.list ? ul(b.list, "ol") : "") + "</div>";
+    }).join("");
+  }
+
+  var ex = D.example;
+  $("example").innerHTML =
+    '<div class="pk wide"><span class="sample">Sample data</span><h3>The signal</h3><div class="twrap"><table class="t"><thead><tr><th scope="col">Measure</th><th scope="col">Current</th><th scope="col">Target</th></tr></thead><tbody>' +
+    ex.signal.map(function (r) { return '<tr><th scope="row">' + esc(r[0]) + "</th><td>" + esc(r[1]) + "</td><td>" + esc(r[2]) + "</td></tr>"; }).join("") + "</tbody></table></div></div>" +
+    '<div class="pk"><span class="sample">Sample data</span><h3>What the calls and deals showed</h3>' + ul(ex.findings) + "</div>" +
+    '<div class="pk"><h3>Four weekly habits</h3>' + ul(ex.habits, "ol") + "</div>" +
+    '<div class="pk wide"><span class="sample">Planned assets</span><h3>Short learning and job aids</h3>' + ul(ex.assets) + "</div>";
+
+  var pillars = []; D.kpis.forEach(function (k) { if (pillars.indexOf(k.pillar) < 0) pillars.push(k.pillar); }); pillars.sort();
+  $("f-type").innerHTML = '<option value="">All types</option>' + Object.keys(TYPES).map(function (t) { return '<option value="' + t + '">' + TYPES[t][0] + "</option>"; }).join("");
+  $("f-pillar").innerHTML = '<option value="">All pillars</option>' + pillars.map(function (p) { return '<option value="' + esc(p) + '">' + esc(p) + "</option>"; }).join("");
+  ["q", "f-type", "f-pillar"].forEach(function (id) { $(id).addEventListener("input", renderKpis); });
+  function renderKpis() {
+    var q = $("q").value.trim().toLowerCase(), ft = $("f-type").value, fp = $("f-pillar").value;
+    var list = D.kpis.filter(function (k) {
+      if (ft && k.type !== ft) return false;
+      if (fp && k.pillar !== fp) return false;
+      if (q && (k.name + " " + k.cat + " " + k.pillar + " " + k.skill + " " + k.habit + " " + k.src).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    $("count").textContent = list.length + " of " + D.kpis.length + " KPIs shown";
+    $("kgrid").innerHTML = list.map(function (k) {
+      var t = TYPES[k.type];
+      return '<article class="kcard" style="--tc:' + t[1] + '"><div class="meta"><span class="tag ty">' + t[0] + '</span><span class="tag">' + esc(k.cat) + "</span></div><h3>" + esc(k.name) + "</h3><dl>" +
+        "<dt>Skill behind it</dt><dd>" + esc(k.skill) + " (" + esc(k.pillar) + ")</dd>" +
+        "<dt>Support starts when</dt><dd>" + esc(k.trigger) + "</dd>" +
+        "<dt>First habit to try</dt><dd>" + esc(k.habit) + "</dd>" +
+        "<dt>Where it is measured</dt><dd>" + esc(k.src) + "</dd></dl></article>";
+    }).join("") || '<p class="empty">No KPIs match. Try clearing a filter.</p>';
+  }
+
+  $("gong").innerHTML = '<caption class="sr-only">Gong call habits, healthy ranges and coaching actions</caption><thead><tr><th scope="col">Call habit</th><th scope="col">Healthy range</th><th scope="col">What a miss can point to</th><th scope="col">Something to try</th><th scope="col">How your manager helps</th></tr></thead><tbody>' +
+    D.gong.map(function (g) { return '<tr><th scope="row">' + esc(g.name) + "</th><td>" + esc(g.bench) + "</td><td>" + esc(g.gap) + "</td><td>" + esc(g.seller) + "</td><td>" + esc(g.mgr) + "</td></tr>"; }).join("") + "</tbody>";
+
+  /* Performance standards */
+  $("ps-table").innerHTML = '<caption class="sr-only">Performance standards by tier</caption><thead><tr><th scope="col">Standard</th><th scope="col">Tier 1: practice it</th><th scope="col">Tier 2: do it live</th><th scope="col">Leader and coach: coach it</th><th scope="col">Evidence</th></tr></thead><tbody>' +
+    D.lens.standards.map(function (p) { return '<tr><th scope="row"><b>' + esc(p.id) + "</b>" + esc(p.name) + "<small>" + esc(p.why) + "</small></th><td>" + esc(p.t1) + "</td><td>" + esc(p.t2) + "</td><td>" + esc(p.t3) + "</td><td>" + esc(p.evidence) + "</td></tr>"; }).join("") + "</tbody>";
+
+  /* KPI lens */
+  var L = D.lens, lens = { role: "ae", kpi: L.kpis[2] ? L.kpis[2].id : L.kpis[0].id };
+  function chips(list, attr, cur) { return list.map(function (x) { return '<button class="chip" ' + attr + '="' + x.id + '" aria-pressed="' + (x.id === cur) + '">' + esc(x.label) + "</button>"; }).join(""); }
+  function renderLens() {
+    $("lens-roles").innerHTML = '<span class="label">I am a:</span>' + chips(L.roles, "data-lrole", lens.role);
+    $("lens-kpis").innerHTML = '<span class="label">KPI lens:</span>' + chips(L.kpis, "data-lkpi", lens.kpi);
+    var list = L.badges.filter(function (b) { return (b.roles.indexOf("all") > -1 || b.roles.indexOf(lens.role) > -1) && b.kpis.indexOf(lens.kpi) > -1; });
+    var kl = L.kpis.filter(function (k) { return k.id === lens.kpi; })[0].label, rl = L.roles.filter(function (r) { return r.id === lens.role; })[0].label;
+    $("lens-note").textContent = list.length + (list.length === 1 ? " badge builds" : " badges build") + " the skills behind " + kl + " for " + rl + ".";
+    $("lens-grid").innerHTML = L.stages.map(function (s) {
+      var bl = list.filter(function (b) { return b.s === s.id; });
+      return '<div class="lcol"><h3>' + esc(s.name) + "<small>" + esc(s.credential) + '</small></h3><div class="in">' + (bl.length ? bl.map(function (b) {
+        return '<div class="lb"><b><i class="st-' + b.status + '" aria-hidden="true"></i>' + esc(b.name) + "</b><span>" + esc(b.desc) + "</span></div>";
+      }).join("") : '<p class="empty" style="margin:0">None mapped for this role yet.</p>') + "</div></div>";
+    }).join("");
+  }
+  $("lens").addEventListener("click", function (e) {
+    var r = e.target.closest("[data-lrole]"), k = e.target.closest("[data-lkpi]");
+    if (r) lens.role = r.getAttribute("data-lrole"); if (k) lens.kpi = k.getAttribute("data-lkpi");
+    if (r || k) renderLens();
+  });
+
+  renderRoles(); renderPack(); renderKpis(); renderLens();
+
+  /* Iframe support: tell a parent page (such as Docebo) how tall this page is. */
+  function postHeight() { try { window.parent.postMessage({ type: "tcs-height", height: document.documentElement.scrollHeight }, "*"); } catch (e) {} }
+  if (window.ResizeObserver) new ResizeObserver(postHeight).observe(document.body); else window.addEventListener("load", postHeight);
+})();
+</script>
+</body>
+</html>

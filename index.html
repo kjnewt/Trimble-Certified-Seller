@@ -42,8 +42,9 @@ nav.top .wrap{display:flex;align-items:center;gap:20px;height:56px;overflow-x:au
 nav.top .brand{font-weight:800;color:var(--navy);white-space:nowrap;text-decoration:none;display:flex;align-items:center;gap:8px}
 nav.top .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--gold)}
 nav.top ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
-nav.top ul a{display:block;padding:6px 10px;border-radius:8px;text-decoration:none;color:var(--ink-2);font-size:14px;font-weight:600;white-space:nowrap}
-nav.top ul a:hover{background:var(--blue-tint);color:var(--navy)}
+nav.top ul{gap:8px}
+nav.top ul a{display:block;padding:6px 14px;border-radius:999px;text-decoration:none;color:var(--blue);background:#fff;border:1px solid var(--blue);font-size:14px;font-weight:700;white-space:nowrap}
+nav.top ul a:hover,nav.top ul a:focus-visible{background:var(--blue);color:#fff}
 
 /* Hero */
 .hero{background:linear-gradient(135deg,var(--navy) 0%,#00467A 100%);color:#fff;padding:56px 0 40px;position:relative;overflow:hidden}
@@ -82,6 +83,7 @@ section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px s
 .flow .step h3{margin:0 0 6px;color:var(--navy);font-size:18px}
 .flow .step p{margin:0;font-size:14px;color:var(--ink-2)}
 .flow .arrow{display:flex;align-items:center;color:var(--ink-3);font-size:24px;font-weight:700}
+.flow .step a{display:inline-block;margin-top:10px;font-size:14px;font-weight:700}
 .callout{margin-top:18px;background:var(--gold-tint);border-left:4px solid var(--gold);border-radius:8px;padding:14px 16px;font-size:15px}
 
 /* Career path */
@@ -130,6 +132,20 @@ section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px s
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .empty{font-size:13px;color:var(--ink-3);font-style:italic}
+
+/* Standards and pillars */
+.matrix.ps tbody th{width:300px}
+.matrix.ps tbody th b{display:inline-block;font-size:11px;letter-spacing:.06em;color:var(--blue);margin-bottom:2px}
+.matrix.ps td{font-size:14px;color:var(--ink-2)}
+.matrix-wrap{overflow-x:auto}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcard{background:#fff;border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.pcard .k{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.pcard h3{margin:4px 0 6px;font-size:16px;color:var(--navy)}
+.pcard p{margin:0;font-size:13.5px;color:var(--ink-2)}
+.pcard .n{margin-top:8px;font-size:12.5px;color:var(--ink-3)}
+.stage .tier{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--gold);border-radius:999px;padding:2px 9px;vertical-align:middle}
+@media (max-width:900px){.pgrid{grid-template-columns:1fr}}
 
 /* Catalog */
 .filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:10px;margin-bottom:16px}
@@ -242,9 +258,6 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
     <li><a href="#how">How it works</a></li>
     <li><a href="#path">Career path</a></li>
     <li><a href="#competencies">Competencies</a></li>
-    <li><a href="#catalog">Badge catalog</a></li>
-    <li><a href="#learn">How you'll learn</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#faq">FAQ</a></li>
   </ul>
 </div></nav>
@@ -252,97 +265,52 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 <header class="hero" id="top"><div class="wrap">
   <div class="eyebrow">AECO Sales Enablement</div>
   <h1>Trimble Certified Seller</h1>
-  <p class="lead">One seller journey that connects your KPI performance, your competency certifications, and your next career move. Know exactly what good looks like, prove it, and grow.</p>
+  <p class="lead">Your roadmap from onboarding to sales excellence. Build the skills our top sellers use, put them to work on real deals, and earn the credential that shows you are ready for what comes next.</p>
   <div class="pillars">
-    <div class="pillar"><div class="k">Performance-based verification</div><h3>Your results count</h3><p>KPI achievement on your Seller Scorecard validates competency. Below-target KPIs trigger focused support, not a whole course.</p></div>
     <div class="pillar"><div class="k">Competency-based certifications</div><h3>Badges with meaning</h3><p>Each career transition prescribes the badges you need, from "Successful Completion of Onboarding" to "Certified Ready for Management."</p></div>
-    <div class="pillar"><div class="k">Intentional career paths</div><h3>A clear next step</h3><p>Gates and requirements link onboarding all the way to management readiness, so growth is visible and fair.</p></div>
+    <div class="pillar"><div class="k">Performance-based verification</div><h3>Your results count</h3><p>KPI achievement on your Seller Scorecard validates competency. If you are below target, focused support is triggered.</p></div>
+    <div class="pillar"><div class="k">Career paths</div><h3>Next step</h3><p>From Onboarding to Trimble Certified Seller, your roadmap to sales excellence begins here.</p></div>
   </div>
 </div></header>
 
 <div class="rolebar"><div class="wrap">
   <span class="label" id="role-label">I am a:</span>
   <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-  <span class="hint">The whole page tailors to your role.</span>
 </div></div>
 
 <main>
 <section id="how"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">How it works</div><h2>Learn what moves your number</h2>
-  <p>Start with the results on your Scorecard, see the skills behind them, and practice those skills on your real deals.</p></div>
+  <div class="sec-head"><div class="eyebrow">How it works</div><h2>Your roadmap to Trimble Certified Seller</h2>
+  <p>Build the skills. Complete the curriculum. Let your results show it. Three steps take you from your first day to certified.</p></div>
   <div class="flow">
-    <div class="step"><h3>1. KPI</h3><p>Booked ACV, Attainment, Win Rate, Average Deal Size and the rest of your Seller Scorecard define success.</p></div>
+    <div class="step"><h3>1. Competency</h3><p>Four skill areas define how top Trimble sellers work: Product and Industry, Consultative Selling, Tools and Workflows, and Sales Process.</p></div>
     <div class="arrow" aria-hidden="true">&rarr;</div>
-    <div class="step"><h3>2. Competency</h3><p>Four domains describe what top sellers do: Product and Industry, Consultative Selling, Tools and Workflows, Sales Process.</p></div>
+    <div class="step"><h3>2. Trimble Certified Seller Curriculum</h3><p>Each badge gives you the learning, the practice and the proof for one skill. You do most of it on your own deals, not in a classroom.</p></div>
     <div class="arrow" aria-hidden="true">&rarr;</div>
-    <div class="step"><h3>3. Content</h3><p>Badges bundle the practice, the evidence and the learning for each competency, mostly in the flow of your real deals.</p></div>
+    <div class="step"><h3>3. KPI</h3><p>Your Seller Scorecard shows the payoff: Booked ACV, Attainment, Win Rate, Average Deal Size and more.</p><span id="ps-link"></span></div>
   </div>
-  <div class="callout"><strong>The principle:</strong> KPI achievement on your Scorecard is the validation of competency. A badge says you can; your results show you do.</div>
+  <div class="callout"><strong>The principle:</strong> Seller behaviors drive results, and the KPI measures competency success.</div>
 </div></section>
 
 <section id="path" class="alt"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Intentional career paths</div><h2>Four stages, four credentials</h2>
-  <p>Select a stage to see its entry criteria, its gate and the badges it takes for your role. Progress bars reflect the badges you have checked off on this device.</p></div>
+  <div class="sec-head"><div class="eyebrow">Career paths</div><h2>Four stages. One path forward.</h2>
+  <p>Select a stage to see who it is for, what it takes to pass the gate, and the badges you will earn in your role.</p></div>
   <div class="path" id="stages" role="tablist" aria-label="Career stages"></div>
   <div class="gate-strip" aria-hidden="true"><span>Gate &#9670;</span><span>Gate &#9670;</span><span>Gate &#9670;</span><span></span></div>
   <div class="stage-detail" id="stage-detail" role="tabpanel" aria-live="polite"></div>
 </div></section>
 
 <section id="competencies"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Competency architecture</div><h2>Four domains, mapped to every stage</h2>
-  <p>Each cell holds the badges for that domain and stage. Use the KPI lens to see which badges move the number you care about. Select any badge for details.</p></div>
-  <div class="toolbar" id="kpis"><span class="label">KPI lens:</span></div>
-  <p class="kpi-note" id="kpi-note" aria-live="polite"></p>
+  <div class="sec-head"><div class="eyebrow">Your skills map</div><h2>Every skill you will build, stage by stage</h2>
+  <p>Each row is a skill area. Each column is a stage. Select any badge to see what you will learn, how you prove it and where to find it in Trimble Learn. Use Skill focus to highlight the badges that build one competency. The dot on each badge shows whether its content is live today, in build or planned.</p></div>
+  <div class="toolbar" id="lens"><span class="label">Skill focus:</span></div>
+  <p class="kpi-note" id="lens-note" aria-live="polite"></p>
   <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
-  <div class="legend"><span><i class="st-live"></i>Content live today</span><span><i class="st-build"></i>In build</span><span><i class="st-planned"></i>Planned</span><span>&#10003; Earned (your checklist)</span></div>
+  <div class="legend"><span><i class="st-live"></i>Content live today</span><span><i class="st-build"></i>In build</span><span><i class="st-planned"></i>Planned</span></div>
 </div></section>
 
-<section id="catalog" class="alt"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Badge catalog</div><h2>Find a badge</h2>
-  <p>Search every badge in the program. Mark the ones you have earned to track your own progress; your checklist stays in this browser only.</p></div>
-  <div class="filters">
-    <label class="sr-only" for="q">Search badges</label><input id="q" type="search" placeholder="Search badges, e.g. discovery, personas, Gong">
-    <label class="sr-only" for="f-domain">Domain</label><select id="f-domain"></select>
-    <label class="sr-only" for="f-stage">Stage</label><select id="f-stage"></select>
-    <label class="sr-only" for="f-status">Status</label><select id="f-status"></select>
-  </div>
-  <div class="count" id="count" aria-live="polite"></div>
-  <div class="cards" id="cards"></div>
-</div></section>
-
-<section id="learn"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">How you'll learn</div><h2>Less seat time, more real practice</h2>
-  <p>Most of TCS happens in your real work: on live deals, in Gong and with your manager. Here is the mix, and the formats you will meet along the way.</p></div>
-  <div class="mix" role="img" aria-label="Learning mix: 20 percent learn, 30 percent practice, 50 percent prove in the field">
-    <div style="flex:20;background:var(--blue)">20% Learn</div><div style="flex:30;background:var(--green)">30% Practice</div><div style="flex:50;background:var(--navy)">50% Prove in the field</div>
-  </div>
-  <div class="mods" id="mods"></div>
-
-  <div class="sec-head" style="margin-top:44px"><div class="eyebrow">Impact Plans</div><h2>When a KPI dips, support gets specific</h2>
-  <p>Below-target performance leads to competency-based remediation: the exact badges mapped to that KPI, with your manager in the loop.</p></div>
-  <div class="impact">
-    <div><h3>Signal</h3><p>A Scorecard KPI stays below target for the agreed period.</p></div>
-    <div><h3>Diagnose</h3><p>The KPI map names the competencies most linked to that result.</p></div>
-    <div><h3>Assign</h3><p>Only those badges are assigned, plus one manager-observed call.</p></div>
-    <div><h3>Exit</h3><p>You exit the plan when the KPI recovers, not when a course is complete.</p></div>
-  </div>
-</div></section>
-
-<section id="roadmap" class="alt"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Implementation roadmap</div><h2>From framework to global scale</h2>
-  <p>Draft and in progress. Dates follow the current program plan and will move as the Steering Committee sets priorities.</p></div>
-  <div class="road" id="road"></div>
-</div></section>
-
-<section id="faq"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Built on recognized standards</div><h2>Fair, defensible, and worth earning</h2>
-  <p>TCS is designed against the same principles used by professional certification bodies, scaled to the stakes of each credential.</p></div>
-  <div class="std">
-    <div><h3>ISO/IEC 17024</h3><p>Job task analysis defines each role; assessors are impartial; every rule is documented.</p></div>
-    <div><h3>NCCA principles</h3><p>Published eligibility, retake and appeals policies; regular item analysis.</p></div>
-    <div><h3>Action Mapping</h3><p>Every badge starts with a business result and an observable action, then realistic practice.</p></div>
-    <div><h3>Kirkpatrick + Gagne</h3><p>Each experience is built on the nine events of instruction and measured through behavior and results.</p></div>
-  </div>
+<section id="faq" class="alt"><div class="wrap">
+  <div class="sec-head"><div class="eyebrow">FAQ</div><h2>Questions sellers ask</h2></div>
   <div id="faqs"></div>
 </div></section>
 </main>
@@ -364,11 +332,16 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 /* =====================================================================
    TCS_DATA: the only block you need to edit to update this page.
    roles:  "all" in a badge's roles list means every role.
+   Skill focus on the page uses "pillars"; the KPI lens now lives on the Seller Performance Support page.
    status: "live" (content exists today), "build" (in development), "planned".
    link:   paste the Docebo learning plan or course URL when it exists.
+   lp:     Trimble Learn learning plan id, shown in the badge details until a link is pasted.
+   pillar: competency pillar 1 to 6 (see pillars).  ps: performance standards the badge builds (see standards).
    ===================================================================== */
 var TCS_DATA = {
-  meta: { version: "v0.1", updated: "2026-10-23", currentPhase: 1 },
+  meta: { version: "v0.4", updated: "2026-11-10", currentPhase: 1,
+          /* Link to the standalone Seller Performance Support page. Set to "" to hide the link in How it works. */
+          perfSupportLink: "performance-support.html" },
 
   roles: [
     { id: "sdr", label: "SDR / BDR" },
@@ -386,19 +359,42 @@ var TCS_DATA = {
   ],
 
   stages: [
-    { id: 1, name: "Onboarding", when: "0 to 4 weeks", focus: "Foundational", credential: "TCS Foundations", stakes: "Lower stakes",
+    { id: 1, tier: "Tier 1", name: "Onboarding", when: "0 to 4 weeks", focus: "Foundational", credential: "Foundational Seller Badge", stakes: "Lower stakes",
       entry: ["New hire or role change recorded in Workday", "Manager and onboarding buddy assigned"],
-      gate: ["All Foundations badges for your role", "Trimble Story talk track recorded", "Manager sign-off on your first live customer call"] },
-    { id: 2, name: "Ramp", when: "5 weeks to 2 years", focus: "Acceleration", credential: "TCS Professional", stakes: "Promotion-relevant",
-      entry: ["TCS Foundations earned"],
-      gate: ["Proctored knowledge exam with a standard-set cut score", "Recorded Gong performance task scored on a rubric by a second rater", "Ramp KPI floor met on your Scorecard"],
-      gateByRole: { sdr: ["SDR-to-AE Readiness Capstone: cumulative knowledge assessment", "Behavior assessments: discovery Gong call and DX sandbox", "Asking for the Sale presentation with a pre-call plan, scored by sales leaders and mentors", "Passing earns the AE readiness designation"] } },
-    { id: 3, name: "Core Productivity", when: "In-role advancement", focus: "Mastery", credential: "TCS Expert", stakes: "Renews yearly",
-      entry: ["TCS Professional earned", "Two quarters at or above KPI target"],
-      gate: ["Deal portfolio review: two closed-won deals and one closed-lost analysis", "Peer teach-back in a Deal Clinic", "Sustained KPI attainment"] },
+      gate: ["All Tier 1 badges for your role, including knowledge checks", "Read the Room persona certification", "Resistance Lab pass", "Pre-call plan on a practice account", "Manager sign-off on your first live customer call"],
+      gateByRole: { sdr: ["SDR Onboarding (SITE): both certification gates, scored on the manager rubric", "Week 3 live roleplay certification", "Read the Room persona certification", "Resistance Lab pass", "Pre-call plan on a practice account"] } },
+    { id: 2, tier: "Tier 2", name: "Ramp", when: "5 weeks to 1 year", focus: "Acceleration", credential: "Ramp Trimble Certified Seller", stakes: "Promotion-relevant",
+      entry: ["Foundational Seller Badge earned", "Experienced AEs can enter through an evidence pathway"],
+      gate: ["Cumulative knowledge assessment with a standard-set cut score", "Gong discovery call scored on the shared scorecard by a second rater", "DX sandbox assessment", "Business case for a live opportunity", "Asking for the Sale with a pre-call plan", "Ramp KPI floor met on your Scorecard"],
+      gateByRole: { sdr: ["SDR-to-AE Readiness Capstone: cumulative knowledge assessment (75 questions)", "Behavior assessments: discovery Gong call and DX sandbox", "Asking for the Sale presentation with a pre-call plan, scored by sales leaders and mentors", "Passing earns the AE readiness designation"] } },
+    { id: 3, name: "Core Productivity", when: "1 to 2 years", focus: "Mastery", credential: "TCS Expert", stakes: "Renews yearly",
+      entry: ["Ramp Trimble Certified Seller earned", "Two quarters at or above KPI target"],
+      gate: ["Deal portfolio review: two closed-won deals and one closed-lost analysis", "Peer teach-back in a Deal Clinic", "Sustained KPI attainment, with Impact Packs closed when one is assigned"] },
     { id: 4, name: "Manager Readiness", when: "Leadership track", focus: "Nomination", credential: "TCS Leader", stakes: "Promotion-relevant",
-      entry: ["TCS Expert earned, or manager nomination", "Current managers enroll directly"],
-      gate: ["Building Tomorrow's Leaders (20 weeks) complete", "Observed coaching sessions scored on the BTL coaching rubric", "Team KPI improvement"] }
+      entry: ["Individual contributors identified as high potential for leadership are invited to Building Tomorrow's Leaders", "Current Trimble managers: learning opportunities outside of Building Tomorrow's Leaders are being planned"],
+      gate: ["Building Tomorrow's Leaders (20 weeks) complete", "Coaching evidence on real calls, scored on the shared scorecard", "Pipeline inspection against the shared stage exit criteria", "Capstone presentation", "Team KPI improvement"] }
+  ],
+
+  /* The six competency pillars (draft competency matrix, October 2026). "kpis" is the count of Scorecard KPIs mapped to the pillar. */
+  pillars: [
+    { id: 1, name: "Opportunity Gen and Research", kpis: 2, skills: "Prospecting and creating interest, account research, messaging and hooks (CRT), structured execution" },
+    { id: 2, name: "Qualification and Discovery Rigor", kpis: 5, skills: "Upfront Contracts, BANT, CBIs and CSFs, discovery and analysis, objection handling, Challenger, MEDDPICC" },
+    { id: 3, name: "Deal Execution and Closing", kpis: 6, skills: "Negotiation and contracting, team selling and Mutual Action Plans, closing readiness and techniques" },
+    { id: 4, name: "Account and Territory Strategy", kpis: 7, skills: "Territory strategy, account planning and review, buyer personas, cross-sell and upsell" },
+    { id: 5, name: "Pipeline and Operational Discipline", kpis: 4, skills: "Data hygiene and Salesforce compliance, data analysis and forecasting, pre-call planning and time management" },
+    { id: 6, name: "Professional Acumen, Mindset and Growth", kpis: 3, skills: "Communication and presentation, professionalism and accountability, openness, learning and adaptability" }
+  ],
+
+  /* The eight performance standards. Same behavior at every tier; the level rises. */
+  standards: [
+    { id: "PS1", name: "Plan every call", why: "Prepared calls are the clearest predictor of quality discovery and a clean next step.", t1: "Complete the pre-call plan template for a practice account", t2: "Submit a pre-call plan for live calls: persona, agenda, CBIs, qualification", t3: "Review pre-call plans in one-to-ones and coach the gaps", evidence: "Pre-call plan scored by Sparky" },
+    { id: "PS2", name: "Lead persona-based discovery to a quantified business issue", why: "Moves the conversation from pain to measurable impact the buyer owns.", t1: "Identify the persona and likely CBIs in a scenario", t2: "Uncover and quantify a CBI on a recorded call", t3: "Diagnose discovery quality from Gong and coach it", evidence: "Gong discovery call scorecard; Read the Room" },
+    { id: "PS3", name: "Qualify with one shared language", why: "Sellers and leaders inspect the same deal the same way, so forecasts get more reliable.", t1: "Explain the AECO qualification model", t2: "Document qualification in Salesforce on every opportunity", t3: "Inspect qualification in pipeline reviews", evidence: "CRM fields; deal review notes" },
+    { id: "PS4", name: "Build the business case in the customer's numbers", why: "Ties Trimble value to the buyer's critical success factors.", t1: "Translate a CBI into a CSF in practice", t2: "Build a business case for a live opportunity", t3: "Pressure-test business cases with the Five Buckets Scorecard", evidence: "Business Case Studio output; Five Buckets Scorecard" },
+    { id: "PS5", name: "Handle resistance with EARC", why: "Keeps deals moving without discounting or arguing.", t1: "Pass the Resistance Lab", t2: "Use EARC on recorded calls", t3: "Coach EARC from call evidence", evidence: "Resistance Lab score; Gong tag" },
+    { id: "PS6", name: "Ask for the sale and secure a committed next step", why: "Every interaction ends with a dated, mutual next step.", t1: "Practice the ask in role play", t2: "Ask for the commitment on live calls", t3: "Hold the team to next-step standards in pipeline reviews", evidence: "Asking for the Sale rubric; Gong next-step tracker" },
+    { id: "PS7", name: "Run a clean, honest pipeline", why: "Leaders can forecast and coach only what is visible and accurate.", t1: "Know the stage definitions and exit criteria", t2: "Advance deals only on met exit criteria", t3: "Forecast from exit criteria and coach stalled deals", evidence: "CRM hygiene report" },
+    { id: "PS8", name: "Coach to the same scorecard", why: "Closes the loop: what is taught is what is observed and reinforced.", t1: "Receive coaching on the scorecard criteria", t2: "Self-score your calls against the scorecard", t3: "Coach weekly using the shared scorecard", evidence: "Coaching notes attached to Gong calls" }
   ],
 
   kpis: [
@@ -412,75 +408,72 @@ var TCS_DATA = {
 
   badges: [
     /* Stage 1: Onboarding */
-    { id: "glance", name: "Trimble at a Glance", d: "pi", s: 1, roles: ["all"], status: "planned", kpis: ["acv"], source: "Trimble Story", modality: "Drive-time audio, AI Flight Simulator", evidence: "Two-minute recorded talk track", desc: "Tell who Trimble is, what we do and the problems we solve, in two minutes or less." },
+    { id: "glance", name: "Trimble at a Glance", d: "pi", s: 1, pillar: 1, roles: ["all"], status: "planned", kpis: ["acv"], source: "Trimble Story; SDR Onboarding Week 1: Understanding Trimble", modality: "Drive-time audio, AI Flight Simulator", evidence: "Two-minute recorded talk track", desc: "Tell who Trimble is, what we do and the problems we solve, in two minutes or less." },
     { id: "connect", name: "Connect Platform Basics", d: "pi", s: 1, roles: ["all"], status: "planned", kpis: ["deal"], source: "Product and Industry Certification", modality: "Micro-lesson, knowledge check", evidence: "Knowledge check", desc: "Explain how Connect data and intelligence runs through Trimble offerings, field to office." },
-    { id: "jobsite", name: "Jobsite Immersion", d: "pi", s: 1, roles: ["sdr", "ae", "se", "product"], status: "planned", kpis: ["winrate"], source: "New", modality: "Ride-along or site visit, video series", evidence: "Persona field journal", desc: "See the jobsite through a Superintendent's eyes and capture the friction you would sell to." },
-    { id: "meeting", name: "Meeting Excellence", d: "css", s: 1, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "count"], source: "SDR-to-AE Month 1: Foundations", modality: "Self-paced, workshop", evidence: "Meeting framework applied on a live call", desc: "Run a structured first meeting with a clear agenda, purpose and next step." },
-    { id: "bant", name: "BANT Qualification", d: "css", s: 1, roles: ["sdr", "ae", "se"], status: "live", kpis: ["winrate"], source: "SDR onboarding; SDR-to-AE Month 2", modality: "Self-paced, AI roleplay", evidence: "Qualified opportunity in Salesforce", desc: "Qualify on budget, authority, need and timeline, and document it to the global standard." },
-    { id: "stack", name: "Seller Tech Stack Setup", d: "tools", s: 1, roles: ["all"], status: "live", kpis: ["count"], source: "SDR onboarding site: Tools pillar", modality: "Guided checklist", evidence: "Tool access and first activity logged", desc: "Get productive in Salesforce, Gong, Seismic and Trimble Learn in your first week." },
-    { id: "way", name: "The Trimble Way", d: "proc", s: 1, roles: ["all"], status: "planned", kpis: ["attain", "count"], source: "Trimble Blueprint", modality: "Micro-lesson, manager huddle", evidence: "Knowledge check", desc: "Know our sales stages, entry and exit criteria and Rules of Engagement." },
+    { id: "jobsite", name: "Jobsite Immersion", d: "pi", s: 1, pillar: 4, ps: ["PS2"], roles: ["sdr", "ae", "se", "product"], status: "planned", kpis: ["winrate"], source: "New", modality: "Ride-along or site visit, video series", evidence: "Persona field journal", desc: "See the jobsite through a Superintendent's eyes and capture the friction you would sell to." },
+    { id: "meeting", name: "Meeting Excellence", d: "css", s: 1, pillar: 5, ps: ["PS1"], lp: 1012, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "count"], source: "SDR-to-AE Month 1: Foundations; Optimizing the Meeting Framework workshop", modality: "Self-paced, workshop", evidence: "Meeting framework applied on a live call", desc: "Run a structured first meeting with a clear agenda, purpose and next step." },
+    { id: "bant", name: "BANT Qualification", d: "css", s: 1, pillar: 2, ps: ["PS3"], lp: 1013, roles: ["sdr", "ae", "se"], status: "live", kpis: ["winrate"], source: "SDR Onboarding Weeks 1 and 2: consultative BANT deep dive; SDR-to-AE Month 2", modality: "Self-paced, AI roleplay", evidence: "Qualified opportunity in Salesforce", desc: "Qualify on budget, authority, need and timeline, and document it to the global standard." },
+    { id: "stack", name: "Seller Tech Stack Setup", d: "tools", s: 1, pillar: 5, ps: ["PS7"], roles: ["all"], status: "live", kpis: ["count"], source: "SDR Onboarding (SITE): Tools pillar, Weeks 1 and 2", modality: "Guided checklist", evidence: "Tool access and first activity logged", desc: "Get productive in Salesforce DX, Gong, ZoomInfo, Sales Navigator, Seismic and Trimble Learn in your first weeks." },
+    { id: "way", name: "The Trimble Way", d: "proc", s: 1, pillar: 5, ps: ["PS7"], roles: ["all"], status: "planned", kpis: ["attain", "count"], source: "Trimble Blueprint", modality: "Micro-lesson, manager huddle", evidence: "Knowledge check", desc: "Know our sales stages, entry and exit criteria and Rules of Engagement." },
+
+    { id: "tc1", name: "TC1 Foundations and Pitch", d: "pi", s: 1, pillar: 1, roles: ["sdr", "ae", "se", "product"], status: "live", kpis: ["deal", "acv"], source: "SDR Onboarding Week 1: TC1 Foundations, A New Way to Sell TC1, Practice TC1 Pitch", modality: "Self-paced, pitch practice", evidence: "Practice TC1 pitch", desc: "Explain Trimble Construction One and deliver a short, confident TC1 pitch." },
+    { id: "listen", name: "Discovery and Active Listening", d: "css", s: 1, pillar: 2, ps: ["PS2"], lp: 1013, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "count"], source: "SDR Onboarding Week 2: listening drill and discovery questioning guide; SDR-to-AE Month 2: Critical Selling Skills", modality: "Listening drill, call shadowing, AI roleplay", evidence: "Discovery role play", desc: "Ask open questions, listen for what the buyer means and confirm it before you move on." },
+    { id: "precall", name: "Pre-Call Planning", d: "css", s: 1, pillar: 5, ps: ["PS1"], roles: ["sdr", "ae", "se"], status: "build", kpis: ["winrate"], source: "Pre-call plan template; SDR-to-AE capstone pre-work; Sparky evaluation", modality: "Template practice, Sparky feedback", evidence: "Pre-call plan on a practice account, scored by Sparky", desc: "Plan the persona, agenda, likely CBIs and qualification questions before every call." },
+    { id: "ufc", name: "Upfront Contracts", d: "css", s: 1, pillar: 2, ps: ["PS1", "PS6"], roles: ["sdr", "ae"], status: "planned", kpis: ["winrate"], source: "Competency Pillar 2; Optimizing the Meeting Framework workshop", modality: "Call framing script, role play", evidence: "Upfront Contract set on a recorded call", desc: "Open every call by agreeing on time, both agendas and the outcome you are working toward." },
+    { id: "earclab", name: "EARC Foundations: The Resistance Lab", d: "css", s: 1, pillar: 2, ps: ["PS5"], roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "lost"], source: "Turning Resistance Into Revenue; The Resistance Lab; Steamrolled; SDR Onboarding Week 2: Objection Handling 101", modality: "Branching simulations, Handle the Objection activity, Field Guide", evidence: "Resistance Lab pass", desc: "Learn Empathize, Ask to Elaborate, Reframe and Confirm, then pass the scored Resistance Lab. Pass it once and it counts across programs." },
+    { id: "site", name: "SDR Onboarding (SITE) Certification", d: "proc", s: 1, pillar: 5, roles: ["sdr"], status: "live", kpis: ["count"], source: "SDR Onboarding: Structure, Industry, Tools, Execution (three weeks)", modality: "Daily manager check-ins, peer mock calls, live roleplay", evidence: "Two certification gates scored on the manager rubric", desc: "Complete the three-week SDR onboarding and pass both certification gates." },
+    { id: "timeblock", name: "Calendar Blueprint and Time Blocking", d: "tools", s: 1, pillar: 5, ps: ["PS7"], roles: ["sdr"], status: "live", kpis: ["count"], source: "SDR Onboarding Weeks 1 and 3; time-blocking app", modality: "Guided activity", evidence: "Completed calendar blueprint", desc: "Build a weekly calendar that protects prospecting time and hits your activity benchmarks." },
 
     /* Stage 2: Ramp */
-    { id: "stratdisc", name: "Strategic Discovery", d: "css", s: 2, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "deal"], source: "SDR-to-AE Month 3", modality: "Game Film, AI roleplay", evidence: "Scored discovery call in Gong", desc: "Move past surface needs to the business problems behind them." },
-    { id: "cbi", name: "Advanced Discovery: CBIs and CSFs", d: "css", s: 2, roles: ["sdr", "ae", "se"], status: "live", kpis: ["deal", "winrate"], source: "SDR-to-AE Month 4", modality: "Business Case Studio, Field Mission", evidence: "CSF worksheet and business case scored by Sparky", desc: "Quantify critical business issues and build the bridge to critical success factors." },
-    { id: "earc", name: "Objection Handling (EARC)", d: "css", s: 2, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "lost"], source: "SDR-to-AE Month 5; Turning Resistance Into Revenue", modality: "The Resistance Lab simulation, AI roleplay", evidence: "Scored simulation and live call clip", desc: "Empathize, Ask to Elaborate, Reframe and Confirm, under pressure." },
-    { id: "ask", name: "Asking for the Sale", d: "css", s: 2, roles: ["sdr", "ae"], status: "build", kpis: ["winrate", "attain"], source: "SDR-to-AE Readiness Capstone", modality: "Live roleplay, pre-call plan", evidence: "Recorded presentation scored on the eight-competency rubric", desc: "Bring persona insight, business case and EARC together into a confident close." },
-    { id: "presence", name: "Present with Impact", d: "css", s: 2, roles: ["all"], status: "live", kpis: ["winrate"], source: "Present with Impact course", modality: "Self-paced, partner practice", evidence: "Recorded presentation", desc: "Structure and deliver a professional presentation, in customer meetings and interviews." },
-    { id: "personas", name: "Construction Personas", d: "pi", s: 2, roles: ["sdr", "ae", "se", "product"], status: "live", kpis: ["winrate"], source: "Read the Room: Construction Persona Certification", modality: "Persona cards, live-call simulator", evidence: "Certification assessment", desc: "Read the room across six industries and tailor your message by role." },
-    { id: "story", name: "Trimble Story Certified", d: "pi", s: 2, roles: ["sdr", "ae", "se", "product"], status: "build", kpis: ["acv", "deal"], source: "SKO 2026; Global Pitch Certification", modality: "Pitch Arena, Gong Enable submission", evidence: "Certified pitch video", desc: "Tell the end-to-end platform story, including AI and risk, by geo and industry." },
-    { id: "golden", name: "Golden Workflows", d: "pi", s: 2, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Product and Industry Certification, rebuilt", modality: "Golden Workflow Escape Room, micro-lessons", evidence: "Workflow mapping exercise", desc: "Sell connected workflows such as Constructible BIM to Field and Civil Job Costing, not single tools." },
-    { id: "engage", name: "Gong and Seismic in Flow", d: "tools", s: 2, roles: ["sdr", "ae"], status: "live", kpis: ["count"], source: "SDR-to-AE Month 6: Tools and Execution", modality: "Field Mission", evidence: "Active use in Gong Engage and Seismic", desc: "Run sequences, share content and capture insight in the tools, every week." },
-    { id: "dx", name: "DX Sandbox Demo", d: "tools", s: 2, roles: ["sdr", "ae", "se"], status: "build", kpis: ["winrate"], source: "SDR-to-AE Readiness Capstone", modality: "Virtual lab", evidence: "Sandbox assessment report", desc: "Show the product confidently in a guided sandbox environment." },
-    { id: "dealexec", name: "AE Deal Execution", d: "proc", s: 2, roles: ["sdr", "ae"], status: "build", kpis: ["winrate", "attain"], source: "SDR-to-AE Month 7", modality: "Self-paced, Deal Clinic", evidence: "Opportunity plan review", desc: "Manage an opportunity from qualified to closed with the right stakeholders and steps." },
-    { id: "map", name: "Mutual Action Plan and Forecast Hygiene", d: "proc", s: 2, roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "Trimble Blueprint", modality: "Template practice, manager review", evidence: "MAP on a live opportunity", desc: "Co-build the path to close with the customer and keep the forecast honest." },
+    { id: "stratdisc", name: "Strategic Discovery", d: "css", s: 2, pillar: 2, ps: ["PS2"], lp: 1014, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "deal"], source: "SDR-to-AE Month 3", modality: "Game Film, AI roleplay", evidence: "Scored discovery call in Gong", desc: "Move past surface needs to the business problems behind them." },
+    { id: "cbi", name: "Advanced Discovery: CBIs and CSFs", d: "css", s: 2, pillar: 2, ps: ["PS2"], lp: 1020, roles: ["sdr", "ae", "se"], status: "live", kpis: ["deal", "winrate"], source: "SDR-to-AE Months 3 and 4; CBI and CSF suite: Pain vs. CBI diagnostic, CBI quantification, Executive Impact ladder", modality: "Interactive suite, Field Mission", evidence: "Quantified CBI on a recorded call", desc: "Tell a pain point from a critical business issue, then quantify what it costs the customer." },
+    { id: "earc", name: "EARC on Live Calls", d: "css", s: 2, pillar: 2, ps: ["PS5"], lp: 1032, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "lost"], source: "SDR-to-AE Month 5; Turning Resistance Into Revenue", modality: "AI roleplay, Game Film", evidence: "EARC used on a recorded call, tagged in Gong", desc: "Empathize, Ask to Elaborate, Reframe and Confirm on live calls, under pressure." },
+    { id: "ask", name: "Asking for the Sale", d: "css", s: 2, pillar: 3, ps: ["PS6", "PS1"], lp: 1058, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "attain"], source: "SDR-to-AE Readiness Capstone", modality: "Live roleplay, pre-call plan", evidence: "Recorded presentation scored on the eight-criterion rubric; pre-call plan scored by Sparky", desc: "Bring persona insight, business case and EARC together into a confident close." },
+    { id: "presence", name: "Present with Impact", d: "css", s: 2, pillar: 6, roles: ["all"], status: "live", kpis: ["winrate"], source: "Present with Impact: Professional Presentation and Interview Readiness", modality: "Self-paced, workshop, partner mock interview", evidence: "Recorded presentation", desc: "Structure and deliver a professional presentation, in customer meetings and interviews." },
+    { id: "personas", name: "Construction Personas: Read the Room", d: "pi", s: 1, pillar: 4, ps: ["PS2"], roles: ["sdr", "ae", "se", "product"], status: "live", kpis: ["winrate"], source: "Personas by Industries; Read the Room: Construction Persona Certification", modality: "Persona cards, TC1 wheels, live-call simulator", evidence: "50-question certification assessment", desc: "Read the room across six industries and tailor your message by role." },
+    { id: "story", name: "Trimble Story Certified", d: "pi", s: 2, pillar: 6, roles: ["sdr", "ae", "se", "product"], status: "build", kpis: ["acv", "deal"], source: "SKO 2026; Global Pitch Certification", modality: "Pitch Arena, Gong Enable submission", evidence: "Certified pitch video", desc: "Tell the end-to-end platform story, including AI and risk, by geo and industry." },
+    { id: "golden", name: "Golden Workflows", d: "pi", s: 2, pillar: 4, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Product and Industry Certification, rebuilt", modality: "Golden Workflow Escape Room, micro-lessons", evidence: "Workflow mapping exercise", desc: "Sell connected workflows such as Constructible BIM to Field and Civil Job Costing, not single tools." },
+    { id: "engage", name: "Gong and Seismic in Flow", d: "tools", s: 2, pillar: 5, ps: ["PS7"], lp: 1043, roles: ["sdr", "ae"], status: "live", kpis: ["count"], source: "SDR-to-AE Month 6: Tools and Execution", modality: "Field Mission", evidence: "Active use in Gong Engage and Seismic", desc: "Run sequences, share content and capture insight in the tools, every week." },
+    { id: "dx", name: "DX Sandbox Demo", d: "tools", s: 2, pillar: 4, lp: 1058, roles: ["sdr", "ae", "se"], status: "live", kpis: ["winrate"], source: "SDR Onboarding Week 2 sandbox practice; SDR-to-AE Readiness Capstone", modality: "Virtual lab in CloudShare", evidence: "Sandbox assessment report", desc: "Show the product confidently in a guided sandbox environment." },
+    { id: "dealexec", name: "AE Deal Execution", d: "proc", s: 2, pillar: 3, ps: ["PS7"], lp: 1048, roles: ["sdr", "ae"], status: "build", kpis: ["winrate", "attain"], source: "SDR-to-AE Month 7", modality: "Self-paced, Deal Clinic", evidence: "Opportunity plan review", desc: "Manage an opportunity from qualified to closed with the right stakeholders and steps." },
+    { id: "map", name: "Mutual Action Plan and Forecast Hygiene", d: "proc", s: 2, pillar: 3, ps: ["PS6", "PS7"], roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "Trimble Blueprint; competency Pillar 3: Team Selling and Mutual Action Plans", modality: "Template practice, manager review", evidence: "MAP on a live opportunity", desc: "Co-build the path to close with the customer and keep the forecast honest." },
+
+    { id: "prospect", name: "Prospecting and CRT Hooks", d: "css", s: 2, pillar: 1, lp: 1013, roles: ["sdr", "ae"], status: "live", kpis: ["count", "acv"], source: "SDR-to-AE Month 2: Prospecting + Discovery; competency Pillar 1", modality: "Self-paced, Field Mission", evidence: "Outreach sequence review", desc: "Write hooks built on credibility, relevance and timing, and run them across phone, email and LinkedIn." },
+    { id: "bizcase", name: "Business Case Studio", d: "css", s: 2, pillar: 2, ps: ["PS4"], lp: 1020, roles: ["sdr", "ae", "se"], status: "live", kpis: ["deal", "winrate"], source: "SDR-to-AE Month 4; CBI and CSF suite: Build the Bridge, CSF Translation Lab, CSF Documentation Worksheet, Five Buckets Scorecard, Business Case Studio", modality: "Business Case Studio, Field Mission", evidence: "Business case for a live opportunity, checked against the Five Buckets Scorecard", desc: "Translate a CBI into critical success factors and build the business case in the customer's numbers." },
+    { id: "meddpicc", name: "BANT to MEDDPICC Progression", d: "css", s: 2, pillar: 2, ps: ["PS3"], roles: ["sdr", "ae", "se"], status: "planned", kpis: ["winrate", "attain"], source: "AECO Onboarding 2.0 MEDDPICC module (EMEA); program crosswalk", modality: "Micro-lessons, deal review", evidence: "Qualification documented on live opportunities in Salesforce", desc: "Carry a BANT-qualified lead into MEDDPICC so sellers and leaders inspect a deal the same way." },
 
     /* Stage 3: Core Productivity */
-    { id: "package", name: "Multi-Product Packaging", d: "pi", s: 3, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Trimble Story; Golden Workflows", modality: "Field Mission, Deal Clinic", evidence: "Multi-product proposal", desc: "Turn workflows into multi-product opportunities mapped to regional bundles." },
-    { id: "roi", name: "Executive Value and ROI", d: "pi", s: 3, roles: ["ae", "product"], status: "planned", kpis: ["deal"], source: "Trimble Story roadmap", modality: "Business Case Studio", evidence: "Executive business case", desc: "Connect packages to financial outcomes an executive will sign." },
-    { id: "negotiate", name: "Deal Strategy and Negotiation", d: "css", s: 3, roles: ["ae"], status: "planned", kpis: ["winrate", "lost"], source: "New", modality: "Branching simulation, Deal Clinic", evidence: "Scored simulation", desc: "Protect value and win on terms in complex, multi-threaded deals." },
-    { id: "pipeline", name: "Accelerating Pipeline", d: "css", s: 3, roles: ["sdr", "ae"], status: "build", kpis: ["count", "acv"], source: "SKO activation session", modality: "Live activation, Power Hours", evidence: "Pipeline created after the session", desc: "Generate and accelerate pipeline with proven plays." },
-    { id: "ai", name: "AI-Assisted Selling", d: "tools", s: 3, roles: ["all"], status: "planned", kpis: ["count"], source: "AI Foundations micro-learning", modality: "Micro-lessons, Field Mission", evidence: "Documented AI-assisted workflow", desc: "Use Gong AI and approved assistants to prepare, follow up and coach yourself." },
-    { id: "territory", name: "Territory and Account Planning", d: "proc", s: 3, roles: ["ae", "product"], status: "planned", kpis: ["attain", "acv"], source: "New", modality: "Template, manager review", evidence: "Approved territory plan", desc: "Prioritize accounts and plan coverage that hits your number." },
-    { id: "teach", name: "Expert Teach-Back", d: "css", s: 3, roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "New", modality: "Deal Clinic", evidence: "Peer-rated teach-back", desc: "Teach a winning deal to peers. If you can teach it, you own it." },
+    { id: "package", name: "Multi-Product Packaging", d: "pi", s: 3, pillar: 4, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Trimble Story; Golden Workflows", modality: "Field Mission, Deal Clinic", evidence: "Multi-product proposal", desc: "Turn workflows into multi-product opportunities mapped to regional bundles." },
+    { id: "roi", name: "Executive Value and ROI", d: "pi", s: 3, pillar: 2, ps: ["PS4"], roles: ["ae", "product"], status: "planned", kpis: ["deal"], source: "Trimble Story roadmap", modality: "Business Case Studio", evidence: "Executive business case", desc: "Connect packages to financial outcomes an executive will sign." },
+    { id: "negotiate", name: "Deal Strategy and Negotiation", d: "css", s: 3, pillar: 3, ps: ["PS5"], roles: ["ae"], status: "planned", kpis: ["winrate", "lost"], source: "New", modality: "Branching simulation, Deal Clinic", evidence: "Scored simulation", desc: "Protect value and win on terms in complex, multi-threaded deals." },
+    { id: "pipeline", name: "Accelerating Pipeline", d: "css", s: 3, pillar: 1, roles: ["sdr", "ae"], status: "build", kpis: ["count", "acv"], source: "Accelerating Pipeline: SKO activation session for SDRs and AEs", modality: "Live activation, Power Hours", evidence: "Pipeline created after the session", desc: "Generate and accelerate pipeline with proven plays, starting with active listening." },
+    { id: "ai", name: "AI-Assisted Selling", d: "tools", s: 3, pillar: 6, roles: ["all"], status: "planned", kpis: ["count"], source: "AI Foundations micro-learning", modality: "Micro-lessons, Field Mission", evidence: "Documented AI-assisted workflow", desc: "Use Gong AI and approved assistants to prepare, follow up and coach yourself." },
+    { id: "territory", name: "Territory and Account Planning", d: "proc", s: 3, pillar: 4, ps: ["PS7"], roles: ["ae", "product"], status: "planned", kpis: ["attain", "acv"], source: "New", modality: "Template, manager review", evidence: "Approved territory plan", desc: "Prioritize accounts and plan coverage that hits your number." },
+    { id: "teach", name: "Expert Teach-Back", d: "css", s: 3, pillar: 6, ps: ["PS8"], roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "New", modality: "Deal Clinic", evidence: "Peer-rated teach-back", desc: "Teach a winning deal to peers. If you can teach it, you own it." },
+
+    { id: "multithread", name: "Multi-Threading and Stakeholder Mapping", d: "proc", s: 3, pillar: 3, ps: ["PS7"], roles: ["ae"], status: "planned", kpis: ["winrate", "deal"], source: "Competency Pillar 3; Performance Support Impact Pack: Deal Execution and Pipeline Velocity", modality: "Playbook, Deal Clinic", evidence: "Three or more engaged contacts on active opportunities", desc: "Map the decision-making unit and bring the economic buyer in early." },
 
     /* Stage 4: Manager Readiness */
-    { id: "btlpeople", name: "BTL: People", d: "css", s: 4, roles: ["mgr"], status: "live", kpis: ["attain"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions, Coaching Cards", evidence: "Observed coaching session", desc: "Coach people to their strengths with a consistent framework." },
-    { id: "btlpipe", name: "BTL: Pipeline", d: "proc", s: 4, roles: ["mgr"], status: "live", kpis: ["acv", "count"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions, pipeline reviews", evidence: "Pipeline review artifact", desc: "Run pipeline reviews that improve deals, not just report on them." },
-    { id: "btlprod", name: "BTL: Productivity", d: "tools", s: 4, roles: ["mgr"], status: "build", kpis: ["attain"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions", evidence: "Team productivity plan", desc: "Use data and rhythm to raise team productivity." },
-    { id: "btlcap", name: "BTL Capstone: Certified Coach", d: "css", s: 4, roles: ["mgr"], status: "build", kpis: ["attain", "winrate"], source: "Building Tomorrow's Leaders", modality: "Capstone, panel review", evidence: "Capstone scored by a leadership panel", desc: "Demonstrate the BTL coaching framework end to end." },
-    { id: "storycoach", name: "Coaching the Trimble Story", d: "pi", s: 4, roles: ["mgr"], status: "planned", kpis: ["acv", "deal"], source: "Trimble Story", modality: "Coaching Cards, Game Film", evidence: "Coaching log", desc: "Reinforce the Trimble Story in one-to-ones and team meetings." },
-    { id: "gongcoach", name: "Coaching with Gong Scorecards", d: "tools", s: 4, roles: ["mgr"], status: "planned", kpis: ["winrate"], source: "New", modality: "Game Film, Field Mission", evidence: "Scorecard trends for your team", desc: "Use Gong scorecards to coach behaviors that move KPIs." },
-    { id: "forecast", name: "Forecasting and Team Planning", d: "proc", s: 4, roles: ["mgr"], status: "planned", kpis: ["attain"], source: "New", modality: "Workshop, manager peer group", evidence: "Forecast accuracy over a quarter", desc: "Forecast with confidence and plan capacity across your team." }
-  ],
-
-  modalities: [
-    { icon: "GF", name: "Game Film", desc: "Short weekly reviews of real Gong calls: pause, call the play, compare it to the pro.", evidence: "Annotated clip and reflection" },
-    { icon: "FM", name: "Field Missions", desc: "Badge tasks done on your live deals, then scored by Sparky and your manager.", evidence: "Real-work artifact" },
-    { icon: "AI", name: "AI Flight Simulator", desc: "Practice with Gong Enable and Sparky roleplays against construction personas until you are ready.", evidence: "Practice score trend" },
-    { icon: "BS", name: "Branching simulations", desc: "Consequence-based scenarios like The Resistance Lab, where every choice changes the deal.", evidence: "Scored decisions" },
-    { icon: "JI", name: "Jobsite Immersion", desc: "Ride-alongs and site visits, plus a Day in the Life video series, so you sell to the real jobsite.", evidence: "Persona field journal" },
-    { icon: "DA", name: "Drive-time audio", desc: "Five-minute episodes on personas and workflows for the time you spend on the road.", evidence: "Two-question check" },
-    { icon: "ER", name: "Golden Workflow Escape Room", desc: "Team challenge: solve a contractor's problem by chaining Trimble solutions in the right order.", evidence: "Team score" },
-    { icon: "PA", name: "Pitch Arena", desc: "Bracket-style pitch competitions, finals scored by sales leaders.", evidence: "Trimble Story certification" },
-    { icon: "DC", name: "Deal Clinics", desc: "Live sessions where an Expert walks a live deal and the group coaches it.", evidence: "Peer feedback, teach-back credit" },
-    { icon: "CC", name: "Coaching Cards", desc: "Ten-minute huddle guides for managers: three questions and one Gong clip per badge.", evidence: "Manager observation" },
-    { icon: "SR", name: "Spaced retrieval", desc: "Two quick questions a week for six weeks after each badge, so it sticks.", evidence: "Retention over time" }
-  ],
-
-  roadmap: [
-    { q: "Q4 2026 | Phase 1", name: "Framework and Design", color: "var(--blue)", items: ["Global Sales Leader Steering Committee assembled", "Program brief approved by SET Leadership", "Competencies mapped to KPIs", "Content library and Gong data mapped, gaps identified", "Onboarding and Ramp TCS framework designed", "Manager Readiness path mapping begins"] },
-    { q: "Q1 2027 | Phase 2", name: "MVP Launch", color: "var(--blue-2)", items: ["January: socialization, demonstration, readiness testing", "February: MVP Onboarding and Ramp live for SDRs and AEs", "February: SE, O&PS and Product seller paths begin", "March: Core Productivity paths mapped, gaps addressed"] },
-    { q: "Q2 2027 | Phase 3", name: "Core Expansion", color: "var(--purple)", items: ["Core Productivity competencies and pathways for SDRs and AEs", "In-role advancement and mastery milestones", "KPI, competency and content models in Base44"] },
-    { q: "Q3 2027 | Phase 4", name: "Scale and Refine", color: "#C98700", items: ["Content development, scaling and platform refinement", "Global adoption and continuous seller evaluation", "Long-term tracking against quota attainment and win rate"] }
+    { id: "btlpeople", name: "BTL: People", d: "css", s: 4, pillar: 6, ps: ["PS8"], roles: ["mgr"], status: "live", kpis: ["attain"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions, Coaching Cards", evidence: "Observed coaching session", desc: "Coach people to their strengths with a consistent framework." },
+    { id: "btlpipe", name: "BTL: Pipeline", d: "proc", s: 4, pillar: 5, ps: ["PS7", "PS3"], roles: ["mgr"], status: "live", kpis: ["acv", "count"], source: "Building Tomorrow's Leaders: Pipeline pillar; Five Buckets Scorecard", modality: "Cohort sessions, pipeline reviews", evidence: "Pipeline review artifact", desc: "Run pipeline reviews that improve deals, not just report on them." },
+    { id: "btlprod", name: "BTL: Productivity", d: "tools", s: 4, pillar: 5, ps: ["PS7"], roles: ["mgr"], status: "build", kpis: ["attain"], source: "Building Tomorrow's Leaders", modality: "Cohort sessions", evidence: "Team productivity plan", desc: "Use data and rhythm to raise team productivity." },
+    { id: "btlcap", name: "BTL Capstone: Certified Coach", d: "css", s: 4, pillar: 6, ps: ["PS8"], roles: ["mgr"], status: "build", kpis: ["attain", "winrate"], source: "Building Tomorrow's Leaders", modality: "Capstone, panel review", evidence: "Capstone scored by a leadership panel", desc: "Demonstrate the BTL coaching framework end to end." },
+    { id: "storycoach", name: "Coaching the Trimble Story", d: "pi", s: 4, pillar: 6, roles: ["mgr"], status: "planned", kpis: ["acv", "deal"], source: "Trimble Story", modality: "Coaching Cards, Game Film", evidence: "Coaching log", desc: "Reinforce the Trimble Story in one-to-ones and team meetings." },
+    { id: "gongcoach", name: "Coaching with Gong Scorecards", d: "tools", s: 4, pillar: 2, ps: ["PS8", "PS2"], roles: ["mgr"], status: "planned", kpis: ["winrate"], source: "New", modality: "Game Film, Field Mission", evidence: "Scorecard trends for your team", desc: "Use Gong scorecards to coach behaviors that move KPIs." },
+    { id: "forecast", name: "Forecasting and Team Planning", d: "proc", s: 4, pillar: 5, ps: ["PS7"], roles: ["mgr"], status: "planned", kpis: ["attain"], source: "New", modality: "Workshop, manager peer group", evidence: "Forecast accuracy over a quarter", desc: "Forecast with confidence and plan capacity across your team." },
+    { id: "livefire", name: "BTL Live-Fire Labs", d: "css", s: 4, pillar: 6, ps: ["PS8"], roles: ["mgr"], status: "live", kpis: ["attain"], source: "Building Tomorrow's Leaders: Live-Fire Labs and Cohort Activation Kits", modality: "Live practice labs", evidence: "Lab participation and debrief", desc: "Practice real coaching and pipeline conversations with your cohort before you run them with your team." },
+    { id: "packcoach", name: "Coaching with Impact Packs", d: "tools", s: 4, pillar: 6, ps: ["PS8"], roles: ["mgr"], status: "planned", kpis: ["winrate", "attain"], source: "Performance Support: Manager Impact Coaching Pack", modality: "Workshop, Coaching Cards", evidence: "30, 60 and 90 day check-ins signed off", desc: "Run the alignment conversation, review calls against the rubric and sign off each checkpoint." }
   ],
 
   faq: [
     { q: "Does TCS replace the programs I am already in?", a: "No one loses progress. Existing programs such as SDR-to-AE Readiness, Construction Personas and Building Tomorrow's Leaders become badges inside TCS, and completed work counts toward your credential." },
-    { q: "How long does it take to earn TCS Professional?", a: "Ramp runs from week five up to two years depending on role. Most of the work happens on your live deals, so the time is mostly time you would spend selling anyway." },
+    { q: "How long does it take to become a Ramp Trimble Certified Seller?", a: "Ramp runs from week five to about one year. The timeline is a guide, not a waiting period: you earn the credential when you pass the gate, and most of the work happens on your live deals." },
     { q: "What happens if I do not pass a gate?", a: "You get specific feedback against the rubric, targeted practice for the competencies that need work, and a retake window. Retake and appeal rules will be published before the MVP launch." },
     { q: "Who scores my performance tasks?", a: "Promotion-relevant gates use a second rater or a calibrated panel, so the person who coaches you is not the only person who judges you." },
-    { q: "Do credentials expire?", a: "TCS Foundations does not. TCS Professional and Expert renew through a short refresh and a KPI check. Product badges update when the product changes." },
-    { q: "Is my checklist on this page shared with anyone?", a: "No. The checkmarks you set on this page are stored only in your browser on this device. Official records live in Trimble Learn." },
+    { q: "Do credentials expire?", a: "The Foundational Seller Badge does not. Ramp Trimble Certified Seller and TCS Expert renew through a short refresh and a KPI check. Product badges update when the product changes." },
+    { q: "I already passed Read the Room or the Resistance Lab. Do I take it again?", a: "No. The plan is to certify once and credit it across every program, then recertify on a cycle instead of reassigning the course." },
+    { q: "What is the difference between a badge and an Impact Pack?", a: "A badge shows you can do something. An Impact Pack is focused support when a Scorecard KPI dips: a short list of weekly habits, a few learning assets under 15 minutes each, and coaching from your manager. It is developmental, not a performance warning. You will find the details on the Seller Performance Support page." },
+    { q: "Where do I see my progress?", a: "Your official record lives in Trimble Learn. A dashboard with live completion data is planned, so you will not need to track anything by hand." },
     { q: "I have an idea or found a gap. Where do I send it?", a: "Submit it through the Sales Enablement Intake Form so it reaches the team that owns TCS." }
   ]
 };
@@ -490,12 +483,11 @@ var TCS_DATA = {
 (function () {
   "use strict";
   var D = TCS_DATA;
-  var state = { role: "ae", stage: 1, kpi: null, earned: {} };
-  var STORE = "tcs-earned-v1", ROLE_STORE = "tcs-role-v1";
+  var state = { role: "ae", stage: 1, pillar: null };
+  var ROLE_STORE = "tcs-role-v1";
 
   function load(k, f) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : f; } catch (e) { return f; } }
   function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
-  state.earned = load(STORE, {});
   state.role = load(ROLE_STORE, "ae");
   if (!D.roles.some(function (r) { return r.id === state.role; })) state.role = D.roles[0].id;
   if (state.role === "mgr") state.stage = 4;
@@ -505,12 +497,15 @@ var TCS_DATA = {
   function dom(id) { return D.domains.filter(function (d) { return d.id === id; })[0]; }
   function stage(id) { return D.stages.filter(function (s) { return s.id === id; })[0]; }
   function kpiLabel(id) { var k = D.kpis.filter(function (x) { return x.id === id; })[0]; return k ? k.label : id; }
+  function pillar(id) { return D.pillars.filter(function (p) { return p.id === id; })[0]; }
+  function psList(b) { return (b.ps || []).map(function (id) { var x = D.standards.filter(function (y) { return y.id === id; })[0]; return x ? x.name : id; }); }
   function forRole(b) { return b.roles.indexOf("all") > -1 || b.roles.indexOf(state.role) > -1; }
   function statusLabel(s) { return { live: "Content live", build: "In build", planned: "Planned" }[s] || s; }
   function roleBadges(stageId) { return D.badges.filter(function (b) { return forRole(b) && (stageId == null || b.s === stageId); }); }
 
   $("ver").textContent = D.meta.version;
   $("updated").textContent = "Last updated " + D.meta.updated;
+  if (D.meta.perfSupportLink) $("ps-link").innerHTML = '<a href="' + esc(D.meta.perfSupportLink) + '">Go to Seller Performance Support &rarr;</a>';
 
   /* Roles */
   function renderRoles() {
@@ -528,13 +523,11 @@ var TCS_DATA = {
   /* Stages */
   function renderStages() {
     $("stages").innerHTML = D.stages.map(function (s) {
-      var list = roleBadges(s.id), done = list.filter(function (b) { return state.earned[b.id]; }).length;
-      var pct = list.length ? Math.round(done / list.length * 100) : 0;
+      var n = roleBadges(s.id).length;
       return '<button class="stage" role="tab" data-stage="' + s.id + '" aria-selected="' + (s.id === state.stage) + '" aria-controls="stage-detail">' +
-        '<span class="n">' + s.id + "</span><h3>" + esc(s.name) + '</h3><div class="when">' + esc(s.when) + " &middot; " + esc(s.focus) + "</div>" +
+        '<span class="n">' + s.id + "</span>" + (s.tier ? '<span class="tier">' + esc(s.tier) + "</span>" : "") + "<h3>" + esc(s.name) + '</h3><div class="when">' + esc(s.when) + " &middot; " + esc(s.focus) + "</div>" +
         '<div class="cred">Earns <b>' + esc(s.credential) + "</b></div>" +
-        '<div class="meter" aria-hidden="true"><i style="width:' + pct + '%"></i></div>' +
-        '<div class="meter-label">' + (list.length ? done + " of " + list.length + " badges checked" : "No badges for this role yet") + "</div></button>";
+        '<div class="meter-label" style="margin-top:12px">' + (n ? n + (n === 1 ? " badge" : " badges") + " for your role" : "No badges for this role yet") + "</div></button>";
     }).join("");
     renderStageDetail();
   }
@@ -546,34 +539,34 @@ var TCS_DATA = {
     var s = stage(state.stage), list = roleBadges(s.id);
     var gate = (s.gateByRole && s.gateByRole[state.role]) || s.gate;
     var li = function (a) { return a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join(""); };
-    var badges = list.length ? list.map(function (b) { return "<li>" + esc(b.name) + (state.earned[b.id] ? " &#10003;" : "") + "</li>"; }).join("") : '<li class="empty">Badges for this role are being defined.</li>';
-    $("stage-detail").innerHTML = "<h3>Stage " + s.id + ": " + esc(s.name) + ' <span class="stakes">' + esc(s.stakes) + "</span></h3>" +
+    var badges = list.length ? list.map(function (b) { return "<li>" + esc(b.name) + "</li>"; }).join("") : '<li class="empty">Badges for this role are being defined.</li>';
+    $("stage-detail").innerHTML = "<h3>Stage " + s.id + ": " + esc(s.name) + (s.tier ? " (" + esc(s.tier) + ")" : "") + ' <span class="stakes">' + esc(s.stakes) + "</span></h3>" +
       '<div style="color:var(--ink-2);font-size:15px">Credential: <strong>' + esc(s.credential) + "</strong> &middot; " + esc(s.when) + "</div>" +
       '<div class="sd-grid"><div><h4>Entry</h4><ul>' + li(s.entry) + "</ul></div><div><h4>Gate to earn it</h4><ul>" + li(gate) + "</ul></div><div><h4>Your badges</h4><ul>" + badges + "</ul></div></div>";
   }
 
-  /* KPI lens + matrix */
-  function renderKpis() {
-    var html = '<span class="label">KPI lens:</span><button class="chip" data-kpi="" aria-pressed="' + (!state.kpi) + '">All</button>';
-    html += D.kpis.map(function (k) { return '<button class="chip" data-kpi="' + k.id + '" aria-pressed="' + (state.kpi === k.id) + '">' + esc(k.label) + "</button>"; }).join("");
-    $("kpis").innerHTML = html;
-    if (state.kpi) {
-      var n = roleBadges(null).filter(function (b) { return b.kpis.indexOf(state.kpi) > -1; }).length;
-      $("kpi-note").textContent = n + " badges for your role are mapped to " + kpiLabel(state.kpi) + ". They are highlighted below.";
-    } else { $("kpi-note").textContent = "Pick a KPI to highlight the badges that move it."; }
+  /* Skill focus (competency pillars) + matrix */
+  function renderLens() {
+    var html = '<span class="label">Skill focus:</span><button class="chip" data-pillar="" aria-pressed="' + (!state.pillar) + '">All</button>';
+    html += D.pillars.map(function (p) { return '<button class="chip" data-pillar="' + p.id + '" aria-pressed="' + (state.pillar === p.id) + '">' + esc(p.name) + "</button>"; }).join("");
+    $("lens").innerHTML = html;
+    if (state.pillar) {
+      var p = pillar(state.pillar), n = roleBadges(null).filter(function (b) { return b.pillar === state.pillar; }).length;
+      $("lens-note").textContent = n + (n === 1 ? " badge" : " badges") + " for your role " + (n === 1 ? "builds " : "build ") + p.name + ": " + p.skills + ". " + (n === 1 ? "It is" : "They are") + " highlighted below.";
+    } else { $("lens-note").textContent = "Pick a competency to highlight the badges that build it."; }
   }
-  $("kpis").addEventListener("click", function (e) {
-    var b = e.target.closest("[data-kpi]"); if (!b) return;
-    state.kpi = b.getAttribute("data-kpi") || null; renderKpis(); renderMatrix();
+  $("lens").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-pillar]"); if (!b) return;
+    state.pillar = +b.getAttribute("data-pillar") || null; renderLens(); renderMatrix();
   });
   function badgeBtn(b) {
-    var d = dom(b.d), cls = "badge" + (state.earned[b.id] ? " earned" : "");
-    if (state.kpi) cls += b.kpis.indexOf(state.kpi) > -1 ? " hit" : " dim";
+    var d = dom(b.d), cls = "badge";
+    if (state.pillar) cls += b.pillar === state.pillar ? " hit" : " dim";
     return '<button class="' + cls + '" style="--dc:' + d.color + '" data-badge="' + b.id + '" aria-label="' + esc(b.name + ", " + statusLabel(b.status)) + '">' +
       esc(b.name) + '<span class="st st-' + b.status + '" aria-hidden="true"></span></button>';
   }
   function renderMatrix() {
-    var head = "<thead><tr><th scope=\"col\">Domain</th>" + D.stages.map(function (s) {
+    var head = "<thead><tr><th scope=\"col\">Skill area</th>" + D.stages.map(function (s) {
       return '<th scope="col">' + esc(s.name) + "<small>" + esc(s.credential) + "</small></th>";
     }).join("") + "</tr></thead>";
     var body = "<tbody>" + D.domains.map(function (d) {
@@ -583,53 +576,15 @@ var TCS_DATA = {
           return "<td>" + (list.length ? list.map(badgeBtn).join("") : '<span class="empty">None for this role</span>') + "</td>";
         }).join("") + "</tr>";
     }).join("") + "</tbody>";
-    $("matrix").innerHTML = '<caption class="sr-only">Badges by competency domain and career stage</caption>' + head + body;
+    $("matrix").innerHTML = '<caption class="sr-only">Badges by skill area and career stage</caption>' + head + body;
   }
   $("matrix").addEventListener("click", function (e) { var b = e.target.closest("[data-badge]"); if (b) openDrawer(b.getAttribute("data-badge"), b); });
-
-  /* Catalog */
-  function fillSelect(id, label, opts) {
-    $(id).innerHTML = '<option value="">' + esc(label) + "</option>" + opts.map(function (o) { return '<option value="' + o[0] + '">' + esc(o[1]) + "</option>"; }).join("");
-  }
-  fillSelect("f-domain", "All domains", D.domains.map(function (d) { return [d.id, d.name]; }));
-  fillSelect("f-stage", "All stages", D.stages.map(function (s) { return [String(s.id), s.id + ". " + s.name]; }));
-  fillSelect("f-status", "Any status", [["live", "Content live"], ["build", "In build"], ["planned", "Planned"]]);
-  ["q", "f-domain", "f-stage", "f-status"].forEach(function (id) { $(id).addEventListener("input", renderCards); });
-
-  function renderCards() {
-    var q = $("q").value.trim().toLowerCase(), fd = $("f-domain").value, fs = $("f-stage").value, ft = $("f-status").value;
-    var list = roleBadges(null).filter(function (b) {
-      if (fd && b.d !== fd) return false;
-      if (fs && String(b.s) !== fs) return false;
-      if (ft && b.status !== ft) return false;
-      if (q) { var hay = (b.name + " " + b.desc + " " + b.source + " " + b.modality + " " + b.evidence).toLowerCase(); if (hay.indexOf(q) < 0) return false; }
-      return true;
-    });
-    var earned = list.filter(function (b) { return state.earned[b.id]; }).length;
-    $("count").textContent = list.length + " badges shown for " + D.roles.filter(function (r) { return r.id === state.role; })[0].label + " (" + earned + " checked as earned)";
-    $("cards").innerHTML = list.map(function (b) {
-      var d = dom(b.d), s = stage(b.s), on = !!state.earned[b.id];
-      return '<article class="bcard" style="--dc:' + d.color + '"><div class="meta"><span class="tag status-' + b.status + '">' + statusLabel(b.status) + '</span><span class="tag">' + esc(s.name) + '</span></div>' +
-        "<h3>" + esc(b.name) + "</h3><p>" + esc(b.desc) + '</p><p style="font-size:12.5px;color:var(--ink-3)">' + esc(d.name) + " &middot; Evidence: " + esc(b.evidence) + "</p>" +
-        '<div class="row"><button class="btn" data-badge="' + b.id + '">Details</button><button class="btn' + (on ? " done" : "") + '" data-earn="' + b.id + '" aria-pressed="' + on + '">' + (on ? "&#10003; Earned" : "Mark earned") + "</button></div></article>";
-    }).join("") || '<p class="empty">No badges match. Try clearing a filter.</p>';
-  }
-  $("cards").addEventListener("click", function (e) {
-    var d = e.target.closest("[data-badge]"), t = e.target.closest("[data-earn]");
-    if (d) openDrawer(d.getAttribute("data-badge"), d);
-    if (t) toggleEarned(t.getAttribute("data-earn"));
-  });
-  function toggleEarned(id) {
-    if (state.earned[id]) delete state.earned[id]; else state.earned[id] = true;
-    save(STORE, state.earned); renderStages(); renderMatrix(); renderCards();
-    if (openId === id) openDrawer(id);
-  }
 
   /* Drawer */
   var openId = null, lastFocus = null;
   function openDrawer(id, from) {
     var b = D.badges.filter(function (x) { return x.id === id; })[0]; if (!b) return;
-    var d = dom(b.d), s = stage(b.s), on = !!state.earned[id];
+    var d = dom(b.d), s = stage(b.s);
     if (from) lastFocus = from; openId = id;
     $("d-head").style.setProperty("--dc", d.color);
     $("d-eyebrow").textContent = d.name;
@@ -640,10 +595,12 @@ var TCS_DATA = {
       row("Status", '<span class="tag status-' + b.status + '">' + statusLabel(b.status) + "</span>") +
       row("How you prove it", esc(b.evidence)) +
       row("How you learn it", esc(b.modality)) +
+      (pillar(b.pillar) ? row("Competency", esc(pillar(b.pillar).name)) : "") +
+      (psList(b).length ? row("Seller behaviors it builds", esc(psList(b).join("; "))) : "") +
       row("KPIs it supports", esc(b.kpis.map(kpiLabel).join(", "))) +
-      row("Built from", esc(b.source));
-    var link = b.link ? '<a class="btn primary" href="' + esc(b.link) + '" target="_blank" rel="noopener">Open in Trimble Learn</a>' : '<span class="btn" aria-disabled="true">Trimble Learn link coming</span>';
-    $("d-foot").innerHTML = link + '<button class="btn' + (on ? " done" : "") + '" data-earn="' + id + '" aria-pressed="' + on + '">' + (on ? "&#10003; Earned" : "Mark earned") + "</button>";
+      row("Built from", esc(b.source)) +
+      (b.lp && !b.link ? row("Find it in Trimble Learn", esc("Learning plan " + b.lp)) : "");
+    $("d-foot").innerHTML = b.link ? '<a class="btn primary" href="' + esc(b.link) + '" target="_blank" rel="noopener">Open in Trimble Learn</a>' : '<span class="btn" aria-disabled="true">Trimble Learn link coming</span>';
     $("drawer").classList.add("open"); $("scrim").classList.add("open"); $("drawer").setAttribute("aria-hidden", "false");
     $("d-close").focus();
   }
@@ -653,21 +610,11 @@ var TCS_DATA = {
   }
   $("d-close").addEventListener("click", closeDrawer);
   $("scrim").addEventListener("click", closeDrawer);
-  $("d-foot").addEventListener("click", function (e) { var t = e.target.closest("[data-earn]"); if (t) toggleEarned(t.getAttribute("data-earn")); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeDrawer(); });
 
-  /* Static lists */
-  $("mods").innerHTML = D.modalities.map(function (m) {
-    return '<div class="mod"><div class="icon" aria-hidden="true">' + esc(m.icon) + "</div><h3>" + esc(m.name) + "</h3><p>" + esc(m.desc) + '</p><div class="ev">Evidence: ' + esc(m.evidence) + "</div></div>";
-  }).join("");
-  $("road").innerHTML = D.roadmap.map(function (p, i) {
-    var now = i + 1 === D.meta.currentPhase;
-    return '<div class="phase' + (now ? " now" : "") + '" style="--pc:' + p.color + '"><div class="q">' + esc(p.q) + (now ? '<span class="nowtag">NOW</span>' : "") + "</div><h3>" + esc(p.name) + "</h3><ul>" +
-      p.items.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
-  }).join("");
   $("faqs").innerHTML = D.faq.map(function (f) { return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>"; }).join("");
 
-  function renderAll() { renderRoles(); renderStages(); renderKpis(); renderMatrix(); renderCards(); }
+  function renderAll() { renderRoles(); renderStages(); renderLens(); renderMatrix(); }
   renderAll();
 
   /* Iframe support: tell a parent page (such as Docebo) how tall this page is. */
