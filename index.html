@@ -257,8 +257,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
   <ul>
     <li><a href="#how">How it works</a></li>
     <li><a href="#path">Career path</a></li>
-    <li><a href="#competencies">Competencies</a></li>
-    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#competencies">Skills map</a></li>
+    <li id="faq-nav"><a href="#faq">FAQ</a></li>
   </ul>
 </div></nav>
 
@@ -301,8 +301,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 </div></section>
 
 <section id="competencies"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Your skills map</div><h2>Every skill you will build, stage by stage</h2>
-  <p>Each row is a skill area. Each column is a stage. Select any badge to see what you will learn, how you prove it and where to find it in Trimble Learn. Use Skill focus to highlight the badges that build one competency. The dot on each badge shows whether its content is live today, in build or planned.</p></div>
+  <div class="sec-head"><div class="eyebrow">Your skills map</div><h2>Build the skills that win deals</h2>
+  <p>Every badge moves you closer to the Trimble Certified Seller milestone. Select a badge to see what you will learn and how you will be evaluated.</p></div>
   <div class="toolbar" id="lens"><span class="label">Skill focus:</span></div>
   <p class="kpi-note" id="lens-note" aria-live="polite"></p>
   <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
@@ -339,7 +339,9 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
    pillar: competency pillar 1 to 6 (see pillars).  ps: performance standards the badge builds (see standards).
    ===================================================================== */
 var TCS_DATA = {
-  meta: { version: "v0.4", updated: "2026-11-10", currentPhase: 1,
+  meta: { version: "v0.10", updated: "2026-11-10", currentPhase: 1,
+          /* FAQ is hidden until it is developed. Set showFaq to true to bring back the section and its nav button. */
+          showFaq: false,
           /* Link to the standalone Seller Performance Support page. Set to "" to hide the link in How it works. */
           perfSupportLink: "performance-support.html" },
 
@@ -359,18 +361,18 @@ var TCS_DATA = {
   ],
 
   stages: [
-    { id: 1, tier: "Tier 1", name: "Onboarding", when: "0 to 4 weeks", focus: "Foundational", credential: "Foundational Seller Badge", stakes: "Lower stakes",
+    { id: 1, tier: "Tier 1", name: "Onboarding", when: "0 to 4 weeks", focus: "Foundational", credential: "Foundational Seller Badge", stakes: "",
       entry: ["New hire or role change recorded in Workday", "Manager and onboarding buddy assigned"],
       gate: ["All Tier 1 badges for your role, including knowledge checks", "Read the Room persona certification", "Resistance Lab pass", "Pre-call plan on a practice account", "Manager sign-off on your first live customer call"],
       gateByRole: { sdr: ["SDR Onboarding (SITE): both certification gates, scored on the manager rubric", "Week 3 live roleplay certification", "Read the Room persona certification", "Resistance Lab pass", "Pre-call plan on a practice account"] } },
-    { id: 2, tier: "Tier 2", name: "Ramp", when: "5 weeks to 1 year", focus: "Acceleration", credential: "Ramp Trimble Certified Seller", stakes: "Promotion-relevant",
+    { id: 2, tier: "Tier 2", name: "Ramp", when: "5 weeks to 1 year", focus: "Acceleration", credential: "Ramp Trimble Certified Seller", stakes: "",
       entry: ["Foundational Seller Badge earned", "Experienced AEs can enter through an evidence pathway"],
       gate: ["Cumulative knowledge assessment with a standard-set cut score", "Gong discovery call scored on the shared scorecard by a second rater", "DX sandbox assessment", "Business case for a live opportunity", "Asking for the Sale with a pre-call plan", "Ramp KPI floor met on your Scorecard"],
       gateByRole: { sdr: ["SDR-to-AE Readiness Capstone: cumulative knowledge assessment (75 questions)", "Behavior assessments: discovery Gong call and DX sandbox", "Asking for the Sale presentation with a pre-call plan, scored by sales leaders and mentors", "Passing earns the AE readiness designation"] } },
-    { id: 3, name: "Core Productivity", when: "1 to 2 years", focus: "Mastery", credential: "TCS Expert", stakes: "Renews yearly",
+    { id: 3, name: "Core Productivity", when: "1 to 2 years", focus: "Mastery", credential: "TCS Expert", stakes: "",
       entry: ["Ramp Trimble Certified Seller earned", "Two quarters at or above KPI target"],
       gate: ["Deal portfolio review: two closed-won deals and one closed-lost analysis", "Peer teach-back in a Deal Clinic", "Sustained KPI attainment, with Impact Packs closed when one is assigned"] },
-    { id: 4, name: "Manager Readiness", when: "Leadership track", focus: "Nomination", credential: "TCS Leader", stakes: "Promotion-relevant",
+    { id: 4, name: "Manager Readiness", when: "Leadership track", focus: "Nomination", credential: "TCS Leader", stakes: "",
       entry: ["Individual contributors identified as high potential for leadership are invited to Building Tomorrow's Leaders", "Current Trimble managers: learning opportunities outside of Building Tomorrow's Leaders are being planned"],
       gate: ["Building Tomorrow's Leaders (20 weeks) complete", "Coaching evidence on real calls, scored on the shared scorecard", "Pipeline inspection against the shared stage exit criteria", "Capstone presentation", "Team KPI improvement"] }
   ],
@@ -540,7 +542,7 @@ var TCS_DATA = {
     var gate = (s.gateByRole && s.gateByRole[state.role]) || s.gate;
     var li = function (a) { return a.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join(""); };
     var badges = list.length ? list.map(function (b) { return "<li>" + esc(b.name) + "</li>"; }).join("") : '<li class="empty">Badges for this role are being defined.</li>';
-    $("stage-detail").innerHTML = "<h3>Stage " + s.id + ": " + esc(s.name) + (s.tier ? " (" + esc(s.tier) + ")" : "") + ' <span class="stakes">' + esc(s.stakes) + "</span></h3>" +
+    $("stage-detail").innerHTML = "<h3>Stage " + s.id + ": " + esc(s.name) + (s.tier ? " (" + esc(s.tier) + ")" : "") + (s.stakes ? ' <span class="stakes">' + esc(s.stakes) + "</span>" : "") + "</h3>" +
       '<div style="color:var(--ink-2);font-size:15px">Credential: <strong>' + esc(s.credential) + "</strong> &middot; " + esc(s.when) + "</div>" +
       '<div class="sd-grid"><div><h4>Entry</h4><ul>' + li(s.entry) + "</ul></div><div><h4>Gate to earn it</h4><ul>" + li(gate) + "</ul></div><div><h4>Your badges</h4><ul>" + badges + "</ul></div></div>";
   }
@@ -612,7 +614,11 @@ var TCS_DATA = {
   $("scrim").addEventListener("click", closeDrawer);
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && openId) closeDrawer(); });
 
-  $("faqs").innerHTML = D.faq.map(function (f) { return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>"; }).join("");
+  if (D.meta.showFaq) {
+    $("faqs").innerHTML = D.faq.map(function (f) { return "<details><summary>" + esc(f.q) + "</summary><p>" + esc(f.a) + "</p></details>"; }).join("");
+  } else {
+    [$("faq"), $("faq-nav")].forEach(function (el) { if (el) el.parentNode.removeChild(el); });
+  }
 
   function renderAll() { renderRoles(); renderStages(); renderLens(); renderMatrix(); }
   renderAll();
