@@ -273,7 +273,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 <header class="hero" id="top"><div class="wrap">
   <div class="eyebrow">AECO Sales Enablement</div>
   <h1>Trimble Certified Seller</h1>
-  <p class="lead">Your roadmap starts in Onboarding and ramps to Trimble Certified Seller. Build the skills our top sellers use, prove them on real deals, and earn the credential that says you are ready for what comes next.</p>
+  <p class="lead">Your roadmap starts in onboarding and ramps to Trimble Certified Seller. Build the skills our top sellers use, prove them on real deals, and earn the credential that says you are ready for what comes next.</p>
   <div class="rolepick">
     <span class="label" id="role-label">I am a:</span>
     <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
@@ -346,7 +346,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
    pillar: competency pillar 1 to 6 (see pillars).  ps: performance standards the badge builds (see standards).
    ===================================================================== */
 var TCS_DATA = {
-  meta: { version: "v0.13", updated: "2026-11-11", currentPhase: 1,
+  meta: { version: "v0.14", updated: "2026-11-11", currentPhase: 1,
           /* FAQ is hidden until it is developed. Set showFaq to true to bring back the section and its nav button. */
           showFaq: false,
           /* Link to the standalone Seller Performance Support page. Set to "" to hide the link in How it works. */
@@ -368,18 +368,18 @@ var TCS_DATA = {
   ],
 
   stages: [
-    { id: 1, tier: "Tier 1", name: "Onboarding", when: "0 to 4 weeks", focus: "Foundational", credential: "Foundational Seller Badge", stakes: "",
+    { id: 1, name: "Foundation", when: "Weeks 1 to 4", focus: "Onboarding", credential: "Foundational Seller Badge", stakes: "",
       entry: ["New hire or role change recorded in Workday", "Manager and onboarding buddy assigned"],
-      gate: ["All Tier 1 badges for your role, including knowledge checks", "Read the Room persona certification", "Resistance Lab pass", "Pre-call plan on a practice account", "Manager sign-off on your first live customer call"],
-      gateByRole: { sdr: ["SDR Onboarding (SITE): both certification gates, scored on the manager rubric", "Week 3 live roleplay certification", "Read the Room persona certification", "Resistance Lab pass", "Pre-call plan on a practice account"] } },
-    { id: 2, tier: "Tier 2", name: "Ramp", when: "5 weeks to 1 year", focus: "Acceleration", credential: "Ramp Trimble Certified Seller", stakes: "",
+      gate: ["All Foundation badges for your role, including knowledge checks", "Read the Room persona assessment", "Resistance Lab pass", "Pre-call plan on a practice account", "Manager sign-off on your first live customer call"],
+      gateByRole: { sdr: ["SDR Onboarding (SITE): both assessments, scored on the manager rubric", "Week 3 live roleplay assessment", "Read the Room persona assessment", "Resistance Lab pass", "Pre-call plan on a practice account"] } },
+    { id: 2, name: "Ramp", when: "Week 5 to year 1", focus: "Basic level certification", credential: "Trimble Certified Seller", stakes: "",
       entry: ["Foundational Seller Badge earned", "Experienced AEs can enter through an evidence pathway"],
       gate: ["Cumulative knowledge assessment with a standard-set cut score", "Gong discovery call scored on the shared scorecard by a second rater", "DX sandbox assessment", "Business case for a live opportunity", "Asking for the Sale with a pre-call plan", "Ramp KPI floor met on your Scorecard"],
       gateByRole: { sdr: ["SDR-to-AE Readiness Capstone: cumulative knowledge assessment (75 questions)", "Behavior assessments: discovery Gong call and DX sandbox", "Asking for the Sale presentation with a pre-call plan, scored by sales leaders and mentors", "Passing earns the AE readiness designation"] } },
-    { id: 3, name: "Core Productivity", when: "1 to 2 years", focus: "Mastery", credential: "TCS Expert", stakes: "",
-      entry: ["Ramp Trimble Certified Seller earned", "Two quarters at or above KPI target"],
+    { id: 3, name: "Core Productivity", when: "Opens after year 1", focus: "Expert level certification", credential: "Trimble Certified Seller Expert", stakes: "",
+      entry: ["Trimble Certified Seller earned", "Two quarters at or above KPI target", "Expected pace: complete by your three-year anniversary. This is a target, not a deadline"],
       gate: ["Deal portfolio review: two closed-won deals and one closed-lost analysis", "Peer teach-back in a Deal Clinic", "Sustained KPI attainment, with Impact Packs closed when one is assigned"] },
-    { id: 4, name: "Manager Readiness", when: "Leadership track", focus: "Nomination", credential: "TCS Leader", stakes: "",
+    { id: 4, name: "Manager Readiness", when: "By invitation", focus: "Leadership development", credential: "TCS Leader", stakes: "",
       entry: ["Individual contributors identified as high potential for leadership are invited to Building Tomorrow's Leaders", "Current Trimble managers: learning opportunities outside of Building Tomorrow's Leaders are being planned"],
       gate: ["Building Tomorrow's Leaders (20 weeks) complete", "Coaching evidence on real calls, scored on the shared scorecard", "Pipeline inspection against the shared stage exit criteria", "Capstone presentation", "Team KPI improvement"] }
   ],
@@ -394,7 +394,7 @@ var TCS_DATA = {
     { id: 6, name: "Professional Acumen, Mindset and Growth", kpis: 3, skills: "Communication and presentation, professionalism and accountability, openness, learning and adaptability" }
   ],
 
-  /* The eight performance standards. Same behavior at every tier; the level rises. */
+  /* The eight performance standards. Same behavior at every stage; the level rises. */
   standards: [
     { id: "PS1", name: "Plan every call", why: "Prepared calls are the clearest predictor of quality discovery and a clean next step.", t1: "Complete the pre-call plan template for a practice account", t2: "Submit a pre-call plan for live calls: persona, agenda, CBIs, qualification", t3: "Review pre-call plans in one-to-ones and coach the gaps", evidence: "Pre-call plan scored by Sparky" },
     { id: "PS2", name: "Lead persona-based discovery to a quantified business issue", why: "Moves the conversation from pain to measurable impact the buyer owns.", t1: "Identify the persona and likely CBIs in a scenario", t2: "Uncover and quantify a CBI on a recorded call", t3: "Diagnose discovery quality from Gong and coach it", evidence: "Gong discovery call scorecard; Read the Room" },
@@ -416,7 +416,7 @@ var TCS_DATA = {
   ],
 
   badges: [
-    /* Stage 1: Onboarding */
+    /* Stage 1: Foundation */
     { id: "glance", name: "Trimble at a Glance", d: "pi", s: 1, pillar: 1, roles: ["all"], status: "planned", kpis: ["acv"], source: "Trimble Story; SDR Onboarding Week 1: Understanding Trimble", modality: "Drive-time audio, AI Flight Simulator", evidence: "Two-minute recorded talk track", desc: "Tell who Trimble is, what we do and the problems we solve, in two minutes or less." },
     { id: "connect", name: "Connect Platform Basics", d: "pi", s: 1, roles: ["all"], status: "planned", kpis: ["deal"], source: "Product and Industry Certification", modality: "Micro-lesson, knowledge check", evidence: "Knowledge check", desc: "Explain how Connect data and intelligence runs through Trimble offerings, field to office." },
     { id: "jobsite", name: "Jobsite Immersion", d: "pi", s: 1, pillar: 4, ps: ["PS2"], roles: ["sdr", "ae", "se", "product"], status: "planned", kpis: ["winrate"], source: "New", modality: "Ride-along or site visit, video series", evidence: "Persona field journal", desc: "See the jobsite through a Superintendent's eyes and capture the friction you would sell to." },
@@ -430,7 +430,7 @@ var TCS_DATA = {
     { id: "precall", name: "Pre-Call Planning", d: "css", s: 1, pillar: 5, ps: ["PS1"], roles: ["sdr", "ae", "se"], status: "build", kpis: ["winrate"], source: "Pre-call plan template; SDR-to-AE capstone pre-work; Sparky evaluation", modality: "Template practice, Sparky feedback", evidence: "Pre-call plan on a practice account, scored by Sparky", desc: "Plan the persona, agenda, likely CBIs and qualification questions before every call." },
     { id: "ufc", name: "Upfront Contracts", d: "css", s: 1, pillar: 2, ps: ["PS1", "PS6"], roles: ["sdr", "ae"], status: "planned", kpis: ["winrate"], source: "Competency Pillar 2; Optimizing the Meeting Framework workshop", modality: "Call framing script, role play", evidence: "Upfront Contract set on a recorded call", desc: "Open every call by agreeing on time, both agendas and the outcome you are working toward." },
     { id: "earclab", name: "EARC Foundations: The Resistance Lab", d: "css", s: 1, pillar: 2, ps: ["PS5"], roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "lost"], source: "Turning Resistance Into Revenue; The Resistance Lab; Steamrolled; SDR Onboarding Week 2: Objection Handling 101", modality: "Branching simulations, Handle the Objection activity, Field Guide", evidence: "Resistance Lab pass", desc: "Learn Empathize, Ask to Elaborate, Reframe and Confirm, then pass the scored Resistance Lab. Pass it once and it counts across programs." },
-    { id: "site", name: "SDR Onboarding (SITE) Certification", d: "proc", s: 1, pillar: 5, roles: ["sdr"], status: "live", kpis: ["count"], source: "SDR Onboarding: Structure, Industry, Tools, Execution (three weeks)", modality: "Daily manager check-ins, peer mock calls, live roleplay", evidence: "Two certification gates scored on the manager rubric", desc: "Complete the three-week SDR onboarding and pass both certification gates." },
+    { id: "site", name: "SDR Onboarding (SITE)", d: "proc", s: 1, pillar: 5, roles: ["sdr"], status: "live", kpis: ["count"], source: "SDR Onboarding: Structure, Industry, Tools, Execution (three weeks)", modality: "Daily manager check-ins, peer mock calls, live roleplay", evidence: "Two assessments scored on the manager rubric", desc: "Complete the three-week SDR onboarding and pass both assessments." },
     { id: "timeblock", name: "Calendar Blueprint and Time Blocking", d: "tools", s: 1, pillar: 5, ps: ["PS7"], roles: ["sdr"], status: "live", kpis: ["count"], source: "SDR Onboarding Weeks 1 and 3; time-blocking app", modality: "Guided activity", evidence: "Completed calendar blueprint", desc: "Build a weekly calendar that protects prospecting time and hits your activity benchmarks." },
 
     /* Stage 2: Ramp */
@@ -439,7 +439,7 @@ var TCS_DATA = {
     { id: "earc", name: "EARC on Live Calls", d: "css", s: 2, pillar: 2, ps: ["PS5"], lp: 1032, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "lost"], source: "SDR-to-AE Month 5; Turning Resistance Into Revenue", modality: "AI roleplay, Game Film", evidence: "EARC used on a recorded call, tagged in Gong", desc: "Empathize, Ask to Elaborate, Reframe and Confirm on live calls, under pressure." },
     { id: "ask", name: "Asking for the Sale", d: "css", s: 2, pillar: 3, ps: ["PS6", "PS1"], lp: 1058, roles: ["sdr", "ae"], status: "live", kpis: ["winrate", "attain"], source: "SDR-to-AE Readiness Capstone", modality: "Live roleplay, pre-call plan", evidence: "Recorded presentation scored on the eight-criterion rubric; pre-call plan scored by Sparky", desc: "Bring persona insight, business case and EARC together into a confident close." },
     { id: "presence", name: "Present with Impact", d: "css", s: 2, pillar: 6, roles: ["all"], status: "live", kpis: ["winrate"], source: "Present with Impact: Professional Presentation and Interview Readiness", modality: "Self-paced, workshop, partner mock interview", evidence: "Recorded presentation", desc: "Structure and deliver a professional presentation, in customer meetings and interviews." },
-    { id: "personas", name: "Construction Personas: Read the Room", d: "pi", s: 1, pillar: 4, ps: ["PS2"], roles: ["sdr", "ae", "se", "product"], status: "live", kpis: ["winrate"], source: "Personas by Industries; Read the Room: Construction Persona Certification", modality: "Persona cards, TC1 wheels, live-call simulator", evidence: "50-question certification assessment", desc: "Read the room across six industries and tailor your message by role." },
+    { id: "personas", name: "Construction Personas: Read the Room", d: "pi", s: 1, pillar: 4, ps: ["PS2"], roles: ["sdr", "ae", "se", "product"], status: "live", kpis: ["winrate"], source: "Personas by Industries; Read the Room: Construction Persona Certification", modality: "Persona cards, TC1 wheels, live-call simulator", evidence: "50-question assessment", desc: "Read the room across six industries and tailor your message by role." },
     { id: "story", name: "Trimble Story Certified", d: "pi", s: 2, pillar: 6, roles: ["sdr", "ae", "se", "product"], status: "build", kpis: ["acv", "deal"], source: "SKO 2026; Global Pitch Certification", modality: "Pitch Arena, Gong Enable submission", evidence: "Certified pitch video", desc: "Tell the end-to-end platform story, including AI and risk, by geo and industry." },
     { id: "golden", name: "Golden Workflows", d: "pi", s: 2, pillar: 4, roles: ["ae", "se", "product"], status: "planned", kpis: ["deal", "acv"], source: "Product and Industry Certification, rebuilt", modality: "Golden Workflow Escape Room, micro-lessons", evidence: "Workflow mapping exercise", desc: "Sell connected workflows such as Constructible BIM to Field and Civil Job Costing, not single tools." },
     { id: "engage", name: "Gong and Seismic in Flow", d: "tools", s: 2, pillar: 5, ps: ["PS7"], lp: 1043, roles: ["sdr", "ae"], status: "live", kpis: ["count"], source: "SDR-to-AE Month 6: Tools and Execution", modality: "Field Mission", evidence: "Active use in Gong Engage and Seismic", desc: "Run sequences, share content and capture insight in the tools, every week." },
@@ -476,10 +476,10 @@ var TCS_DATA = {
 
   faq: [
     { q: "Does TCS replace the programs I am already in?", a: "No one loses progress. Existing programs such as SDR-to-AE Readiness, Construction Personas and Building Tomorrow's Leaders become badges inside TCS, and completed work counts toward your credential." },
-    { q: "How long does it take to become a Ramp Trimble Certified Seller?", a: "Ramp runs from week five to about one year. The timeline is a guide, not a waiting period: you earn the credential when you pass the gate, and most of the work happens on your live deals." },
+    { q: "How long does it take to become a Trimble Certified Seller?", a: "Ramp runs from week five to about one year. The timeline is a guide, not a waiting period: you earn the credential when you pass the gate, and most of the work happens on your live deals." },
     { q: "What happens if I do not pass a gate?", a: "You get specific feedback against the rubric, targeted practice for the competencies that need work, and a retake window. Retake and appeal rules will be published before the MVP launch." },
     { q: "Who scores my performance tasks?", a: "Promotion-relevant gates use a second rater or a calibrated panel, so the person who coaches you is not the only person who judges you." },
-    { q: "Do credentials expire?", a: "The Foundational Seller Badge does not. Ramp Trimble Certified Seller and TCS Expert renew through a short refresh and a KPI check. Product badges update when the product changes." },
+    { q: "Do credentials expire?", a: "The Foundational Seller Badge does not. Trimble Certified Seller and Trimble Certified Seller Expert renew through a short refresh and a KPI check. Product badges update when the product changes." },
     { q: "I already passed Read the Room or the Resistance Lab. Do I take it again?", a: "No. The plan is to certify once and credit it across every program, then recertify on a cycle instead of reassigning the course." },
     { q: "What is the difference between a badge and an Impact Pack?", a: "A badge shows you can do something. An Impact Pack is focused support when a Scorecard KPI dips: a short list of weekly habits, a few learning assets under 15 minutes each, and coaching from your manager. It is developmental, not a performance warning. You will find the details on the Seller Performance Support page." },
     { q: "Where do I see my progress?", a: "Your official record lives in Trimble Learn. A dashboard with live completion data is planned, so you will not need to track anything by hand." },
