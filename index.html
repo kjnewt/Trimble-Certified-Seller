@@ -274,21 +274,20 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
   <div class="eyebrow">AECO Sales Enablement</div>
   <h1>Trimble Certified Seller</h1>
   <p class="lead">Your roadmap starts in Onboarding and ramps to Trimble Certified Seller. Build the skills our top sellers use, prove them on real deals, and earn the credential that says you are ready for what comes next.</p>
-  <p class="brag">Earned on real deals. Proven on your Scorecard.</p>
   <div class="rolepick">
     <span class="label" id="role-label">I am a:</span>
     <div id="roles" role="group" aria-labelledby="role-label" style="display:flex;gap:8px;flex-wrap:wrap"></div>
   </div>
   <div class="pillars">
-    <a class="pillar" href="#path"><h3>Know where you stand</h3><p>Pick your role. See your stage, your badges and the gate in front of you.</p><span class="go">See your career path &rarr;</span></a>
-    <a class="pillar" href="#competencies"><h3>Build what top sellers build</h3><p>Every skill on the map is one our best sellers use to win.</p><span class="go">Open the skills map &rarr;</span></a>
-    <a class="pillar" href="#how"><h3>Earn what comes next</h3><p>Foundational Seller Badge first. Trimble Certified Seller next. Then keep climbing.</p><span class="go">See how it works &rarr;</span></a>
+    <a class="pillar" href="#path"><h3>Career path</h3><p>Pick your role to see your stage, your badges and the gate in front of you.</p><span class="go">See your career path &rarr;</span></a>
+    <a class="pillar" href="#competencies"><h3>Skills map</h3><p>The skills and badges for your role, grouped by competency.</p><span class="go">Open the skills map &rarr;</span></a>
+    <a class="pillar" href="#how"><h3>How it works</h3><p>Start with the Foundational Seller Badge, then earn Trimble Certified Seller.</p><span class="go">See how it works &rarr;</span></a>
   </div>
 </div></header>
 
 <main>
 <section id="path"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Career paths</div><h2>Four stages. One path forward.</h2>
+  <div class="sec-head"><div class="eyebrow">Career paths</div><h2>The four stages</h2>
   <p>Select a stage to see who it is for, what it takes to pass the gate, and the badges you will earn in your role.</p></div>
   <div class="path" id="stages" role="tablist" aria-label="Career stages"></div>
   <div class="gate-strip" aria-hidden="true"><span>Gate &#9670;</span><span>Gate &#9670;</span><span>Gate &#9670;</span><span></span></div>
@@ -297,7 +296,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 
 <section id="how" class="alt"><div class="wrap">
   <div class="sec-head"><div class="eyebrow">How it works</div><h2>Your roadmap to Trimble Certified Seller</h2>
-  <p>Build the skills. Complete the curriculum. Let your results show it. Three steps take you from your first day to certified.</p></div>
+  <p>Three steps take you from your first day to certified.</p></div>
   <div class="flow">
     <div class="step"><h3>1. Competency</h3><p>Four skill areas define how top Trimble sellers work: Product and Industry, Consultative Selling, Tools and Workflows, and Sales Process.</p></div>
     <div class="arrow" aria-hidden="true">&rarr;</div>
@@ -309,8 +308,8 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 </div></section>
 
 <section id="competencies"><div class="wrap">
-  <div class="sec-head"><div class="eyebrow">Your skills map</div><h2>Build the skills that win deals</h2>
-  <p>Every badge moves you closer to the Trimble Certified Seller milestone. Select a badge to see what you will learn and how you will be evaluated.</p></div>
+  <div class="sec-head"><div class="eyebrow">Your skills map</div><h2>Skills and badges by competency</h2>
+  <p>Select a badge to see what you will learn and how you will be evaluated.</p></div>
   <div class="toolbar" id="lens"><span class="label">Skill focus:</span></div>
   <p class="kpi-note" id="lens-note" aria-live="polite"></p>
   <div class="matrix-wrap"><table class="matrix" id="matrix"></table></div>
@@ -347,7 +346,7 @@ footer.site .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
    pillar: competency pillar 1 to 6 (see pillars).  ps: performance standards the badge builds (see standards).
    ===================================================================== */
 var TCS_DATA = {
-  meta: { version: "v0.11", updated: "2026-11-11", currentPhase: 1,
+  meta: { version: "v0.13", updated: "2026-11-11", currentPhase: 1,
           /* FAQ is hidden until it is developed. Set showFaq to true to bring back the section and its nav button. */
           showFaq: false,
           /* Link to the standalone Seller Performance Support page. Set to "" to hide the link in How it works. */
@@ -387,7 +386,7 @@ var TCS_DATA = {
 
   /* The six competency pillars (draft competency matrix, October 2026). "kpis" is the count of Scorecard KPIs mapped to the pillar. */
   pillars: [
-    { id: 1, name: "Opportunity Gen and Research", kpis: 2, skills: "Prospecting and creating interest, account research, messaging and hooks (CRT), structured execution" },
+    { id: 1, name: "Opportunity Gen and Research", kpis: 2, skills: "Prospecting and creating interest, account research, messaging and hooks (Prospecting course), structured execution" },
     { id: 2, name: "Qualification and Discovery Rigor", kpis: 5, skills: "Upfront Contracts, BANT, CBIs and CSFs, discovery and analysis, objection handling, Challenger, MEDDPICC" },
     { id: 3, name: "Deal Execution and Closing", kpis: 6, skills: "Negotiation and contracting, team selling and Mutual Action Plans, closing readiness and techniques" },
     { id: 4, name: "Account and Territory Strategy", kpis: 7, skills: "Territory strategy, account planning and review, buyer personas, cross-sell and upsell" },
@@ -448,7 +447,7 @@ var TCS_DATA = {
     { id: "dealexec", name: "AE Deal Execution", d: "proc", s: 2, pillar: 3, ps: ["PS7"], lp: 1048, roles: ["sdr", "ae"], status: "build", kpis: ["winrate", "attain"], source: "SDR-to-AE Month 7", modality: "Self-paced, Deal Clinic", evidence: "Opportunity plan review", desc: "Manage an opportunity from qualified to closed with the right stakeholders and steps." },
     { id: "map", name: "Mutual Action Plan and Forecast Hygiene", d: "proc", s: 2, pillar: 3, ps: ["PS6", "PS7"], roles: ["ae", "se"], status: "planned", kpis: ["attain"], source: "Trimble Blueprint; competency Pillar 3: Team Selling and Mutual Action Plans", modality: "Template practice, manager review", evidence: "MAP on a live opportunity", desc: "Co-build the path to close with the customer and keep the forecast honest." },
 
-    { id: "prospect", name: "Prospecting and CRT Hooks", d: "css", s: 2, pillar: 1, lp: 1013, roles: ["sdr", "ae"], status: "live", kpis: ["count", "acv"], source: "SDR-to-AE Month 2: Prospecting + Discovery; competency Pillar 1", modality: "Self-paced, Field Mission", evidence: "Outreach sequence review", desc: "Write hooks built on credibility, relevance and timing, and run them across phone, email and LinkedIn." },
+    { id: "prospect", name: "Prospecting", d: "css", s: 2, pillar: 1, lp: 1013, roles: ["sdr", "ae"], status: "live", kpis: ["count", "acv"], source: "SDR-to-AE Month 2: Prospecting + Discovery; competency Pillar 1", modality: "Self-paced, Field Mission", evidence: "Outreach sequence review", desc: "Write hooks that earn the meeting, and run them across phone, email and LinkedIn." },
     { id: "bizcase", name: "Business Case Studio", d: "css", s: 2, pillar: 2, ps: ["PS4"], lp: 1020, roles: ["sdr", "ae", "se"], status: "live", kpis: ["deal", "winrate"], source: "SDR-to-AE Month 4; CBI and CSF suite: Build the Bridge, CSF Translation Lab, CSF Documentation Worksheet, Five Buckets Scorecard, Business Case Studio", modality: "Business Case Studio, Field Mission", evidence: "Business case for a live opportunity, checked against the Five Buckets Scorecard", desc: "Translate a CBI into critical success factors and build the business case in the customer's numbers." },
     { id: "meddpicc", name: "BANT to MEDDPICC Progression", d: "css", s: 2, pillar: 2, ps: ["PS3"], roles: ["sdr", "ae", "se"], status: "planned", kpis: ["winrate", "attain"], source: "AECO Onboarding 2.0 MEDDPICC module (EMEA); program crosswalk", modality: "Micro-lessons, deal review", evidence: "Qualification documented on live opportunities in Salesforce", desc: "Carry a BANT-qualified lead into MEDDPICC so sellers and leaders inspect a deal the same way." },
 
